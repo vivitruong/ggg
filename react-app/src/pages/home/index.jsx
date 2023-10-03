@@ -21,6 +21,7 @@ import SelectedPlaylistPage from "../SelectedPlaylistPage";
 import TopNav from "../../components/TopNav";
 import UploadSong from "../../components/CreateSong/dragdrop";
 import UserPage from "../../components/UserPage";
+import Paint from "../../components/Paint/apps/Paint";
 
 export const Home = () => {
   const { allSongs } = useSelector((state) => state?.songs);
@@ -129,6 +130,8 @@ export const Home = () => {
             <UserPage />
 
           </Route>
+          <Route path='/paint'>
+          <Paint/>          </Route>
         </Switch>
       </div>
       <div className="bottom_control_board">

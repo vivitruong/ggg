@@ -68,8 +68,18 @@ const Navbar = () => {
               </Button>
             </Link>
           </li>
+
+            <li>
+            <Link to="/paint">
+              <Button onClick={onClickHandler}>
+                <img src={iconHome} alt="" />
+                Paint
+              </Button>
+            </Link>
+          </li>
         </ul>
         <Divider />
+
       </nav>
     </header>
   );
