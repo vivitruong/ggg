@@ -42,12 +42,25 @@ export const Home = () => {
     if (isPlaying) {
       console.log("pause");
       dispatch(pauseAudio());
-      audioRef.current.pause();
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     } else {
       console.log("play");
       dispatch(playAudio(playSong?.filePath));
-      audioRef.current.play();
+      if (audioRef.current) {
+        audioRef.current.play();
+      }
     }
+    // if (isPlaying) {
+    //   console.log("pause");
+    //   dispatch(pauseAudio());
+    //   audioRef.current.pause();
+    // } else {
+    //   console.log("play");
+    //   dispatch(playAudio(playSong?.filePath));
+    //   audioRef.current.play();
+    // }
   };
 
   useEffect(() => {

@@ -11,10 +11,11 @@ from .api.song_routes import song_routes
 from .api.playlist_routes import playlist_routes
 from .seeds import seed_commands
 from .config import Config
+from flask_cors import CORS
 
 
 app = Flask(__name__, static_folder='../react-app/build', static_url_path='/')
-
+CORS(app)
 # Setup login manager
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
