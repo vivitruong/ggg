@@ -14,6 +14,7 @@ import Modal from "../Modal";
 import Overlay from "../Overlay";
 import CreateSong from "../CreateSong";
 import { useDeleteSongMutation } from "../../slices/songsApiSlice";
+import UploadSong from "../CreateSong/dragdrop";
 
 const HomePageComponents = ({ allPlaylists }) => {
   const [showModal, setShowModal] = useState(false);
@@ -94,7 +95,7 @@ const HomePageComponents = ({ allPlaylists }) => {
         <>
           <Overlay onClose={() => setShowModal(false)} />
           <Modal>
-            <CreateSong />
+            <UploadSong />
           </Modal>
         </>
       )}

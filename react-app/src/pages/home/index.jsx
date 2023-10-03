@@ -19,6 +19,8 @@ import CreatePlayList from "../CreatePlayList"; // Import your route components
 import PlaylistsPage from "../PlaylistsPage"; // Import your route components
 import SelectedPlaylistPage from "../SelectedPlaylistPage";
 import TopNav from "../../components/TopNav";
+import UploadSong from "../../components/CreateSong/dragdrop";
+import UserPage from "../../components/UserPage";
 
 export const Home = () => {
   const { allSongs } = useSelector((state) => state?.songs);
@@ -97,8 +99,9 @@ export const Home = () => {
         <Switch>
           {/* Route definitions for your pages */}
           <Route exact path="/">
-          <TopNav />
+
             <HomePage />
+            <TopNav />
           </Route>
           <Route path="/liked-songs">
             <LikedSongsPage />
@@ -117,6 +120,14 @@ export const Home = () => {
           </Route>
           <Route path="/playlist/:name">
             <SelectedPlaylistPage />
+          </Route>
+          <Route path='/upload'>
+            <UploadSong />
+          </Route>
+          <Route path='/profile'>
+
+            <UserPage />
+
           </Route>
         </Switch>
       </div>

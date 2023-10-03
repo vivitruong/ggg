@@ -31,11 +31,17 @@ import { apiSlice } from '../slices/apiSlice';
 import playlistsSliceReducer from '../slices/playlistsSlice';
 import { songsSliceReducer, playSongSliceRducer, likedSongSliceRducer } from '../slices/songsSlice';
 import session from './session';
+import songReducer from './song';
+import userSongReducer from './userSong';
+
 
 // Combine the reducers from both stores
 const rootReducer = combineReducers({
   // Your reducers from the first store
   session,
+  songs: songReducer,
+  userSongs: userSongReducer,
+
   // Your reducers from the second store
   [ apiSlice.reducerPath ]: apiSlice.reducer,
   playlists: playlistsSliceReducer,
