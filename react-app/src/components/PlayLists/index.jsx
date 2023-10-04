@@ -8,6 +8,7 @@ import * as playlistAction from '../../store/playlist';
 import { useDeleteSongMutation } from "../../slices/songsApiSlice";
 import { selectedPlayListSongs } from "../../slices/playlistsSlice";
 import { Link } from "react-router-dom";
+import { render } from "@testing-library/react";
 
 
 const PlayLists = ({allPlaylists}) => {
@@ -26,18 +27,8 @@ const PlayLists = ({allPlaylists}) => {
     dispatch(getSongs({ playlists, playlistName }));
     // navigate("/playlists");
   };
-  const renderPlayList = allPlaylists?.map((playlist) => {
-    return (
-      <Link
-        to={`/playlist/${playlist.name}`}
-        onClick={() => dispatch(selectedPlayListSongs(playlist))}
-        key={playlist.id}
-      >
-        <div className="playlist">{playlist.name}</div>
-      </Link>
-    );
-  });
-  console.log(renderPlayList, 'playlist herre')
+
+
   const renderList = playlists?.map((playlist, index) => {
     return (
 
@@ -54,6 +45,7 @@ const PlayLists = ({allPlaylists}) => {
   return (
     <div className="playList">
       <h2>My Playlists</h2>
+      {renderList}
 
     </div>
   );
