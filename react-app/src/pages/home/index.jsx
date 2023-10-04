@@ -22,6 +22,8 @@ import TopNav from "../../components/TopNav";
 import UploadSong from "../../components/CreateSong/dragdrop";
 import UserPage from "../../components/UserPage";
 import Paint from "../../components/Paint/apps/Paint";
+import SplashScreen from "../../components/SplashScreen";
+import PlaylistPage from "../../components/PlaylistPage";
 
 export const Home = () => {
   const { allSongs } = useSelector((state) => state?.songs);
@@ -94,6 +96,7 @@ export const Home = () => {
     <div className="app">
       <div className="container">
         <div>
+
           <Navbar />
           <PlayLists />
         </div>
@@ -119,8 +122,13 @@ export const Home = () => {
           <Route path="/playlists">
             <PlaylistsPage />
           </Route>
+          <Route path='/playlists/:playlistId'>
+            <PlaylistPage />
+
+          </Route>
           <Route path="/playlist/:name">
             <SelectedPlaylistPage />
+            <PlaylistPage/>
           </Route>
           <Route path='/upload'>
             <UploadSong />

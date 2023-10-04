@@ -58,7 +58,7 @@ const HomePageComponents = ({ allPlaylists }) => {
           <span className=" title-column">{song?.name}</span>
           <span className=" artist-column">{song?.artist}</span>
         </div>
-        <Button
+        {/* <Button
           iconOnly
           onClick={async (e) => {
             e.stopPropagation();
@@ -69,7 +69,7 @@ const HomePageComponents = ({ allPlaylists }) => {
           }}
         >
           Delete Song
-        </Button>
+        </Button> */}
       </div>
     );
   });
@@ -95,7 +95,7 @@ const HomePageComponents = ({ allPlaylists }) => {
         <>
           <Overlay onClose={() => setShowModal(false)} />
           <Modal>
-            <UploadSong />
+            <CreateSong />
           </Modal>
         </>
       )}

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import * as songActions from '../../store/song';
 import { useHistory } from "react-router-dom";
-import './style.css';
+import './style.css'
 
 
 function readAsUtf8String(file) {

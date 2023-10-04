@@ -33,6 +33,8 @@ import { songsSliceReducer, playSongSliceRducer, likedSongSliceRducer } from '..
 import session from './session';
 import songReducer from './song';
 import userSongReducer from './userSong';
+import queueReducer from './queue';
+import playerReducer from './player';
 
 
 // Combine the reducers from both stores
@@ -41,6 +43,9 @@ const rootReducer = combineReducers({
   session,
   songs: songReducer,
   userSongs: userSongReducer,
+  player: playerReducer,
+  queue: queueReducer,
+
 
   // Your reducers from the second store
   [ apiSlice.reducerPath ]: apiSlice.reducer,

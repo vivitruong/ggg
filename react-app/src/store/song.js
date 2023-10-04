@@ -63,14 +63,16 @@ export const fetchUserSongs = () => async dispatch => {
 
 
 export const createSong = (song) => async dispatch => {
-    const { name, artist, genre, duration, audioFile } = song;
+    console.log(song, "-----right here")
+
+
     try {
         const response = await fetch(`/api/songs/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ name, artist, genre, duration, audioFile})
+            body: JSON.stringify(song)
         });
         if (response.ok) {
             const data = await response.json();

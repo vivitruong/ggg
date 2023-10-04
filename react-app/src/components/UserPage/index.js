@@ -1,7 +1,7 @@
 import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as userSongsAction from '../../store/userSong'
-// import * as queueAction from "../../../store/queue";
+import * as queueAction from '../../store/queue';
 import './style.css'
 
 
@@ -16,13 +16,13 @@ const UserPage = () => {
 
     const deleteSong = (i, song) => (e) => {
         e.stopPropagation();
-        // dispatch(queueAction.deleteSong(song.id));
+        dispatch(queueAction.deleteSong(song.id));
         dispatch(userSongsAction.deleteSong(song.id));
     }
 
-    // const onSongClick = (song) => () => {
-    //     dispatch(queueAction.updateList({ list: [song]}));
-    // };
+    const onSongClick = (song) => () => {
+        dispatch(queueAction.updateList({ list: [song]}));
+    };
 
     return (
         <>
@@ -47,7 +47,7 @@ const UserPage = () => {
                 }
             </div>
             </div>
-            {/* <div className="userprofile-song">
+            <div className="userprofile-song">
                 <span style={{fontSize:"1.5rem", margin:"10px"}}>Songs</span>
                 <div className="userprofile-song-main">
                     { songs &&
@@ -66,7 +66,7 @@ const UserPage = () => {
                     {
                         songs && Object.values(songs).map((song, i) => (
                             <div key={i} className="userprofile-song-content userprofile-content">
-                                <span className="userprofile-song-name">
+                                <span  onClick={onSongClick(song)} className="userprofile-song-name">
                                     {song.name}
                                 </span>
                                 <span>
@@ -80,7 +80,7 @@ const UserPage = () => {
                     }
                 </div>
             </div>
-        </div> */}
+
         </>
     )
 
