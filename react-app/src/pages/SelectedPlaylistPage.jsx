@@ -7,13 +7,30 @@ import Modal from "../components/Modal";
 import Overlay from "../components/Overlay";
 import SongsModal from "../components/SongsModel";
 import { removeSongToSelectedPlayList } from "../slices/playlistsSlice";
+import PlayListForm from "../components/PlayListForm";
 
 const SelectedPlaylistPage = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showEditModal, setEditModal] = useState(false);
   const { selectedPlayListSongs: playlist } = useSelector(
     (state) => state.playlists
   );
+  const [name, setName] = useState(playlist?.name);
+  const [description, setDescription] = useState(playlist?.description);
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const playListToBeEdited = {
+      name,
+      description,
+    };
 
+    console.log(playListToBeEdited);
+
+    setDescription("");
+    setName("");
+  };
+
+  const [showDeleteModal, setDeleteModal] = useState(false);
   // const [addedSongs, setAddedSongs] = useState(playlist?.playlist_songs);
   const { allSongs: songs } = useSelector((state) => state.songs);
 
@@ -29,6 +46,11 @@ const SelectedPlaylistPage = () => {
   //     </div>
   //   );
   // }
+
+  const deleteHandler = () => {
+    console.log(playlist);
+    setDeleteModal(false);
+  };
 
   const renderList = playlist?.playlist_songs?.map((song, index) => {
     // const active = currentSongIndex === index;
@@ -53,7 +75,8 @@ const SelectedPlaylistPage = () => {
         </div>
         <Button
           iconOnly
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             dispatch(
               removeSongToSelectedPlayList({ playlist, removeSong: song })
             );
@@ -69,9 +92,17 @@ const SelectedPlaylistPage = () => {
     <>
       <div className="add_songs">
         <h2>NO SONGS</h2>
-        <Button iconOnly onClick={() => setShowModal(true)}>
-          ADD SONGS
-        </Button>
+        <div style={{ display: "flex", gap: "6px" }}>
+          <Button iconOnly onClick={() => setShowModal(true)}>
+            ADD SONGS
+          </Button>
+          <Button iconOnly onClick={() => setDeleteModal(true)}>
+            Delete Playlist
+          </Button>
+          <Button iconOnly onClick={() => setEditModal(true)}>
+            Edit Playlist
+          </Button>
+        </div>
       </div>
       {showModal && (
         <>
@@ -86,6 +117,37 @@ const SelectedPlaylistPage = () => {
           </Modal>
         </>
       )}
+      {showDeleteModal && (
+        <>
+          <Overlay onClose={() => setDeleteModal(false)} />
+          <div className="deleteModal">
+            <h2>Are You Sure you want to delete? {playlist?.name} playlist</h2>
+            <div className="btns">
+              <Button iconOnly onClick={deleteHandler}>
+                Delete
+              </Button>
+              <Button iconOnly onClick={() => setDeleteModal(false)}>
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </>
+      )}
+      {showEditModal && (
+        <>
+          <Overlay onClose={() => setEditModal(false)} />
+          <Modal>
+            <PlayListForm
+              submitHandler={submitHandler}
+              name={name}
+              description={description}
+              setName={setName}
+              setDescription={setDescription}
+              btnText={"Create PlayList"}
+            />
+          </Modal>
+        </>
+      )}
     </>
   ) : (
     <>
@@ -95,9 +157,17 @@ const SelectedPlaylistPage = () => {
             <h2>{playlist.name}</h2>
             <p>{playlist.description}</p>
           </div>
-          <Button iconOnly onClick={() => setShowModal(true)}>
-            Add Songs
-          </Button>
+          <div style={{ display: "flex", gap: "5px" }}>
+            <Button iconOnly onClick={() => setShowModal(true)}>
+              Add Songs
+            </Button>
+            <Button iconOnly onClick={() => setDeleteModal(true)}>
+              Delete Playlist
+            </Button>
+            <Button iconOnly onClick={() => setEditModal(true)}>
+              Edit Playlist
+            </Button>
+          </div>
         </div>
         <div style={{ width: "100%" }}>
           <div className="song-row header-row">
@@ -116,6 +186,37 @@ const SelectedPlaylistPage = () => {
               playlist={playlist}
               // addedSongs={addedSongs}
               // setAddedSongs={setAddedSongs}
+            />
+          </Modal>
+        </>
+      )}
+      {showDeleteModal && (
+        <>
+          <Overlay onClose={() => setDeleteModal(false)} />
+          <div className="deleteModal">
+            <h2>Are You Sure you want to delete? {playlist?.name} playlist</h2>
+            <div className="btns">
+              <Button iconOnly onClick={deleteHandler}>
+                Delete
+              </Button>
+              <Button iconOnly onClick={() => setDeleteModal(false)}>
+                Cancel
+              </Button>
+            </div>
+          </div>
+        </>
+      )}
+      {showEditModal && (
+        <>
+          <Overlay onClose={() => setEditModal(false)} />
+          <Modal>
+            <PlayListForm
+              submitHandler={submitHandler}
+              name={name}
+              description={description}
+              setName={setName}
+              setDescription={setDescription}
+              btnText={"Edit PlayList"}
             />
           </Modal>
         </>
