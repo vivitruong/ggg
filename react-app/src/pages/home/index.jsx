@@ -129,6 +129,7 @@ export const Home = () => {
           <Route path="/playlist/:name">
             <SelectedPlaylistPage />
             <PlaylistPage/>
+
           </Route>
           <Route path='/upload'>
             <UploadSong />

@@ -7,17 +7,26 @@ import Modal from "../components/Modal";
 import Overlay from "../components/Overlay";
 import SongsModal from "../components/SongsModel";
 import { removeSongToSelectedPlayList } from "../slices/playlistsSlice";
+import OpenModalButton from '../components/OpenModalButton'
+import DeleteModal from '../components/DeleteSongModal'
+import * as songActions from '../store/song'
+
 
 const SelectedPlaylistPage = () => {
+  const song = useSelector((state) => state.song);
   const [showModal, setShowModal] = useState(false);
+  const dispatch = useDispatch();
   const { selectedPlayListSongs: playlist } = useSelector(
     (state) => state.playlists
   );
 
   // const [addedSongs, setAddedSongs] = useState(playlist?.playlist_songs);
   const { allSongs: songs } = useSelector((state) => state.songs);
+  useEffect(() => {
+    dispatch(songActions.fetchUserSongs())
+}, [dispatch])
 
-  const dispatch = useDispatch();
+
 
   // if (playlist?.playlist_songs?.length === 0) {
   //   return (
@@ -67,12 +76,19 @@ const SelectedPlaylistPage = () => {
 
   return playlist?.playlist_songs?.length === 0 ? (
     <>
+         <OpenModalButton
+                                        className='del-button'
+                                        modalComponent={<DeleteModal id={song?.id}/>}
+                                        buttonText = 'Delete'
+                                    />
+
       <div className="add_songs">
         <h2>NO SONGS</h2>
         <Button iconOnly onClick={() => setShowModal(true)}>
           ADD SONGS
         </Button>
       </div>
+
       {showModal && (
         <>
           <Overlay onClose={() => setShowModal(false)} />
