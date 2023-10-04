@@ -8,11 +8,20 @@ import iconCreatePlaylist from "../../assets/cd_drive-1.svg";
 import iconLiked from "../../assets/loudspeaker_green.svg";
 import iconEpisode from "../../assets/channels-1.svg";
 import "./style.css";
+import PlaylistForm from "../PlayLists/PlaylistForm";
+import CreatePlayList from "../../pages/CreatePlayList";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const [showModal, setShowModal] = useState(false);
+  const user = useSelector(state => state.session.user);
   const onClickHandler = () => {
     console.log("hi");
   };
+  const togglePlaylistModal = () => {
+    setShowModal(true);
+  }
   return (
     <header>
       <nav>
@@ -46,7 +55,7 @@ const Navbar = () => {
         <ul>
           <li>
             <Link to="/create-playlist">
-              <Button onClick={onClickHandler}>
+              <Button onClick={togglePlaylistModal}>
                 <img src={iconCreatePlaylist} alt="" />
                 Create Playlist
               </Button>
@@ -68,9 +77,20 @@ const Navbar = () => {
               </Button>
             </Link>
           </li>
+
+            <li>
+            <Link to="/paint">
+              <Button onClick={onClickHandler}>
+                <img style={{width: '20px'}} src='https://goldeneragrooves.s3.us-east-2.amazonaws.com/jspaint.svg' alt="" />
+                Paint
+              </Button>
+            </Link>
+          </li>
         </ul>
         <Divider />
+
       </nav>
+      {/* <CreatePlayList togglePlaylistModal={togglePlaylistModal} /> */}
     </header>
   );
 };

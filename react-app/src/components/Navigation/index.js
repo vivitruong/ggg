@@ -8,7 +8,7 @@ import { Home } from "../../pages/home";
 
 function Navigation ({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
-  if (!sessionUser) return <Redirect to="/login" />;
+  if (!sessionUser) return <Redirect to="/" />;
 
   return (
     <ul>

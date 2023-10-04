@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import LogoutButton from "./LogoutButton";
 import { Link } from "react-router-dom";
+import './style.css'
 
 const ProfileDropdown = () => {
     const [showMenu, setShowMenu] = useState(false);
