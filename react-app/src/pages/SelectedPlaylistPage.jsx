@@ -10,15 +10,24 @@ import { removeSongToSelectedPlayList } from "../slices/playlistsSlice";
 import OpenModalButton from '../components/OpenModalButton'
 import DeleteModal from '../components/DeleteSongModal'
 import * as songActions from '../store/song'
+import * as songsActions from '../store/userSong';
+import { useModal } from "../context/Modal"
 
 
-const SelectedPlaylistPage = () => {
+const SelectedPlaylistPage = ({id}) => {
   const song = useSelector((state) => state.song);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
   const { selectedPlayListSongs: playlist } = useSelector(
     (state) => state.playlists
   );
+  const {closeModal} = useModal();
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      dispatch(songsActions.deleteSong(id))
+          .then(closeModal)
+  };
 
   // const [addedSongs, setAddedSongs] = useState(playlist?.playlist_songs);
   const { allSongs: songs } = useSelector((state) => state.songs);
