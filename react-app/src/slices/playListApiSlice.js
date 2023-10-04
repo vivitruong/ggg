@@ -11,9 +11,11 @@ export const playlistsApiSlice = apiSlice.injectEndpoints({
     }),
     getCurrentUserPlayList: builder.query({
       query: () => ({
+        mode: 'no-cors',
         url: `${ PLAYLIST_URL }/current`
       }),
       keepUnusedDataFor: 5,
+
     }),
 
     createPlayList: builder.mutation({
@@ -54,4 +56,4 @@ export const playlistsApiSlice = apiSlice.injectEndpoints({
 });
 
 
-export const { useGetAllPlaylistsQuery, } = playlistsApiSlice;
+export const { useGetAllPlaylistsQuery, useGetCurrentUserPlayListQuery, useAddSongToPlayListMutation, useCreatePlayListMutation, useDeletePlayListMutation, } = playlistsApiSlice;

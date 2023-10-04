@@ -100,43 +100,114 @@ def get_song(song_id):
 @song_routes.route('/', methods=['POST'])
 @login_required
 def upload_song():
+    # form = UploadSongForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    # print('made it here')
+
+
+    # if "file_path" not in request.files:
+    #     print('song file took an L')
+    #     return {"errors": "song required"}, 400
+
+    # if "cover_photo" not in request.files:
+    #     print("!!!!", request.files)
+    #     print('cover photo took an L')
+    #     return {"errors": "photo required"}, 400
+
+    # print('hello')
+    # cover_photo = request.files["coverphoto"]
+    # file_path = request.files["songfile"]
+
+    # if not allowed_file(file_path.filename):
+    #     return {"errors": "file type not permitted"}, 400
+
+    # if not allowed_file(cover_photo.filename):
+    #     return {"errors": "file type not permitted"}, 400
+
+    # print('pre validation--------')
+
+    # if form.validate_on_submit():
+    #     print('past validation--------')
+    #     cover_photo.filename = get_unique_filename(cover_photo.filename)
+    #     file_path.filename = get_unique_filename(file_path.filename)
+
+    #     # print('str version' , str(songfile))
+    #     # print('file', songfile)
+    #     upload2 = upload_file_to_s3(cover_photo)
+    #     upload = upload_file_to_s3(file_path)
+    #     print('upload--------', upload)
+    #     if "url" not in upload:
+    #         # if the dictionary doesn't have a url key
+    #         # it means that there was an error when we tried to upload
+    #         # so we send back that error message
+    #         return upload, 400
+
+    #     url = upload["url"]
+    #     url2 = upload2["url"]
+    #     # flask_login allows us to get the current user from the request
+    #     new_song = Song()
+    #     form.populate_obj(new_song)
+    #     new_song.song_file = url
+    #     new_song.cover_photo = url2
+
+    #     db.session.add(new_song)
+    #     db.session.commit()
+    #     return new_song.to_dict(), 201
+    # if form.errors:
+    #     return {
+    #         "errors": form.errors
+    #     }, 400
+
+
+    current_user_info = current_user.to_dict()
     current_user_info = current_user.to_dict()
     current_user_id = current_user_info['id']
     form = UploadSongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+    print('heeee')
 
     if form.validate_on_submit():
-        if form.data['file_path']:
-            songfile = form.data['file_path']
-            songfile.filename = get_unique_filename(songfile.filename)
-            upload = upload_file_to_s3(songfile)
-            print('upload--------', upload)
-            if "url" not in upload:
-                return {'errors': validation_errors_to_error_messages(upload)}, 400
-            song_url = upload["url"]
-        else: song_url = None
-        if form.data['cover_photo']:
-            coverphoto = form.data['cover_photo']
-            coverphoto.filename = get_unique_filename(coverphoto.filename)
-            upload2 = upload_file_to_s3(coverphoto)
-            if 'url' not in upload2:
-                return  {'errors': validation_errors_to_error_messages(upload2)}, 400
-            coverphoto_url = upload2['url']
-        else: coverphoto_url = None
+        cover_photo = form.cover_photo.data
+        print(cover_photo, 'took an L')
+        # if cover_photo is None:
+        #     return {'errors': 'Cover photo is missing or empty'}
+        image_filename = get_unique_filename(cover_photo.filename)
+        upload = upload_file_to_s3(cover_photo, image_filename)
+        print(f'!!!upload {upload}') #debug
 
-        new_song = Song(
-            name=form.data['name'],
-            artist = form.data['artist'],
-            genre = form.data['genre'],
-            cover_photo = coverphoto_url,
-            file_path = song_url,
-            user_id = current_user_id
+        if "url" not in upload:
+            return {'errors': 'Failed to upload cover photo'}
 
+        song_file = form.file_path.data
+        # if song_file is None:
+        #     return {'errors': 'Song file is missing or empty'}
+        song_filename = get_unique_filename(song_file.filename)
+        upload_song = upload_file_to_s3(song_file, song_filename)
+
+        if "url" not in upload_song:
+            return {'errors': 'Failed to upload song file'}
+
+        url_image = upload["url"]
+        url_song = upload_song["url"]
+
+        song = Song(
+            name=form.name.data,
+            artist=form.artist.data,
+            genre=form.genre.data,
+            cover_photo=url_image,
+            file_path=url_song,
+            userId=current_user_id,
         )
-        db.session.add(new_song)
+        print(song)
+
+        db.session.add(song)
         db.session.commit()
-        return new_song.to_dict(), 201
-    return jsonify({'error': 'Invalid form data'}), 400
+        return song.to_dict()
+
+    if form.errors:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 400
+
+    return {'errors': 'Invalid data received'}, 400
 
 
 #update a song(cannot uppdate artist)

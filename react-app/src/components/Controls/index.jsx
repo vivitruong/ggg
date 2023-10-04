@@ -22,7 +22,8 @@ const Controls = ({
   // const { selectedPlayListSongs } = useSelector((state) => state.playlists);
   // const audioRef = useRef(null);
   const [progressPercent, setProgressPercent] = useState(0);
-  const [remainingDuration, setRemainingDuration] = useState(0);
+  const [remainingDuration, setRemainingDuration] = useState(null);
+  const [duration, setDuration] = useState(null);
   const [loop, setLoop] = useState(false);
 
   function formatTime(timeInSeconds) {
@@ -38,6 +39,7 @@ const Controls = ({
   function updateProgress(e) {
     const audioElement = e.currentTarget;
     const { duration, currentTime } = audioElement;
+    setDuration(formatTime(duration));
     const progressPercent = (currentTime / duration) * 100;
     setProgressPercent(progressPercent);
     const remaining = duration - currentTime;
@@ -91,6 +93,7 @@ const Controls = ({
       </div>
       <div className="ctrl">
         {/* {playSong?.duration} */}
+        {duration}
         <div
           className="progressContainer"
           id="progressContainer"

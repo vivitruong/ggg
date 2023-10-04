@@ -7,7 +7,6 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import { Login } from "./pages/login";
 import './app.css';
-import SplashScreen from "./components/SplashScreen";
 
 function App () {
   const dispatch = useDispatch();
@@ -21,11 +20,7 @@ function App () {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-           <Route exact path="/">
-          <SplashScreen />
-        </Route>
           <Route path="/login">
-
             {/* <LoginFormPage /> */}
             <Login />
           </Route>

@@ -34,13 +34,22 @@ export function removeSong(songId) {
     }
 }
 
-// export function loadOneSong(song) {
-//     return {
-//         type: LOAD_ONESONG,
-//         song
-//     }
-// }
+export function loadOneSong(song) {
+    return {
+        type: LOAD_ONESONG,
+        song
+    }
+}
+export const getOneSong = (id) => async(dispatch) => {
+    const response = await fetch(`/api/songs/${id}`)
 
+    if(response.ok){
+        const song = await response.json()
+        dispatch(loadOneSong(song))
+        return song
+    }
+    return response
+}
 
 export const fetchAllSongs = () => async dispatch => {
     const response = await fetch(`/api/songs/all`);
@@ -63,32 +72,20 @@ export const fetchUserSongs = () => async dispatch => {
 
 
 export const createSong = (song) => async dispatch => {
-    console.log(song, "-----right here")
-
-
-    try {
         const response = await fetch(`/api/songs/`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(song)
+            body: song
         });
+
+        console.log(response, "----- response right here")
         if (response.ok) {
             const data = await response.json();
+            console.log(data, "-----right data here")
             dispatch(addSong(data));
-            return null;
         } else {
-            const data = await response.json();
-            if (data) {
-                throw data.error;
-            } else {
-                return {'error': 'An error occured. Please try again'};
-            }
+            console.log('There was an error')
         }
-    } catch (err) {
-        throw (err);
-    }
+
 }
 
 // export const fetchOneSong = (song_id) => async dispatch => {
@@ -100,7 +97,7 @@ export const createSong = (song) => async dispatch => {
 //     }
 // }
 
-const songReducer = (state = {songs: {}}, action) => {
+const songReducer = (state = {songs: {}, singleSong: {}}, action) => {
     let newState;
     switch (action.type) {
         case LOAD_ALLSONGS:
@@ -116,10 +113,12 @@ const songReducer = (state = {songs: {}}, action) => {
             newState.songs[action.song.id] = action.song;
             return newState;
 
-        // case LOAD_ONESONG:
-        //     newState = deepCopy(state);
-        //     newState.singleSong = action.song;
-        //     return newState;
+
+
+        case LOAD_ONESONG:
+            newState = deepCopy(state);
+            newState.singleSong = action.song;
+            return newState;
         default:
             return state;
     }
