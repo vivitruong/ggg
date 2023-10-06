@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import InputField from "../InputField";
 import Button from "../Button";
 // import { useCreateSongMutation } from "../../slices/songsApiSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import * as songActions from '../../store/song';
 import * as userSongsActions from '../../store/userSong'
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import './style.css'
 
 const EditSong = () => {
@@ -18,15 +18,34 @@ const EditSong = () => {
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setErrors] = useState({});
   const history = useHistory()
-
-
-
+  const { id } = useParams();
+  console.log(id, 'this is id song')
+  const song = useSelector((state) => state?.userSongs[id]);
   const dispatch = useDispatch();
+  console.log(song, 'check song')
+  useEffect(() => {
+    if(!song) {
+      dispatch(songActions.getOneSong(id))
+      .then((songDetail) => {
+        if(songDetail) {
+          setName(songDetail.name);
+          setGenre(songDetail.genre);
+          setCoverPhoto(songDetail.cover_photo);
+          setFilePath(songDetail.file_path)
+        }
+        console.log('i!!!!d', songDetail)
+      }).catch((err) => {
+        console.error('Error song details', err)
+      })
+    }
+  },[dispatch, id, song])
   const handleSubmit = async (e) => {
   e.preventDefault();
 
 
+
   const errors = {};
+
 
   if(!name) errors.name = 'Song name is required';
   if(!genre) errors.genre = 'Genre is required';
@@ -86,7 +105,7 @@ const EditSong = () => {
 
   try {
 
-      await dispatch(userSongsActions.updateASong(formData));
+      await dispatch(userSongsActions.updateASong(id, formData));
       history.push("/library");
   } catch (err){
       setErrors({});
@@ -112,6 +131,8 @@ const EditSong = () => {
             {/* <h1>Create a New Song</h1> */}
             <form
                 onSubmit={handleSubmit}
+                method='PUT'
+                encType="multipart/form-data"
 
             >
                 <div>
@@ -187,9 +208,10 @@ const EditSong = () => {
                         onChange={(e) => setFilePath(e.target.files[0])}
                     />
                 </label>
+                {(songLoading)&& <p>Loading...</p>}
                 </div>
                 <div className="align-create-button">
-                <button className='create-button test' type="submit">UPLOAD</button>
+                <button className='create-button test' type="submit">Submit</button>
                 </div>
             </form>
         </div>
