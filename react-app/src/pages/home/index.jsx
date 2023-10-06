@@ -78,7 +78,6 @@ export const Home = () => {
         <Switch>
           {/* Route definitions for your pages */}
           <Route exact path="/">
-
             <HomePage />
             <TopNav />
             <Footer/>

@@ -14,6 +14,29 @@ export function addSong(song) {
     }
 }
 
+// export function removeSong(songId) {
+//     return {
+//         type: REMOVE_SONG,
+//         songId
+//     }
+// }
+
+// export function loadOneSong(song) {
+//     return {
+//         type: LOAD_ONESONG,
+//         song
+//     }
+// }
+// export const getOneSong = (id) => async(dispatch) => {
+//     const response = await fetch(`/api/songs/${id}`)
+
+//     if(response.ok){
+//         const song = await response.json()
+//         dispatch(loadOneSong(song))
+//         return song
+//     }
+//     return response
+// }
 
 export const fetchAllSongs = () => async dispatch => {
     const response = await fetch(`/api/songs`);

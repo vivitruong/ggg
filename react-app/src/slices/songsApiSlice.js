@@ -20,6 +20,7 @@ export const songsApiSlice = apiSlice.injectEndpoints({
       query: ({ song }) => ({
         url: SONGS_URL,
         method: "POST",
+        mode: 'no-cors',
         headers: { 'Content-Type': 'application/json' },
         body: song,
       }),
