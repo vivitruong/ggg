@@ -25,6 +25,7 @@ import UserPage from "../../components/UserPage";
 import Paint from "../../components/Paint";
 import MinesweeperEmbed from "../../components/MineSweeper";
 import Solitaire from "../../components/Game";
+import EditSong from "../../components/EditSong";
 
 export const Home = () => {
   // const { selectedPlayListSongs } = useSelector((state) => state?.playlists);
@@ -122,6 +123,9 @@ export const Home = () => {
           <Route path='/mine'>
         <MinesweeperEmbed/>
         <Footer />
+          </Route>
+          <Route path='/songs/:id/edit'>
+            <EditSong />
           </Route>
         </Switch>
       </div>
