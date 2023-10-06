@@ -47,6 +47,8 @@ function SignupFormPage() {
     // Check if the email field is empty
     if (!email) {
       validationErrors.push("Email is required");
+    } else if (!regex.test(email)) {
+      validationErrors.push("Invalid email format");
     }
 
     // Check if the password field is empty
@@ -73,7 +75,7 @@ function SignupFormPage() {
     // If all validations pass, dispatch the signUp action
     const data = await dispatch(signUp(firstName, lastName, username, email, password));
     if (data) {
-      setErrors(data);
+      setErrors([data]);
     } else {
       closeModal();
     }
@@ -89,9 +91,10 @@ function SignupFormPage() {
   // }
 	return (
 		<>
-    <div class='centered-container'>
-			      <div class="title-bar loginmodal">
-					<div class="title-bar-text">Sign Up</div>
+    <div className='centered-container'>
+
+			      <div className="title-bar loginmodal">
+					<div className="title-bar-text">Sign Up</div>
 					<div className="title-bar-controls">
 					<button aria-label="Minimize" />
 					<button aria-label="Maximize" />
@@ -181,7 +184,7 @@ function SignupFormPage() {
         </div>
         <div className="down-login">
         <button type="submit">Sign Up</button>
-        <div>
+        <div style={{fontStyle:'none', fontSize:'11px', padding:'3px'}}>
       {/* Use the Link component to navigate to the login page */}
       <Link to="/login">Already have an account? Login instead</Link>
     </div>

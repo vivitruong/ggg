@@ -57,7 +57,9 @@ export const LoginFormPage = () => {
 
   return (
     <>
+
   <div class='centered-container'>
+
     <div class="title-bar loginmodal">
     <div class="title-bar-text">Log in</div>
     <div className="title-bar-controls">

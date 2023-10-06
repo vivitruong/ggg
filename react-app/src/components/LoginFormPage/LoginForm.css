@@ -176,14 +176,14 @@ padding: 0;
 .window-body {
   background-color: #dfdfdf;
   margin: 0;
-  padding: 0;
+  padding: 10px;
   /* box-sizing: border-box; */
   display: flex;
   justify-content: center;
   width: 20%;
 }
 .centered-container {
-  background-color: #c0c0c0;
+  background-color: #018282;
   display: flex;
   flex-direction: column; /* Stack elements vertically */
   justify-content: center; /* Center vertically */
@@ -219,4 +219,12 @@ padding: 0;
 .login-password,
 .login-username {
   margin-bottom: 10px; /* Add margin to create spacing between the components */
+}
+
+.title-bar.loginmodal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px; /* Adjust the padding as needed */
 }

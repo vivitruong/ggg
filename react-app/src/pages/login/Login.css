@@ -173,19 +173,22 @@ align-self: stretch;
     width: 20%;
     height: auto;
     margin: 0;
-    padding: 0
+
+
 }
 .window-body{
     background-color: #DFDFDF;
     margin: 0;
-     padding: 0;
+     padding: 10px;
      /* box-sizing: border-box; */
     display:flex;
     justify-content: center;
     width: 20%;
 }
 .centered-container {
-    background-color: #c0c0c0;
+    background-color: #018282;
+    /* margin:0;
+    padding:0; */
     display: flex;
     flex-direction: column; /* Stack elements vertically */
     justify-content: center; /* Center vertically */
