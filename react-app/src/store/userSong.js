@@ -42,7 +42,6 @@ export const fetchUserSongs = () => async dispatch => {
 export const updateASong = (updatedSong) => async dispatch => {
     const response = await fetch(`/api/songs/${ updatedSong.id }`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
         body: updatedSong
     });
     if (response.ok) {
@@ -86,7 +85,7 @@ const userSongReducer = (state = initialState, action) => {
             );
 
         case REMOVE_SONG:
-            return newState.filter((song) => parseInt(song.id) !== parseInt(action.payload));
+            return newState.filter((song) => parseInt(song?.id) !== parseInt(action.payload));
 
         default:
             return state;

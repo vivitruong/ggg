@@ -21,22 +21,22 @@ export function addSong(song) {
 //     }
 // }
 
-// export function loadOneSong(song) {
-//     return {
-//         type: LOAD_ONESONG,
-//         song
-//     }
-// }
-// export const getOneSong = (id) => async(dispatch) => {
-//     const response = await fetch(`/api/songs/${id}`)
+export function loadOneSong(song) {
+    return {
+        type: LOAD_ONESONG,
+        song
+    }
+}
+export const getOneSong = (id) => async(dispatch) => {
+    const response = await fetch(`/api/songs/${id}`)
 
-//     if(response.ok){
-//         const song = await response.json()
-//         dispatch(loadOneSong(song))
-//         return song
-//     }
-//     return response
-// }
+    if(response.ok){
+        const song = await response.json()
+        dispatch(loadOneSong(song))
+        return song
+    }
+    return response
+}
 
 export const fetchAllSongs = () => async dispatch => {
     const response = await fetch(`/api/songs`);
@@ -163,6 +163,10 @@ const songReducer = (state = initialState, action) => {
             if (action.song && action.song.id) {
                 return [...state, action.song];
             }
+            return newState
+
+        case LOAD_ONESONG:
+            newState[action.song.id] = {...newState[action.song.id], ...action.song};
             return newState
 
         default:
