@@ -1,8 +1,8 @@
 .table {
   width: 100%;
   background-color: #fff;
-  overflow-y: scroll;
-  height: 475px;
+  overflow-y: auto;
+  height: 569px;
   border-width: 2px;
   border-style: outset;
   border-color: buttonface;
@@ -25,8 +25,8 @@
 }
 
 .songs:hover {
-  background-color: #000A71;
-  color: white
+  background-color: #000a71;
+  color: white;
 }
 
 .id-column {
@@ -54,4 +54,9 @@
   flex-direction: column;
   flex: 3;
   gap: 6px;
+}
+
+.active {
+  background-color: #000a71;
+  color: white;
 }

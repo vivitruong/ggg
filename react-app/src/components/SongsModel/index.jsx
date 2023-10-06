@@ -1,16 +1,14 @@
 import { useState } from "react"; // Import useState
 import { useDispatch } from "react-redux";
-import { addSongToSelectedPlayList } from "../../slices/playlistsSlice";
+// import { addSongToSelectedPlayList } from "../../slices/playlistsSlice";
 import Button from "../Button";
+import { addSongsToPlaylist } from "../../store/playlist";
 
-const SongsModal = ({ songs, playlist }) => {
+const SongsModal = ({ songs, playlistId, songsInPlayList }) => {
   const dispatch = useDispatch();
 
-  // Initialize state to keep track of added songs
-
   const renderList = songs?.map((song, index) => {
-    // Check if the song is already added
-    // const isSongAdded = addedSongs.includes(song.id);
+    // const isSongAdded = songsInPlayList[index]?.song?.includes(song.id);
 
     return (
       <div
@@ -31,26 +29,34 @@ const SongsModal = ({ songs, playlist }) => {
           onClick={() => {
             const addSong = {
               id: Math.random(),
-              playlistId: playlist?.id,
               song,
-              songId: Math.random(),
+              playlistId,
+              songId: song?.id,
             };
-            dispatch(addSongToSelectedPlayList({ playlist, addSong }));
-
-            // setAddedSongs([...addedSongs, song.id]);
+            dispatch(
+              addSongsToPlaylist({ playlistId, song_Id: song?.id, addSong })
+            );
           }}
         >
-          {/* {isSongAdded ? "Added" : "Add"} */}
           Add
         </Button>
       </div>
     );
   });
   return (
+<>
+    <div class="title-bar inactive">
+  <div class="title-bar-text">Add any song into your playlist</div>
+  <div class="title-bar-controls">
+
+  </div>
+</div>
     <div>
-      <h2>Add Songs</h2>
+
+      {/* <h4>Add any song into your playlist</h4> */}
       <div>{renderList}</div>
     </div>
+    </>
   );
 };
 

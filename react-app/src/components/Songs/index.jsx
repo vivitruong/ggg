@@ -1,33 +1,63 @@
-import { useDispatch } from "react-redux";
-import { playSong, playAudio } from "../../slices/songsSlice";
+import { useDispatch, useSelector } from "react-redux";
+// import { playSong, playAudio } from "../../slices/songsSlice";
+import { useParams } from "react-router-dom";
 
 import "./style.css";
+import Button from "../Button";
+import { removeSongFromPlaylist } from "../../store/playlist";
+import {
+  currentPlayListSongs,
+  playAudio,
+  playSong,
+} from "../../store/slices/playlistSlice";
 
 const Songs = ({ songs }) => {
   // const { currentSongIndex } = useSelector((state) => state.playSong);
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const renderList = songs?.map((song, index) => {
     // const active = currentSongIndex === index;
     return (
       <div
-        className={`song-row songs `}
-        key={song?.id}
+        // className={`song-row songs ${active ? "active" : ""}`}
+        className={`song-row songs`}
+        key={index}
         onClick={() => {
-          dispatch(playSong({ song, index }));
+          const queueSongs = songs.map((song) => song.song);
+          dispatch(currentPlayListSongs({ songs: queueSongs }));
+          dispatch(playSong({ song: song?.song, index }));
           dispatch(playAudio());
         }}
       >
-        <span className="song-column id-column">{song?.id}</span>
+        <span className="song-column id-column">{index + 1}</span>
         <div className="song-column title">
-          <span className=" title-column">{song?.title}</span>
-          <span className=" artist-column">{song?.artist}</span>
+          <span className=" title-column">{song?.song?.name}</span>
+          <span className=" artist-column">{song?.song?.artist}</span>
         </div>
-        <span className="song-column album-column">{song?.album}</span>
+        <span className="song-column album-column">{song?.song?.album}</span>
         <span className="song-column date-added-column">
-          {song?.date_added}
+          {song?.song?.date_added}
         </span>
-        <span className="song-column duration-column">{song?.duration}</span>
+        <span className="song-column duration-column">
+          {song?.song?.duration}
+        </span>
+        <Button
+          iconOnly
+          onClick={(e) => {
+            e.stopPropagation();
+            dispatch(
+              removeSongFromPlaylist({
+                songId: song?.song?.id,
+                playlist_id: id,
+              })
+            );
+            // dispatch();
+            // removeSongToSelectedPlayList({ playlist, removeSong: song })
+          }}
+        >
+          Remove
+        </Button>
       </div>
     );
   });

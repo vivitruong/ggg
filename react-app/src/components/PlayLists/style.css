@@ -1,5 +1,5 @@
 .playList {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 430px;
   width: 153px;
   background: #fff;
@@ -41,52 +41,4 @@ h2 {
 
 .link:hover {
   color: white;
-}
-.playlistform-content {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.playlistform-logo {
- width: 40%;
- display: flex;
- justify-content: center;
-}
-
-.playlistform-logo > img {
-  object-fit: cover;
-  width: 100px;
-  height: 100px;
-
-}
-
-.playlistform-content-form {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-}
-
-.playlistform-content-form-name, .playlistform-content-form-desc {
-  width: 90%;
-  display: flex;
-  align-items: center;
-  margin-bottom: 5px;
-}
-
-.playlistform-content-form-name > input {
-  width: 100%;
-  border: 1px solid #cccccc;
-  height: 30px;
-  padding-left: 5px;
-}
-
-.playlistform-content-form-desc > textarea {
-  width: 100%;
-  height: 50px;
-  border: 1px solid #cccccc;
-  padding-left: 5px;
-  resize: none;
 }

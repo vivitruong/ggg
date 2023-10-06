@@ -7,8 +7,8 @@
 .userprofile-info{
   display: flex;
   flex-flow: column;
-  justify-content: flex-end;
-  background-color: silver;
+  justify-content: center;
+  background-color: #cccccc;
 }
 .userprofile-info-main {
     margin: 1rem;
@@ -36,10 +36,42 @@
 .userprofile-content {
     display: grid;
     grid-template-columns: 20rem 15rem 5rem;
-    height: 40px;
+    height: 20px;
 
 }
 
-.userprofile-song-label {
-    height: 50px;
+
+@keyframes quiet {
+    25%{
+        transform: scaleY(.6);
+    }
+    50%{
+        transform: scaleY(.4);
+    }
+    75%{
+        transform: scaleY(.8);
+    }
+}
+
+@keyframes normal {
+    25%{
+        transform: scaleY(1);
+    }
+    50%{
+        transform: scaleY(.4);
+    }
+    75%{
+        transform: scaleY(.6);
+    }
+}
+@keyframes loud {
+    25%{
+        transform: scaleY(1);
+    }
+    50%{
+        transform: scaleY(.4);
+    }
+    75%{
+        transform: scaleY(1.2);
+    }
 }
