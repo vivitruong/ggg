@@ -85,6 +85,10 @@ const PlayListHeader = ({ songsInPlayList }) => {
       </div>
       {showDeleteModal && (
         <>
+            <div class="title-bar inactive">
+        <div class="title-bar-text">Delete</div>
+        <div class="title-bar-controls"></div>
+        </div>
           <Overlay onClose={() => setDeleteModal(false)} />
           <div className="deleteModal">
             <h4> <img src="https://win98icons.alexmeub.com/icons/png/recycle_bin_empty-0.png"></img> Are You Sure you want to delete this playlist?</h4>
@@ -103,6 +107,7 @@ const PlayListHeader = ({ songsInPlayList }) => {
               </Button>
             </div>
           </div>
+
         </>
       )}
       {showEditModal && (

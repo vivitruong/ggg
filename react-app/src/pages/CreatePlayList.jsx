@@ -24,7 +24,7 @@ const CreatePlayList = () => {
 
   return (
     <div>
-       <h3>Hooray! Let's create a new playlist</h3>
+       <h4 style={{padding:'10px'}}>Hooray! Let's create your new playlist</h4>
       <PlayListForm
         submitHandler={submitHandler}
         name={name}

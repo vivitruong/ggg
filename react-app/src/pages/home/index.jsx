@@ -70,6 +70,7 @@ export const Home = () => {
     }
   };
   return (
+    <>
     <div className="app">
       <div className="container">
         <div>
@@ -85,18 +86,22 @@ export const Home = () => {
           </Route>
           <Route path="/liked-songs">
             <LikedSongsPage />
+            <TopNav />
             <Footer/>
           </Route>
           <Route path="/search">
             <SearchPage />
+
             <Footer/>
           </Route>
           <Route path="/library">
             <LibrarayPage />
+            <TopNav />
             <Footer/>
           </Route>
           <Route path="/create-playlist">
             <CreatePlayList />
+            <TopNav />
             <Footer/>
           </Route>
           <Route path="/playlists/:id">
@@ -113,15 +118,18 @@ export const Home = () => {
           </Route>
           <Route path='/paint'>
             <Paint />
+            <TopNav />
             <Footer/>
           </Route>
           <Route path='/game'>
             <Solitaire />
+            <TopNav />
             <Footer/>
           </Route>
 
           <Route path='/mine'>
         <MinesweeperEmbed/>
+        <TopNav />
         <Footer />
           </Route>
           <Route path='/songs/:id/edit'>
@@ -155,5 +163,6 @@ export const Home = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
