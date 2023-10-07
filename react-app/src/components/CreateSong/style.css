@@ -6,7 +6,8 @@
    text-align: left;
    transition: all 0.3s;
    max-width: calc(100% - 10%);
-   margin-left: 10%;
+   margin-left: 9%;
+   padding: 5px
 
 }
 
@@ -21,8 +22,9 @@
 
 .form-create {
    display: grid;
-   place-items: center; /* Center both horizontally and vertically */
+   place-items: center;
    padding: 5px;
+
 }
 
 .organize-create {

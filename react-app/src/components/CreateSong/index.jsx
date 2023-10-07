@@ -17,6 +17,7 @@ const CreateSong = () => {
   const [name, setName] = useState("");
   const [songLoading, setSongLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false);
+
   const [error, setErrors] = useState({});
 
   const history = useHistory()
@@ -72,8 +73,7 @@ const CreateSong = () => {
   formData.append("file_path", file_path)
   formData.append('artist', artist)
 
-  // setImageLoading(true);
-  // setSongLoading(true);
+
   console.log(formData.cover_photo, 'this is new')
   setImageLoading(true);
   setSongLoading(true);
@@ -81,12 +81,14 @@ const CreateSong = () => {
   try {
 
       await dispatch(createSong(formData));
+
       history.push("/");
   } catch (err){
       setErrors({});
       console.error("Error creating song:", err);
       setImageLoading(false);
       setSongLoading(false);
+
   }
 }
   }
@@ -140,12 +142,15 @@ const CreateSong = () => {
                             <option value="electronic">Electronic</option>
                             <option value="classical">Classical</option>
                             <option value="hiphop">Hiphop & Rap</option>
+                            <option value='Instrumental'>Instrumental</option>
+                            <option value='Alternatives'>Alternatives</option>
+                            <option value='country'></option>
                             <option value='other'>Other</option>
                         </select>
                 </div>
                 <div>
                 <div className="error-message">{error.cover_photo && <p className="">{error.cover_photo}</p>}</div>
-                {(imageLoading)&& <Loader/>}
+                {(imageLoading)&&  <p>...Image upload in progress</p>}
                 <label className="label-create">
 
                     Select Cover Photo
@@ -162,7 +167,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.song_url && <p className="">{error.song_url}</p>}</div>
-                {(songLoading)&& <Loader/>}
+                {(songLoading)&& <p>...Song upload in progress</p>}
                 <label className="label-create">
                     Select Song
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>

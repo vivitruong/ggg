@@ -95,7 +95,7 @@ const EditSong = ({song_id, setEditModal }) => {
                     />
                 </label>
                 </div>
-                <div>
+                <div style={{marginLeft:'70px', padding:'10px'}}>
 
                  <label >Genre <span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
                         <select style={{ margin: 'auto' }} value={genre} onChange={e => setGenre(e.target.value)} >
@@ -105,11 +105,20 @@ const EditSong = ({song_id, setEditModal }) => {
                             <option value="electronic">Electronic</option>
                             <option value="classical">Classical</option>
                             <option value="hiphop">Hiphop & Rap</option>
+                            <option value='Instrumental'>Instrumental</option>
+                            <option value='Alternatives'>Alternatives</option>
+                            <option value='country'>Country</option>
                             <option value='other'>Other</option>
                         </select>
                 </div>
-                <div className="align-create-button">
+
+                <div style={{padding:'5px', marginRight:'90px'}} className="align-create-button">
                 <button className='create-button test' type="submit">Submit</button>
+                </div>
+                <div>
+                  <span style={{marginRight:'10px', fontSize:'11px'}}>If you wish to change your whole track, just delete and re-upload your songs of choice !
+
+                  </span>
                 </div>
             </form>
         </div>

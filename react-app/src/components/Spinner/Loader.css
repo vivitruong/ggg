@@ -1,6 +1,6 @@
 .loader {
-    width: 150px;
-    height: 40px;
+    width: 100px;
+    height: 25px;
     border-radius: 50%;
     position: relative;
     animation: bounce 5s infinite;
