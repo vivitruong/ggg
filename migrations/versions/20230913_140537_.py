@@ -73,8 +73,8 @@ def downgrade():
         batch_op.drop_column('bio')
         batch_op.drop_column('last_name')
         batch_op.drop_column('first_name')
-
-    op.drop_table('playlist_songs')
     op.drop_table('songs')
     op.drop_table('playlists')
+    op.drop_table('playlist_songs')
+
     # ### end Alembic commands ###
