@@ -1,8 +1,8 @@
 import Button from "../components/Button";
 import InputField from "../components/InputField";
 import {useState, useEffect} from 'react'
-
-
+import Divider from '../components/Divider'
+import ActionBar from '../components/ActionBar'
 
 const CLIENT_ID='8fdd8f8ad1134098af96799b51f862ad'
 const CLIENT_SECRET='41ed17b571b842418ac8b69891d414ed'
@@ -58,10 +58,16 @@ const SearchPage = () => {
     //display to user
   }
   return (
+    <>
+
     <div className="search-container">
+    <Divider />
+    <ActionBar />
+    <Divider/>
+    <h3 style={{padding: '10px'}}>Find the latest tracks released by your favorite artist here  ... <img src='https://win98icons.alexmeub.com/icons/png/directory_explorer-0.png'></img> </h3>
     <div className="search-bar">
       <InputField
-        placeholder="What do you want to listen to?"
+        placeholder="Who do you want to listen to?"
         name="search-song"
         type="input"
         onKeyPress={(e) => {
@@ -71,24 +77,29 @@ const SearchPage = () => {
         }}
         onChange={(e) => setSearchInput(e.target.value)}
       />
-      <Button onClick={search}>Search</Button>
+      <Button onClick={search}>Search <img src="https://win98icons.alexmeub.com/icons/png/directory_explorer-1.png"></img></Button>
     </div>
     <div className="results">
       {albums && albums.length > 0 ? (
         albums.map((album, i) => {
           return (
             <div className="album-card" key={i}>
-              {/* <img src={album?.images[0].url} /> */}
+
               <p>{album?.name}</p>
-              {/* Add more album information */}
+
             </div>
+
           );
         })
-      ) : (
+      ) :
+
+       (
+
         <p>No albums found.</p>
       )}
     </div>
   </div>
+  </>
 );
 };
 

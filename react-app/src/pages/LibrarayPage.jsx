@@ -7,7 +7,8 @@ import CreateSong from "../components/CreateSong";
 import { updateASong, deleteSong } from "../store/userSong";
 import { playAudio, playSong, currentPlayListSongs } from "../store/slices/playlistSlice";
 import EditSong from "../components/EditSong";
-
+import ActionBar from '../components/ActionBar'
+import Divider from '../components/Divider'
 const LibrarayPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setDeleteModal] = useState(false);
@@ -66,14 +67,17 @@ const LibrarayPage = () => {
   ));
   return (
     <>
+
       <div className="conn">
         <div className="conn">
+          <Divider />
           <div className="create">
             <h4>You are an amazing artist! Get started by uploading your songs/tracks here🎵 😁 </h4>
             <Button iconOnly onClick={() => setShowModal(true)}>
               Create Song
             </Button>
           </div>
+          <Divider />
         </div>
         {renderUserSongs}
       </div>
