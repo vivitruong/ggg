@@ -112,10 +112,12 @@ export const Home = () => {
           </Route>
           <Route path="/playlists/:id">
             <PlaylistsPage />
+             <TopNav />
             <Footer/>
           </Route>
           <Route path='/profile'>
           <UserPage />
+          <TopNav />
           <Footer/>
           </Route>
           <Route path="/playlist/:name">

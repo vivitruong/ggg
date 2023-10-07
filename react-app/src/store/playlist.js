@@ -240,10 +240,9 @@ const initialState = [];
 const playlistReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_USERPLAYLISTS:
-            return action.payload.playlists || []; // Replace the existing state with the new playlists array.
-
+            return action.payload.playlists || [];
         case ADD_PLAYLIST:
-            return [ ...state, action.payload ]; // Add the new playlist to the state array.
+            return [ ...state, action.payload ];
 
         case ADD_SONG:
             return state.map((playlist) => {
@@ -319,4 +318,3 @@ export default playlistReducer;
 //             return state;
 //     }
 // };
-

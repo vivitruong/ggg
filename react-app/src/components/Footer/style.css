@@ -18,6 +18,16 @@
     z-index: 1;
 
 }
+#about-btn{
+    text-overflow: ellipsis;
+    background-color: silver;
+    height: 27px;
+    padding: 4px;
+    font-size: 13px;
+    overflow: hidden;
+    max-width: 160px;
+    min-width: 70px;
+}
 .footer__time{
     font-size: 20px;
     padding: 5px 5px;
@@ -50,4 +60,5 @@
     margin: 0px 2px;
     position: relative;
     z-index: 1;
+
 }

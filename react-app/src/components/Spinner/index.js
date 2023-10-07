@@ -5,7 +5,7 @@ const Loader = () => {
       <div className="loader">
         <div className="loader-inner">
           <div className="loader-text">DVD</div>
-          <div className="loader-subtext">FWDJC</div>
+          <div className="loader-subtext">geg</div>
         </div>
       </div>
     );

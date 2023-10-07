@@ -19,6 +19,7 @@ const PlaylistsPage = () => {
 
   return (
     <div style={{ width: "100%" }}>
+      <Divider />
       <PlayListHeader songsInPlayList={playlist?.playlist_songs} />
       <Divider />
       <ActionBar />

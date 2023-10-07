@@ -53,13 +53,14 @@ return(
                 showMenu &&
                 <div className="start-dropdown">
                     <div  className="start-dropdown-info start-hover">
-                        <span className="start-dropdown-content" style={{cursor:"default"}}>Hello, {user.firstName}</span>
+                        <span className="start-dropdown-content" style={{cursor:"default"}}>Made by Vi Vi Truong<img src='https://win98icons.alexmeub.com/icons/png/msagent_file-0.png'></img></span>
                     </div>
 
                 </div>
             }
-    <div className="footer__time">
-        <span>{time}</span></div>
+          <button  disabled className='bar-button active' id='about-btn'>About</button>
+    <div style={{padding: '5px'}} className="footer__time">
+        <span  style={{padding: '5px', fontSize:'20px'}}>{time}</span></div>
     </div>
     </>
 )

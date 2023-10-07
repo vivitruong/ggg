@@ -15,7 +15,7 @@ function Paint({ onClose, isFocus }) {
     <div>
     <h3>Let's have some fun while listening to music! 🎨</h3>
     <Divider/>
-    <iframe src="https://jspaint.app" width="800" height="600" frameborder="0"></iframe>
+    <iframe src="https://jspaint.app" width="900" height="650" frameborder="0"></iframe>
     </div>
     </>
   );

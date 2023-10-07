@@ -64,10 +64,10 @@ const SearchPage = () => {
     <Divider />
     <ActionBar />
     <Divider/>
-    <h3 style={{padding: '10px'}}>Find the latest tracks released by your favorite artist here  ... <img src='https://win98icons.alexmeub.com/icons/png/directory_explorer-0.png'></img> </h3>
+    <h4 style={{padding: '10px'}}>Find the latest tracks released by your favorite artist here  ... <img src='https://win98icons.alexmeub.com/icons/png/directory_explorer-0.png'></img> </h4>
     <div className="search-bar">
       <InputField
-        placeholder="Who do you want to listen to?"
+        placeholder="Who do you want to listen to? ... "
         name="search-song"
         type="input"
         onKeyPress={(e) => {
@@ -85,7 +85,7 @@ const SearchPage = () => {
           return (
             <div className="album-card" key={i}>
 
-              <p>{album?.name}</p>
+              <p style={{padding:'5px'}}>{album?.name}</p>
 
             </div>
 
@@ -95,7 +95,7 @@ const SearchPage = () => {
 
        (
 
-        <p>No albums found.</p>
+        <p style={{padding:'5px'}}>No albums found.</p>
       )}
     </div>
   </div>
