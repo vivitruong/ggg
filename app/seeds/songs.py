@@ -102,7 +102,7 @@ def seed_songs():
         genre='Hip Hop',
         artist='Central Cee',
         cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar2.png',
-        file_path='hhttps://goldeneragrooves.s3.us-east-2.amazonaws.com/Spinter-centralCee.mp3'
+        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/Spinter-centralCee.mp3'
     )
     demo_song13 = Song(
         user_id = 2,

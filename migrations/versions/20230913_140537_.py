@@ -51,16 +51,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    # with op.batch_alter_table('users', schema=None) as batch_op:
-    #     batch_op.add_column(sa.Column('first_name', sa.String(length=50), nullable=False))
-    #     batch_op.add_column(sa.Column('last_name', sa.String(length=50), nullable=False))
-    #     batch_op.add_column(sa.Column('bio', sa.String(length=2000), nullable=True))
-    #     batch_op.add_column(sa.Column('image_url', sa.String(length=1000), nullable=True))
-    #     batch_op.add_column(sa.Column('created_at', sa.DateTime(), nullable=True))
-    #     batch_op.add_column(sa.Column('updated_at', sa.DateTime(), nullable=True))
-    #     batch_op.create_unique_constraint(None, ['image_url'])
-
-    # ### end Alembic commands ###
 
 
 def downgrade():
