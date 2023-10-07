@@ -175,7 +175,8 @@ import { useCreateSongMutation } from "../../slices/songsApiSlice";
 import { useDispatch } from "react-redux";
 import * as songActions from '../../store/song';
 import { useHistory } from "react-router-dom";
-import './style.css'
+import './style.css';
+import { createSong } from "../../store/userSong";
 
 const CreateSong = () => {
   const [artist, setArtist] = useState("");
@@ -247,7 +248,7 @@ const CreateSong = () => {
 
   try {
 
-      await dispatch(songActions.createSong(formData));
+      await dispatch(createSong(formData));
       history.push("/");
   } catch (err){
       setErrors({});

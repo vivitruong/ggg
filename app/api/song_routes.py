@@ -275,7 +275,9 @@ def update_song(song_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        form.populate_obj(update_song)
+        update_song.name = form.data['name']
+        update_song.artist = form.data['artist']
+        update_song.genre = form.data['genre']
         db.session.add(update_song)
         db.session.commit()
         return update_song.to_dict(), 201
