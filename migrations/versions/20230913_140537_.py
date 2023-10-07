@@ -41,24 +41,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    # op.create_table('comments',
-    # sa.Column('id', sa.Integer(), nullable=False),
-    # sa.Column('comment', sa.String(length=1000), nullable=True),
-    # sa.Column('song_id', sa.Integer(), nullable=False),
-    # sa.Column('user_id', sa.Integer(), nullable=False),
-    # sa.Column('created_at', sa.DateTime(), nullable=True),
-    # sa.Column('updated_at', sa.DateTime(), nullable=True),
-    # sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
-    # sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    # sa.PrimaryKeyConstraint('id')
-    # )
-    # op.create_table('likes',
-    # sa.Column('users', sa.Integer(), nullable=False),
-    # sa.Column('songs', sa.Integer(), nullable=False),
-    # sa.ForeignKeyConstraint(['songs'], ['songs.id'], ),
-    # sa.ForeignKeyConstraint(['users'], ['users.id'], ),
-    # sa.PrimaryKeyConstraint('users', 'songs')
-    # )
     op.create_table('playlist_songs',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('playlist_id', sa.Integer(), nullable=False),
@@ -93,8 +75,6 @@ def downgrade():
         batch_op.drop_column('first_name')
 
     op.drop_table('playlist_songs')
-    # op.drop_table('likes')
-    # op.drop_table('comments')
     op.drop_table('songs')
     op.drop_table('playlists')
     # ### end Alembic commands ###
