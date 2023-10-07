@@ -7,6 +7,7 @@ import CreateSong from "../components/CreateSong";
 import { updateASong, deleteSong } from "../store/userSong";
 import { playAudio, playSong } from "../store/slices/playlistSlice";
 import EditSong from "../components/EditSong";
+
 const LibrarayPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setDeleteModal] = useState(false);
@@ -175,7 +176,7 @@ const LibrarayPage = () => {
   </div>
 </div>
             <h4>
-              Are You Sure you want to delete "{songToEditOrDelete?.name}" song ?
+              Are You Sure you want to delete "{songToEditOrDelete?.name}" song? <img src='https://win98icons.alexmeub.com/icons/png/msg_error-2.png'></img>
             </h4>
             <div className="btns">
               <Button
@@ -208,6 +209,7 @@ const LibrarayPage = () => {
           <Overlay onClose={() => setShowModal(false)} />
           <Modal>
             <CreateSong
+
               artist={artist}
               cover_photo={cover_photo}
               file_path={file_path}

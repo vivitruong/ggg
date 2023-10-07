@@ -41,7 +41,10 @@ const HomePageComponents = ({ allPlaylists }) => {
   useEffect(() => {
     // dispatch(selectedPlayListSongs([]));
   }, []);
-
+  const dateString = "June.15.1998";
+  const date = new Date(dateString);
+  const options = { year: 'numeric', month: 'long', day: 'numeric' };
+  const formattedDate = date.toLocaleDateString(undefined, options);
   const renderPlayList = allPlaylists?.map((playlist) => {
     return (
       <Link
@@ -118,7 +121,10 @@ const HomePageComponents = ({ allPlaylists }) => {
           <span className=" artist-column">{song?.artist}</span>
 
         </div>
-        <span className=" duration-column">{song?.duration}</span>
+        <span style={{marginLeft: '200px'}} className=" duration-column">Gegrooves</span>
+        <span style={{marginLeft: '500px'}} className=" duration-column">{formattedDate}</span>
+        <span style={{marginLeft: '250px'}} className=" duration-column">3.30</span>
+
       </div>
     );
   });
@@ -133,7 +139,7 @@ const HomePageComponents = ({ allPlaylists }) => {
       <div className="conn">
 
         <div className="create">
-        <h3>Browse All New Music Today <img src="https://win98icons.alexmeub.com/icons/png/netshow-1.png"></img></h3>
+        <h3>Browse All New Music Today With Golden Era Grooves <img src="https://win98icons.alexmeub.com/icons/png/netshow-1.png"></img></h3>
           {/* <Button iconOnly onClick={() => setShowModal(true)}>
               Create Song
             </Button> */}
@@ -143,8 +149,8 @@ const HomePageComponents = ({ allPlaylists }) => {
           <span className="song-column id-column">#</span>
           <span className="song-column title-column">Title</span>
           <span className="song-column album-column">Album</span>
-          <span className="song-column date-added-column">Date Added</span>
-          <span className="song-column duration-column">Duration</span>
+          <span style={{ marginRight: '100px', textAlign: 'center' }} className="song-column date-added-column">Date Added</span>
+          <span style={{ marginLeft: '0px', textAlign: 'center' }} className="song-column duration-column">Duration</span>
         </div>
         <div className="allsongs">{renderAllSong}</div>
       </div>

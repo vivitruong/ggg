@@ -4,11 +4,12 @@ import Button from "../Button";
 // import { useCreateSongMutation } from "../../slices/songsApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import * as songActions from '../../store/song';
-import * as userSongsActions from '../../store/userSong'
+import {updateASong} from '../../store/userSong';
 import { useHistory, useParams } from "react-router-dom";
 import './style.css'
 
-const EditSong = () => {
+const EditSong = (currentSongId) => {
+  console.log(currentSongId)
   const [artist, setArtist] = useState("");
   const [cover_photo, setCoverPhoto] = useState("");
   const [file_path, setFilePath] = useState("");
@@ -18,27 +19,29 @@ const EditSong = () => {
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setErrors] = useState({});
   const history = useHistory()
-  const { id } = useParams();
-  console.log(id, 'this is id song')
-  const song = useSelector((state) => state?.userSongs[id]);
+  const songId = currentSongId.currentSongId
+  console.log(songId)
+  const userSongs = useSelector((state) => state.userSongs);
+
+  console.log('this is song id Obj', userSongs)
   const dispatch = useDispatch();
-  console.log(song, 'check song')
-  useEffect(() => {
-    if(!song) {
-      dispatch(songActions.getOneSong(id))
-      .then((songDetail) => {
-        if(songDetail) {
-          setName(songDetail.name);
-          setGenre(songDetail.genre);
-          setCoverPhoto(songDetail.cover_photo);
-          setFilePath(songDetail.file_path)
-        }
-        console.log('i!!!!d', songDetail)
-      }).catch((err) => {
-        console.error('Error song details', err)
-      })
-    }
-  },[dispatch, id, song])
+
+  // useEffect(() => {
+  //   if(!song) {
+  //     dispatch(songActions.getOneSong(id))
+  //     .then((songDetail) => {
+  //       if(songDetail) {
+  //         setName(songDetail.name);
+  //         setGenre(songDetail.genre);
+  //         setCoverPhoto(songDetail.cover_photo);
+  //         setFilePath(songDetail.file_path)
+  //       }
+  //       console.log('i!!!!d', songDetail)
+  //     }).catch((err) => {
+  //       console.error('Error song details', err)
+  //     })
+  //   }
+  // },[dispatch, id, song])
   const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -105,7 +108,7 @@ const EditSong = () => {
 
   try {
 
-      await dispatch(userSongsActions.updateASong(id, formData));
+      await dispatch(updateASong());
       history.push("/library");
   } catch (err){
       setErrors({});

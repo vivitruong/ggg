@@ -29,13 +29,13 @@ const ProfileDropdown = () => {
                 showMenu &&
                 <div className="profile-dropdown">
                     <div  className="profile-dropdown-info profile-hover">
-                        <span className="profile-dropdown-content" style={{cursor:"default"}}>Hello, {user.firstName}</span>
+                        <span className="profile-dropdown-content" style={{cursor:"default"}}>Hello, {user.firstName} <img src="https://win98icons.alexmeub.com/icons/png/utopia_smiley.png"></img></span>
                     </div>
                     {/* <Link to='/upload' className="profile-dropdown-info profile-hover">
                           <span className="profile-dropdown-content">Upload  </span>
                     </Link> */}
                     <Link to='/profile'  className="profile-dropdown-info profile-hover">
-                         <span className="profile-dropdown-content">Account</span>
+                         <span className="profile-dropdown-content">Account <img src="https://win98icons.alexmeub.com/icons/png/write_wordpad-0.png"></img></span>
                     </Link>
                     <div className="profile-logout profile-hover">
                         <LogoutButton/>

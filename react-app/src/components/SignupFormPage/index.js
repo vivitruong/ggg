@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { signUp } from "../../store/session";
 import "./SignupForm.css";
-import { Link, NavLink } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, NavLink } from "react-router-dom";
 import { useModal } from "../../context/Modal";
 
 
@@ -17,84 +17,39 @@ function SignupFormPage() {
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
+  const user = useSelector(state => state.session.user);
   const [redirectToLogin, setRedirectToLogin] = useState(false);
   const regex = RegExp(
     /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
   );
-
-
+  if (user) {
+    return <Redirect to='/' />;
+  }
+  console.log(firstName,'this is frontend first name')
 	const handleSubmit = async (e) => {
     e.preventDefault();
+		if (password === confirmPassword) {
+			const data = await dispatch(signUp( firstName, lastName, username, email, password));
+      console.log(data, 'this is front end user name')
 
-    // Define an array to store validation error messages
-    const validationErrors = [];
-
-    // Check if the first name field is empty
-    if (!firstName) {
-      validationErrors.push("First name is required");
-    }
-
-    // Check if the last name field is empty
-    if (!lastName) {
-      validationErrors.push("Last name is required");
-    }
-
-    // Check if the username field is empty
-    if (!username) {
-      validationErrors.push("Username is required");
-    }
-
-    // Check if the email field is empty
-    if (!email) {
-      validationErrors.push("Email is required");
-    } else if (!regex.test(email)) {
-      validationErrors.push("Invalid email format");
-    }
-
-    // Check if the password field is empty
-    if (!password) {
-      validationErrors.push("Password is required");
-    }
-
-    // Check if the confirmPassword field is empty
-    if (!confirmPassword) {
-      validationErrors.push("Confirm Password is required");
-    }
-
-    // Check if passwords match
-    if (password !== confirmPassword) {
-      validationErrors.push("Confirm Password must match Password");
-    }
-
-    // If there are validation errors, set them and do not proceed with submission
-    if (validationErrors.length > 0) {
-      setErrors(validationErrors);
-      return;
-    }
-
-    // If all validations pass, dispatch the signUp action
-    const data = await dispatch(signUp(firstName, lastName, username, email, password));
-    if (data) {
-      setErrors([data]);
-    } else {
-      closeModal();
-    }
+			if (data) {
+				setErrors(data);
+			} else {
+				closeModal();
+			}
+		} else {
+			setErrors([
+				"Confirm Password field must be the same as the Password field",
+			]);
+		}
   };
-  // const changeSignIn = () => {
-  //   // Set redirectToLogin to true when the user clicks the link
-  //   setRedirectToLogin(true);
-  // };
 
-  // // Use the Redirect component to navigate to the login page
-  // if (redirectToLogin) {
-  //   return <Redirect to="/login" />;
-  // }
+
 	return (
 		<>
-    <div className='centered-container'>
-
-			      <div className="title-bar loginmodal">
-					<div className="title-bar-text">Sign Up</div>
+    <div class='centered-container'>
+			      <div class="title-bar loginmodal">
+					<div class="title-bar-text">Sign Up</div>
 					<div className="title-bar-controls">
 					<button aria-label="Minimize" />
 					<button aria-label="Maximize" />
@@ -125,6 +80,15 @@ function SignupFormPage() {
 
           }}>Golden Era Grooves</span>
         <div class="login-content">
+        <div className='login-username login-info'>
+          <input
+            type="text"
+            value={username}
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          </div>
         <div className='login-email login-info'>
           <input
             placeholder="Email"
@@ -135,15 +99,7 @@ function SignupFormPage() {
           />
 
         </div>
-         <div className='login-username login-info'>
-          <input
-            type="text"
-            value={username}
-            placeholder="Username"
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-          </div>
+
 		  <div className='login-username login-info'>
           <input
             type="text"
@@ -184,7 +140,7 @@ function SignupFormPage() {
         </div>
         <div className="down-login">
         <button type="submit">Sign Up</button>
-        <div style={{fontStyle:'none', fontSize:'11px', padding:'3px'}}>
+        <div>
       {/* Use the Link component to navigate to the login page */}
       <Link to="/login">Already have an account? Login instead</Link>
     </div>

@@ -7,11 +7,11 @@
   z-index: 990;
   width: 60%;
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 500px;
   background-color: white;
   overflow-y: auto;
 
-  height: 475px;
+  height: auto;
   border-width: 2px;
   border-style: outset;
   border-color: buttonface;

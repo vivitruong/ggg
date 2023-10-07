@@ -114,7 +114,7 @@ const PlayListHeader = ({ songsInPlayList }) => {
         <div className="deleteModal">
           <Overlay onClose={() => setShowEditModal(false)} />
           <>
-            <p style={{fontSize:'20px'}}>Let's Edit This Playlist <img src="https://win98icons.alexmeub.com/icons/png/directory_control_panel-2.png"></img></p>
+            <p style={{fontSize:'20px', padding:'5px', marginLeft:'30%'}}>Let's Edit This Playlist <img src="https://win98icons.alexmeub.com/icons/png/directory_control_panel-2.png"></img></p>
             <PlayListForm
               submitHandler={submitHandler}
               name={name}
@@ -122,7 +122,9 @@ const PlayListHeader = ({ songsInPlayList }) => {
               setName={setName}
               setDescription={setDescription}
               btnText={"Edit PlayList"}
+
             />
+
           </>
         </div>
       )}

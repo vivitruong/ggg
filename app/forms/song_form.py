@@ -8,5 +8,6 @@ class SongForm(FlaskForm):
   user_id = IntegerField('User Id', validators=[DataRequired()])
   name = StringField('Title', validators=[DataRequired()])
   genre = StringField('Genre', validators=[DataRequired()])
+  artist = StringField('Artist')
   cover_photo  = StringField('Cover Photo')
   file_path = FileField('File Path')

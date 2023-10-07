@@ -26,6 +26,7 @@ import Paint from "../../components/Paint";
 import MinesweeperEmbed from "../../components/MineSweeper";
 import Solitaire from "../../components/Game";
 import EditSong from "../../components/EditSong";
+import CommentPage from "../../components/CommentPage";
 
 export const Home = () => {
   // const { selectedPlayListSongs } = useSelector((state) => state?.playlists);
@@ -86,6 +87,11 @@ export const Home = () => {
           </Route>
           <Route path="/liked-songs">
             <LikedSongsPage />
+            <TopNav />
+            <Footer/>
+          </Route>
+          <Route path="/comments">
+            <CommentPage />
             <TopNav />
             <Footer/>
           </Route>

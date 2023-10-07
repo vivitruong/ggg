@@ -1,12 +1,13 @@
 
 .page-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: left;
-    transition: all 0.3s;
-    max-width: calc(100% - 10%);
-    margin-left: 10%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   text-align: left;
+   transition: all 0.3s;
+   max-width: calc(100% - 10%);
+   margin-left: 10%;
+
 }
 
 .error-message {
@@ -19,10 +20,9 @@
 }
 
 .form-create {
-    display: grid;
-    justify-content: center; /* Center horizontally */
-    align-items: center;    /* Center vertically */
-    padding: 5px;
+   display: grid;
+   place-items: center; /* Center both horizontally and vertically */
+   padding: 5px;
 }
 
 .organize-create {
@@ -58,7 +58,7 @@
 .label-create {
    display: flex;
    flex-direction: column;
-   width: 350px;
+   width: 300px;
    padding: 5px;
 }
 
@@ -69,5 +69,5 @@
 
 .align-create-button {
    display: grid;
-   justify-items: center;
+   justify-items: left;
 }

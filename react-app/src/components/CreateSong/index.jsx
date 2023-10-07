@@ -234,7 +234,6 @@ const CreateSong = () => {
   if (Object.keys(error).length === 0) {
 
 
-    console.log('------------2' , file_path)
   const formData = new FormData();
   formData.append("name", name);
   formData.append("genre", genre);
@@ -331,8 +330,8 @@ const CreateSong = () => {
                         onChange={(e) => setGenre(e.target.value)}
                     />
                 </label> */}
-                 <label >Genre <span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
-                        <select style={{ margin: 'auto' }} value={genre} onChange={e => setGenre(e.target.value)} >
+                 <label style={{padding: '20px 10px 10px 12px'}} className="input-create">Genre <span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
+                        <select className="" style={{ margin: 'auto'}} value={genre} onChange={e => setGenre(e.target.value)} >
                             <option value="pop">Pop</option>
                             <option value="rnb">R&B</option>
                             <option value="rock">Rock</option>
@@ -346,7 +345,9 @@ const CreateSong = () => {
                 <div className="error-message">{error.cover_photo && <p className="">{error.cover_photo}</p>}</div>
                 {(imageLoading)&& <p>Image Uploading...</p>}
                 <label className="label-create">
+
                     Select Cover Photo
+                    <span style={{color:"red", fontSize:"1rem"}}>*</span>
                     <input
                         className="input-create"
                         type="file"
@@ -362,6 +363,7 @@ const CreateSong = () => {
                 {(songLoading)&& <p>Song Uploading...</p>}
                 <label className="label-create">
                     Select Song
+                    <span style={{color:"red", fontSize:"1rem"}}>*</span>
                     <input
                         className="input-create"
                         type="file"
@@ -370,9 +372,10 @@ const CreateSong = () => {
                     />
                 </label>
                 </div>
-                <div className="align-create-button">
-                <button className='create-button test' type="submit">UPLOAD</button>
+                <div style={{padding:'10px'}} className="align-create-button">
+                <button  className='create-button test' type="submit">UPLOAD</button>
                 </div>
+                <p>By uploading, you confirm that your file comply with our Terms of Use.</p>
             </form>
         </div>
         </div>

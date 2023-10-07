@@ -61,10 +61,10 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <Link to="/">
+            <Link to="/comments">
               <Button onClick={onClickHandler}>
                 <img src={iconEpisode} alt="" />
-                Your Episodes
+                Your Comments
               </Button>
             </Link>
           </li>
