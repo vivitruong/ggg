@@ -11,7 +11,7 @@ import './style.css'
 const EditSong = ({song_id, setEditModal }) => {
   console.log(song_id)
   const [artist, setArtist] = useState("");
-  const [genre, setGenre] = useState("");
+  const [genre, setGenre] = useState("Pop");
   const [name, setName] = useState("");
   const [songLoading, setSongLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false);
