@@ -22,24 +22,13 @@ import {
 // import { useCreateSongMutation } from "../../slices/songsApiSlice";
 import Divider from '../../components/Divider'
 const HomePageComponents = ({ allPlaylists }) => {
-  // const [showModal, setShowModal] = useState(false);
-  // const [showDeleteModal, setDeleteModal] = useState(false);
-  // const [showEditModal, setEditModal] = useState(false);
-  // const [songToEditOrDelete, setSongToEditOrDelete] = useState(null);
-
-  // const [artist, setArtist] = useState("");
-  // const [coverPhoto, setCoverPhoto] = useState("");
-  // const [filePath, setFilePath] = useState("");
-  // const [genre, setGenre] = useState("");
-  // const [name, setName] = useState("");
 
   const allSongs = useSelector((state) => state.songs);
-  // const [deleteSong] = useDeleteSongMutation();
-  // const [createUserSong] = useCreateSongMutation();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(selectedPlayListSongs([]));
+
   }, []);
   const dateString = "June.15.1998";
   const date = new Date(dateString);
@@ -57,52 +46,7 @@ const HomePageComponents = ({ allPlaylists }) => {
     );
   });
 
-  // const deleteSongHandler = async (song) => {
-  //   // const res = await deleteSong({ songId: song?.id });
-  //   // dispatch();
-  //   // removeSongToSelectedPlayList({ playlist, removeSong: song })
-  // };
 
-  // const createOrEditSong = async () => {
-  //   const songToCreateOrEdit = {
-  //     name,
-  //     artist,
-  //     coverPhoto,
-  //     filePath,
-  //     genre,
-  //   };
-  //   setShowModal(false);
-  //   setEditModal(false);
-  //   try {
-  //     // const res = await createUserSong({
-  //     //   song: JSON.stringify(songToCreateOrEdit),
-  //     // }).unwrap();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const reset = () => {
-  //   setArtist("");
-  //   setCoverPhoto("");
-  //   setFilePath("");
-  //   setGenre("");
-  //   setName("");
-  // };
-
-  // useEffect(() => {
-  //   if (songToEditOrDelete) {
-  //     setArtist(songToEditOrDelete.artist || "");
-  //     setCoverPhoto(songToEditOrDelete.coverPhoto || "");
-  //     setFilePath(songToEditOrDelete.filePath || "");
-  //     setGenre(songToEditOrDelete.genre || "");
-  //     setName(songToEditOrDelete.name || "");
-  //   }
-  // }, [songToEditOrDelete]);
-
-  // useEffect(() => {
-  //   dispatch(getSongs({ songs: allSongs }));
-  // }, [dispatch, allSongs]);
 
   const renderAllSong = allSongs?.map((song, index) => {
     return (

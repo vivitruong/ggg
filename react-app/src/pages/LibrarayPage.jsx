@@ -69,7 +69,7 @@ const LibrarayPage = () => {
       <div className="conn">
         <div className="conn">
           <div className="create">
-            <h4>My Songs 🎵 😁 </h4>
+            <h4>You are an amazing artist! Get started by uploading your songs/tracks here🎵 😁 </h4>
             <Button iconOnly onClick={() => setShowModal(true)}>
               Create Song
             </Button>

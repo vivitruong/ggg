@@ -76,8 +76,9 @@ const handleSubmit = async (e) => {
 
 	return (
 		<>
-    <div class='centered-container'>
-			      <div class="title-bar loginmodal">
+    <div className='centered-container'>
+
+			      <div className="title-bar loginmodal">
 					<div class="title-bar-text">Sign Up</div>
 					<div className="title-bar-controls">
 					<button aria-label="Minimize" />

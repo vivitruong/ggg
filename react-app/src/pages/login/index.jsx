@@ -48,10 +48,6 @@ export const LoginFormPage = () => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log("email:", email);
-  //   console.log("password:", password);
-  // }, [email, password]);
 
   if (sessionUser) return <Redirect to="/" />;
 
