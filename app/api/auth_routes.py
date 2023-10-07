@@ -62,6 +62,7 @@ def sign_up():
     form = SignUpForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     print('pre validation')
+    print(request.form, 'validation')
     if form.validate_on_submit():
         print('pas validation')
         user = User(
@@ -72,12 +73,13 @@ def sign_up():
             password=form.data['password'],
 
         )
-        print(user, 'test backen user')
+
         db.session.add(user)
         db.session.commit()
         login_user(user)
         return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    else:
+        return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @auth_routes.route('/unauthorized')

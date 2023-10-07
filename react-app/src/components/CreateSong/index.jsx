@@ -1,179 +1,10 @@
-// import { useState } from "react";
-// import InputField from "../InputField";
-// import Button from "../Button";
-// // import { useCreateSongMutation } from "../../slices/songsApiSlice";
-// // import { useDispatch } from "react-redux";
 
-// const CreateSong = ({
-//   artist,
-//   coverPhoto,
-//   filePath,
-//   genre,
-//   name,
-//   setArtist,
-//   setCoverPhoto,
-//   setFilePath,
-//   setGenre,
-//   setName,
-//   onSubmitHandler,
-//   btnText,
-// }) => {
-//   // const [createUserSong] = useCreateSongMutation();
-
-//   // const dispatch = useDispatch();
-
-//   const submitHandler = async function (e) {
-//     e.preventDefault();
-//     onSubmitHandler();
-//   };
-
-//   return (
-//     <form action="" onSubmit={submitHandler} className="form">
-//       <InputField
-//         name="artist"
-//         value={artist}
-//         onChange={(e) => setArtist(e.target.value)}
-//         id="artist"
-//         type="text"
-//         placeholder="Artist"
-//       />
-//       <InputField
-//         className="input"
-//         required
-//         name="coverPhoto"
-//         value={coverPhoto}
-//         onChange={(e) => setCoverPhoto(e.target.value)}
-//         id="coverPhoto"
-//         type="text"
-//         placeholder="CoverPhoto"
-//       />
-//       <InputField
-//         className="input"
-//         required
-//         name="filePath"
-//         value={filePath}
-//         onChange={(e) => setFilePath(e.target.value)}
-//         id="filePath"
-//         type="text"
-//         placeholder="FilePath"
-//       />
-//       <InputField
-//         className="input"
-//         required
-//         name="genre"
-//         value={genre}
-//         onChange={(e) => setGenre(e.target.value)}
-//         id="genre"
-//         type="text"
-//         placeholder="Genre"
-//       />
-//       <InputField
-//         className="input"
-//         required
-//         name="name"
-//         value={name}
-//         onChange={(e) => setName(e.target.value)}
-//         id="name"
-//         type="text"
-//         placeholder="Song Name"
-//       />
-//       <Button iconOnly>{btnText}</Button>
-//     </form>
-//   );
-// };
-
-// export default CreateSong;
-// import { useState } from "react";
-// import InputField from "../InputField";
-// import Button from "../Button";
-// // import { useCreateSongMutation } from "../../slices/songsApiSlice";
-// // import { useDispatch } from "react-redux";
-
-// const CreateSong = ({
-//   artist,
-//   coverPhoto,
-//   filePath,
-//   genre,
-//   name,
-//   setArtist,
-//   setCoverPhoto,
-//   setFilePath,
-//   setGenre,
-//   setName,
-//   onSubmitHandler,
-//   btnText,
-// }) => {
-//   // const [createUserSong] = useCreateSongMutation();
-
-//   // const dispatch = useDispatch();
-
-//   const submitHandler = async function (e) {
-//     e.preventDefault();
-//     onSubmitHandler();
-//   };
-
-//   return (
-//     <form action="" onSubmit={submitHandler} className="form">
-//       <InputField
-//         name="artist"
-//         value={artist}
-//         onChange={(e) => setArtist(e.target.value)}
-//         id="artist"
-//         type="text"
-//         placeholder="Artist"
-//       />
-//       <InputField
-//         className="input"
-//         required
-//         name="coverPhoto"
-//         value={coverPhoto}
-//         onChange={(e) => setCoverPhoto(e.target.value)}
-//         id="coverPhoto"
-//         type="text"
-//         placeholder="CoverPhoto"
-//       />
-//       <InputField
-//         className="input"
-//         required
-//         name="filePath"
-//         value={filePath}
-//         onChange={(e) => setFilePath(e.target.value)}
-//         id="filePath"
-//         type="text"
-//         placeholder="FilePath"
-//       />
-//       <InputField
-//         className="input"
-//         required
-//         name="genre"
-//         value={genre}
-//         onChange={(e) => setGenre(e.target.value)}
-//         id="genre"
-//         type="text"
-//         placeholder="Genre"
-//       />
-//       <InputField
-//         className="input"
-//         required
-//         name="name"
-//         value={name}
-//         onChange={(e) => setName(e.target.value)}
-//         id="name"
-//         type="text"
-//         placeholder="Song Name"
-//       />
-//       <Button iconOnly>{btnText}</Button>
-//     </form>
-//   );
-// };
-
-// export default CreateSong;
 import React, { useState } from "react";
 import InputField from "../InputField";
 import Button from "../Button";
-import { useCreateSongMutation } from "../../slices/songsApiSlice";
+// import { useCreateSongMutation } from "../../slices/songsApiSlice";
 import { useDispatch } from "react-redux";
-import * as songActions from '../../store/song';
+
 import { useHistory } from "react-router-dom";
 import './style.css';
 import { createSong } from "../../store/userSong";
@@ -195,7 +26,6 @@ const CreateSong = () => {
   const handleSubmit = async (e) => {
   e.preventDefault();
 
-  console.log('-------------------------------' , cover_photo[0])
   const errors = {};
 
   if(!name) errors.name = 'Song name is required';
@@ -260,27 +90,6 @@ const CreateSong = () => {
   }
 
 
-  // const submitHandler = async function (e) {
-  //   e.preventDefault();
-
-  //   const songToCreate = {
-  //     name,
-  //     artist,
-  //     coverPhoto,
-  //     filePath,
-  //     genre,
-  //   };
-  //   console.log(songToCreate);
-  //   try {
-  //     const res = await createUserSong({
-  //       song: JSON.stringify(songToCreate),
-  //     }).unwrap();
-  //     console.log(res);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
   return (
     <>
     <div class="title-bar">
@@ -291,7 +100,7 @@ const CreateSong = () => {
 </div>
     <div className="page-container">
         <div className="form-create">
-            {/* <h1>Create a New Song</h1> */}
+
             <form
                 onSubmit={handleSubmit}
 

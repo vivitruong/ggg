@@ -12,8 +12,8 @@ function SignupFormPage() {
 	const [email, setEmail] = useState("");
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState('')
+	const [first_name, setFirstName] = useState("");
+	const [last_name, setLastName] = useState('')
 	const [confirmPassword, setConfirmPassword] = useState("");
 	const [errors, setErrors] = useState([]);
 	const { closeModal } = useModal();
@@ -25,24 +25,53 @@ function SignupFormPage() {
   if (user) {
     return <Redirect to='/' />;
   }
-  console.log(firstName,'this is frontend first name')
-	const handleSubmit = async (e) => {
-    e.preventDefault();
-		if (password === confirmPassword) {
-			const data = await dispatch(signUp( firstName, lastName, username, email, password));
-      console.log(data, 'this is front end user name')
 
-			if (data) {
-				setErrors(data);
-			} else {
-				closeModal();
-			}
-		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
-		}
-  };
+// 	const handleSubmit = async (e) => {
+//     e.preventDefault();
+// 		if (password === confirmPassword) {
+//       console.log('Password:', password);
+// console.log('Confirm Password:', confirmPassword);
+//       const formData = new FormData();
+//       formData.append('username', username);
+//       formData.append('email', email);
+//       formData.append('password', password);
+//       formData.append('first_name', first_name);
+//       formData.append('last_name', last_name);
+
+//     try {
+//       await dispatch(signUp(formData));
+//     }
+//     catch(err) {
+//       console.error('Error:', err); // Log the error for debugging
+//       setErrors(["An error occurred. Please try again."]);
+
+//     }
+//   }
+// }
+console.log(username , 'this is username')
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  if (password === confirmPassword) {
+    const info = {
+      username,
+      email,
+      password,
+      first_name,
+      last_name,
+    };
+    const data = await dispatch(signUp(info));
+    if (data) {
+      setErrors(data);
+    } else {
+      closeModal();
+    }
+  } else {
+    setErrors([
+      "Confirm Password field must be the same as the Password field",
+    ]);
+  }
+};
+
 
 
 	return (
@@ -103,7 +132,7 @@ function SignupFormPage() {
 		  <div className='login-username login-info'>
           <input
             type="text"
-            value={firstName}
+            value={first_name}
             placeholder="First Name"
             onChange={(e) => setFirstName(e.target.value)}
             required
@@ -112,7 +141,7 @@ function SignupFormPage() {
 		  <div className='login-username login-info'>
           <input
             type="text"
-            value={lastName}
+            value={last_name}
             placeholder="Last Name"
             onChange={(e) => setLastName(e.target.value)}
             required
