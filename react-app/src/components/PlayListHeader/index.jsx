@@ -66,7 +66,7 @@ const PlayListHeader = ({ songsInPlayList }) => {
             <img src={icon} alt="" />
           </div>
           <div>
-          <h2>{currentPlayList?.name}</h2>
+          <h2 style={{padding: '5px'}}>{currentPlayList?.name}</h2>
             <p>{currentPlayList?.description}</p>
             <p>{`${currentPlayList?.playlist_songs?.length} songs`}</p>
           </div>

@@ -27,8 +27,10 @@ const CreatePlayList = () => {
     <>
 
     <div>
+    <Divider />
       <ActionBar />
       <Divider />
+
        <h4 style={{padding:'10px'}}>Hooray! Let's create your new playlist</h4>
        <Divider />
       <PlayListForm

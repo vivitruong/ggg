@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import './style.css';
 import { createSong } from "../../store/userSong";
-
+import Loader from "../Spinner";
 const CreateSong = () => {
   const [artist, setArtist] = useState("");
   const [cover_photo, setCoverPhoto] = useState("");
@@ -18,11 +18,11 @@ const CreateSong = () => {
   const [songLoading, setSongLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setErrors] = useState({});
+
   const history = useHistory()
-
-
-
   const dispatch = useDispatch();
+
+
   const handleSubmit = async (e) => {
   e.preventDefault();
 
@@ -75,6 +75,8 @@ const CreateSong = () => {
   // setImageLoading(true);
   // setSongLoading(true);
   console.log(formData.cover_photo, 'this is new')
+  setImageLoading(true);
+  setSongLoading(true);
 
   try {
 
@@ -129,17 +131,7 @@ const CreateSong = () => {
                 </label>
                 </div>
                 <div>
-                {/* <div className="error-message">{error.genre && <p className="">{error.genre}</p>}</div> */}
-                {/* <label className="label-create">
-                    Song Genre
-                    <input
-                        className="input-create"
-                        type='text'
-                        placeholder="Genre"
-                        value={genre}
-                        onChange={(e) => setGenre(e.target.value)}
-                    />
-                </label> */}
+
                  <label style={{padding: '20px 10px 10px 12px'}} className="input-create">Genre <span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
                         <select className="" style={{ margin: 'auto'}} value={genre} onChange={e => setGenre(e.target.value)} >
                             <option value="pop">Pop</option>
@@ -153,7 +145,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.cover_photo && <p className="">{error.cover_photo}</p>}</div>
-                {(imageLoading)&& <p>Image Uploading...</p>}
+                {(imageLoading)&& <Loader/>}
                 <label className="label-create">
 
                     Select Cover Photo
@@ -170,7 +162,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.song_url && <p className="">{error.song_url}</p>}</div>
-                {(songLoading)&& <p>Song Uploading...</p>}
+                {(songLoading)&& <Loader/>}
                 <label className="label-create">
                     Select Song
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>

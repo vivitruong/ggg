@@ -21,7 +21,9 @@
 .allsongs {
   width: 100%;
   overflow-y: scroll;
-  height: 620px;
+  height: 612px;
+
+  box-shadow: 1px 1px #ccc;
 }
 
 .conn {

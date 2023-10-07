@@ -81,7 +81,7 @@ const HomePageComponents = ({ allPlaylists }) => {
         <div className="pList">{renderPlayList}</div> */}
       </div>
       <div className="conn">
-
+      <Divider />
         <div className="create">
         <h3>Browse All New Music Today With Golden Era Grooves <img src="https://win98icons.alexmeub.com/icons/png/netshow-1.png"></img></h3>
           {/* <Button iconOnly onClick={() => setShowModal(true)}>
