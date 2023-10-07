@@ -1,6 +1,7 @@
 const LOAD_ALLSONGS = 'songs/loadAll';
 const LOAD_ONESONG = 'songs/loadOneSong';
 const ADD_SONG = 'songs/addSong';
+const SEARCH_SONG ='songs/searchSong';
 export function loadAllSongs (songs) {
     return {
         type: LOAD_ALLSONGS,
@@ -13,14 +14,21 @@ export function addSong(song) {
         song
     }
 }
-
+export function searchSong(song){
+    return {
+        type: SEARCH_SONG,
+        payload: song
+    }
+}
 // export function removeSong(songId) {
 //     return {
 //         type: REMOVE_SONG,
 //         songId
 //     }
 // }
-
+// export const search = (song) => async(dispatch) => {
+//     const response = await fetch(``)
+// }
 export function loadOneSong(song) {
     return {
         type: LOAD_ONESONG,
