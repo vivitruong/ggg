@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, session, request
 from flask_login import login_required, current_user
-from app.models import db, Song, Comment, likes, User
-from app.forms import CommentForm, LikeForm, UploadSongForm, SongForm
+from app.models import db, Song, User
+from app.forms import  UploadSongForm, SongForm
 from app.aws import (upload_file_to_s3, allowed_file, get_unique_filename)
 from app.api.auth_routes import validation_errors_to_error_messages
 from sqlalchemy import select, func
