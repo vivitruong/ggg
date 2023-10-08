@@ -13,7 +13,7 @@ const CreateSong = () => {
   const [artist, setArtist] = useState("");
   const [cover_photo, setCoverPhoto] = useState("");
   const [file_path, setFilePath] = useState("");
-  const [genre, setGenre] = useState("pop");
+  const [genre, setGenre] = useState("Pop");
   const [name, setName] = useState("");
   const [songLoading, setSongLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false);
@@ -143,7 +143,7 @@ const CreateSong = () => {
                             <option value="hiphop">Hiphop & Rap</option>
                             <option value='Instrumental'>Instrumental</option>
                             <option value='Alternatives'>Alternatives</option>
-                            <option value='country'></option>
+                            <option value='country'>Country</option>
                             <option value='other'>Other</option>
                         </select>
                 </div>

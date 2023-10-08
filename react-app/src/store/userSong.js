@@ -94,6 +94,9 @@ const userSongReducer = (state = initialState, action) => {
             return action.songs || []; // Replace the existing state with the new songs array.
 
         case ADD_SONG:
+            // console.log(action.song);
+            // newState.push(action.payload);
+            // return newState
             if (action.song && action.song.id) {
                 return [...state, action.song];
                 }
