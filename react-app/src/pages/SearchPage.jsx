@@ -16,7 +16,7 @@ const SearchPage = () => {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       },
-      body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${CLIENT_SECRET}`
+      body: 'grant_type=client_credentials&client_id=' + CLIENT_ID + '&client_secret='+ CLIENT_SECRET
     };
 
     fetch('https://accounts.spotify.com/api/token', authParameters)
@@ -42,15 +42,12 @@ const SearchPage = () => {
         return data.artists.items[0].id
       })
       console.log('Artist Id ' + artistId)
-      let offset = 0; // Set the initial offset
-      let allAlbums = [];
-
 
 
 
     //Get req with Artist Id grab all ablum
     let returnAlbums = await fetch(
-      'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?country=US&limit=20',
+      'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?country=US&limit=15',
       searchParameters
     )
       .then(res => res.json())
@@ -59,6 +56,7 @@ const SearchPage = () => {
         setAlbums(data.tracks)
       })
     //display to user
+    console.log(albums)
   }
   return (
     <>
@@ -67,10 +65,10 @@ const SearchPage = () => {
     <Divider />
     <ActionBar />
     <Divider/>
-    <h4 style={{padding: '10px'}}>Find the latest tracks released by your favorite artist here  ... <img src='https://win98icons.alexmeub.com/icons/png/directory_explorer-0.png'></img> </h4>
+    <h3 style={{padding: '10px'}}>Find the latest tracks released by your favorite artist here  ... <img src='https://win98icons.alexmeub.com/icons/png/directory_explorer-0.png'></img> </h3>
     <div className="search-bar">
       <InputField
-        placeholder="Who do you want to listen to? ... "
+        placeholder="Who do you want to listen to?"
         name="search-song"
         type="input"
         onKeyPress={(e) => {
@@ -88,17 +86,16 @@ const SearchPage = () => {
           return (
             <div className="album-card" key={i}>
 
-              <p style={{padding:'5px'}}>{album?.name}</p>
+              <p>{album?.name}</p>
 
             </div>
 
           );
         })
       ) :
-
        (
 
-        <p style={{padding:'5px'}}>No albums found.</p>
+        <p>No albums found.</p>
       )}
     </div>
   </div>
