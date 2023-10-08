@@ -6,6 +6,7 @@ import { LoginFormPage } from "./pages/login";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashScreen from './components/SplashScreen'
+import Footer from "./components/Footer";
 import './app.css';
 import '98.css'
 function App () {
@@ -23,6 +24,7 @@ function App () {
         <Switch>
           <Route path='/welcome'>
             <SplashScreen />
+            <Footer />
           </Route>
           <Route path="/login" >
             <LoginFormPage />
