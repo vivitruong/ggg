@@ -30,7 +30,7 @@ const UserPage = () => {
                             <div className="userprofile-info-content-name" style={{fontSize: "1rem"}}>
                                 <span style={{fontWeight: '700'}}>Hello {user.firstName} {user.lastName}!</span>
 
-                                <span style={{fontWeight:'600'}}>Thank you for being apart of Golden Era Grooves's family! We're only cool people in here 😉 </span>
+                                <span style={{fontWeight:'600'}}>Thank you for being a part of Golden Era Grooves's family! We're only cool people in here 😉 </span>
                             </div>
 
                         </div>
