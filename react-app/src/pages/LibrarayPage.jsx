@@ -28,7 +28,7 @@ const LibrarayPage = () => {
   const renderUserSongs = userSongs.map((song, index) => (
     <div
       className={`song-row songs`}
-      key={song?.id}
+      key={index}
       onClick={() => {
         dispatch(currentPlayListSongs({ songs: userSongs}));
         dispatch(playSong({song: song, index}));

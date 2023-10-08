@@ -20,7 +20,7 @@ const EditSong = ({song_id, setEditModal }) => {
   const songId = song_id
   console.log(songId)
   const userSongs = useSelector((state) => state.userSongs);
-  const user= useSelector((state) => state.session.user)
+  const {user } = useSelector((state) => state.session)
   console.log('this is song id Obj', userSongs)
   const dispatch = useDispatch();
 
@@ -41,11 +41,9 @@ const EditSong = ({song_id, setEditModal }) => {
       artist,
       user_id: user.id
     };
-
-
   try {
 
-      await dispatch(updateASong(formData, songId));
+      dispatch(updateASong(formData, songId));
       // history.push("/library");
       setEditModal(false)
   } catch (err){
