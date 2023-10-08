@@ -53,7 +53,8 @@ return(
                 showMenu &&
                 <div className="start-dropdown">
                     <div  className="start-dropdown-info start-hover">
-                        <span className="start-dropdown-content" style={{cursor:"default"}}>Made by Vi Vi Truong<img src='https://win98icons.alexmeub.com/icons/png/msagent_file-0.png'></img></span>
+                        <span className="start-dropdown-content" style={{cursor:"default", fontWeight:'1000'}}>
+                        Warning!! Browsing this website may cause uncontrollable smiles. Made by Vi Vi Truong 2023<img src='https://win98icons.alexmeub.com/icons/png/msagent_file-0.png'></img></span>
                     </div>
 
                 </div>
