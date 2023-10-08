@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import InputField from "../InputField";
-import Button from "../Button";
+// import InputField from "../InputField";
+// import Button from "../Button";
 // import { useCreateSongMutation } from "../../slices/songsApiSlice";
 import { useDispatch, useSelector } from "react-redux";
 import * as songActions from '../../store/song';
 import {updateASong} from '../../store/userSong';
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './style.css'
 
 const EditSong = ({song_id, setEditModal }) => {
@@ -18,10 +18,10 @@ const EditSong = ({song_id, setEditModal }) => {
   const [error, setErrors] = useState({});
   const history = useHistory()
   const songId = song_id
-  console.log(songId)
+  // console.log(songId)
   const userSongs = useSelector((state) => state.userSongs);
   const {user } = useSelector((state) => state.session)
-  console.log('this is song id Obj', userSongs)
+  // console.log('this is song id Obj', userSongs)
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
@@ -60,9 +60,9 @@ const EditSong = ({song_id, setEditModal }) => {
   }
   return (
     <>
-    <div class="title-bar">
-  <div class="title-bar-text">Songs/Tracks</div>
-  <div class="title-bar-controls">
+    <div className="title-bar">
+  <div className="title-bar-text">Songs/Tracks</div>
+  <div className="title-bar-controls">
 
   </div>
 </div>

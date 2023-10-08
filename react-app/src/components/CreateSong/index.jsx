@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
-import InputField from "../InputField";
-import Button from "../Button";
+// import InputField from "../InputField";
+// import Button from "../Button";
 // import { useCreateSongMutation } from "../../slices/songsApiSlice";
 import { useDispatch } from "react-redux";
 import { fetchAllSongs } from "../../store/song";
@@ -44,7 +44,7 @@ const CreateSong = () => {
         errors.cover_photo = 'Image file must have a valid extension: .png, .jpg, .jpeg';
       }
     } else {
-      errors.cover_photo = 'Image is required';
+      errors.cover_photo = 'Cover photo is required';
     }
     console.log(file_path)
     if (file_path  && file_path.name) {
@@ -54,10 +54,10 @@ const CreateSong = () => {
 
 
       if (!allowedExtensions.includes(fileExtension)) {
-        errors.file_path = 'Song file must have a valid extension: .mp3';
+        errors.file_path = 'Song/Track file must have a valid extension: .mp3';
       }
     } else {
-      errors.file_path = 'Song file is required';
+      errors.file_path = 'Song/Track file is required';
     }
 
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link } from "react-router-dom";
+import React, { useState, useEffect} from 'react';
+
 import './style.css'
 import { useSelector } from 'react-redux';
 const getTime = () => {

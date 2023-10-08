@@ -66,7 +66,7 @@ export const deleteSong = ({ songId }) => async dispatch => {
 };
 export const createSong = (song) => async dispatch => {
     console.log(song,'this is song')
-    console.log(song.cover_photo, '--coverphoto here')
+    console.log(song.coverPhoto, '--coverphoto here')
     const response = await fetch(`/api/songs/`, {
         method: 'POST',
         body: song

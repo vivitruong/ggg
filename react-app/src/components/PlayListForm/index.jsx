@@ -18,7 +18,7 @@ const PlayListForm = ({
           onChange={(e) => setName(e.target.value)}
           id="name"
           type="text"
-          placeholder="Name"
+          placeholder="Give this playlist a name..."
         />
         <InputField
           className="input"
@@ -28,7 +28,7 @@ const PlayListForm = ({
           onChange={(e) => setDescription(e.target.value)}
           id="description"
           type="text"
-          placeholder="Description"
+          placeholder="Description...."
         />
 
         <Button iconOnly>{btnText}</Button>
