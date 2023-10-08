@@ -42,12 +42,15 @@ const SearchPage = () => {
         return data.artists.items[0].id
       })
       console.log('Artist Id ' + artistId)
+      let offset = 0; // Set the initial offset
+      let allAlbums = [];
+
 
 
 
     //Get req with Artist Id grab all ablum
     let returnAlbums = await fetch(
-      'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?country=US&limit=15',
+      'https://api.spotify.com/v1/artists/' + artistId + '/top-tracks?country=US&limit=20',
       searchParameters
     )
       .then(res => res.json())
