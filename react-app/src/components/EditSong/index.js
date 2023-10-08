@@ -111,10 +111,10 @@ const EditSong = ({song_id, setEditModal }) => {
                 </div>
 
                 <div style={{padding:'5px', marginRight:'90px'}} className="align-create-button">
-                <button className='create-button test' type="submit">Submit</button>
+                <button style={{cursor:'pointer'}} className='create-button test' type="submit">Submit</button>
                 </div>
                 <div>
-                  <span style={{marginRight:'10px', fontSize:'11px'}}>If you wish to change your whole track, just delete and re-upload your songs of choice !
+                  <span style={{marginRight:'10px', fontSize:'11px'}}>If you wish to change the whole track, just delete and re-upload your songs of choice !
 
                   </span>
                 </div>
