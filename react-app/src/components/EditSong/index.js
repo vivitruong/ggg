@@ -57,7 +57,7 @@ const EditSong = ({song_id, setEditModal }) => {
   return (
     <>
     <div class="title-bar">
-  <div class="title-bar-text">Song</div>
+  <div class="title-bar-text">Songs/Tracks</div>
   <div class="title-bar-controls">
 
   </div>
@@ -97,7 +97,7 @@ const EditSong = ({song_id, setEditModal }) => {
 
                  <label >Genre <span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
                         <select style={{ margin: 'auto' }} value={genre} onChange={e => setGenre(e.target.value)} >
-                            <option value="pop">Pop</option>
+                            <option value="Pop">Pop</option>
                             <option value="rnb">R&B</option>
                             <option value="rock">Rock</option>
                             <option value="electronic">Electronic</option>

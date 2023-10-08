@@ -134,7 +134,7 @@ def upload_song():
 
         song = Song(
                 name=form.data['name'],
-                artist=form.artist.data,
+                artist=form.data['artist'],
                 genre=form.data['genre'],
                 cover_photo=url_image,
                 file_path=url_song,

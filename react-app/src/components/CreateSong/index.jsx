@@ -79,7 +79,6 @@ const CreateSong = () => {
   setSongLoading(true);
 
   try {
-
       dispatch(createSong(formData));
       history.push("/");
   } catch (err){
@@ -96,7 +95,7 @@ const CreateSong = () => {
   return (
     <>
     <div class="title-bar">
-  <div class="title-bar-text">Song</div>
+  <div class="title-bar-text">Songs/Tracks</div>
   <div class="title-bar-controls">
 
   </div>
@@ -135,7 +134,7 @@ const CreateSong = () => {
 
                  <label style={{padding: '20px 10px 10px 12px'}} className="input-create">Genre <span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
                         <select className="" style={{ margin: 'auto'}} value={genre} onChange={e => setGenre(e.target.value)} >
-                            <option value="pop">Pop</option>
+                            <option value="Pop">Pop</option>
                             <option value="rnb">R&B</option>
                             <option value="rock">Rock</option>
                             <option value="electronic">Electronic</option>
@@ -179,7 +178,7 @@ const CreateSong = () => {
                 </label>
                 </div>
                 <div style={{padding:'10px'}} className="align-create-button">
-                <button  className='create-button test' type="submit">UPLOAD</button>
+                <button style={{cursor:'pointer'}} className='create-button test' type="submit">UPLOAD</button>
                 </div>
                 <p>By uploading, you confirm that your file comply with our Terms of Use.</p>
             </form>
