@@ -80,7 +80,7 @@ const CreateSong = () => {
 
   try {
 
-      await dispatch(createSong(formData));
+      dispatch(createSong(formData));
       history.push("/");
   } catch (err){
       setErrors({});
