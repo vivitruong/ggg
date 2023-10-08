@@ -12,7 +12,7 @@ export function loadUserSongs (songs) {
 }
 export const updateSong = (song) => ({
     type: UPDATE_SONG,
-    payload: song
+    song
 });
 
 export function addSong (song) {
@@ -94,13 +94,11 @@ const userSongReducer = (state = initialState, action) => {
             return action.songs || []; // Replace the existing state with the new songs array.
 
         case ADD_SONG:
-            // console.log(action.song);
-            // newState.push(action.payload);
-            // return newState
-            if (action.song && action.song.id) {
-                return [...state, action.song];
-                }
-            return newState
+            console.log(action.payload);
+            if(action.payload) {
+                newState.push(action.payload)
+            }
+
 
         case UPDATE_SONG:
             return newState.map((song) => {

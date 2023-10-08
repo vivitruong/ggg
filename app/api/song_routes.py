@@ -109,9 +109,9 @@ def upload_song():
     form = UploadSongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
 
-
+    print("pre valiodation ")
     if form.validate_on_submit():
-
+        print("prast valiodation ")
         cover_photo = form.data['cover_photo']
         print(cover_photo)
 

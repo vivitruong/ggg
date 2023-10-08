@@ -28,7 +28,7 @@ const CreateSong = () => {
   e.preventDefault();
 
   const errors = {};
-
+  console.log('-------------------------------' , cover_photo[0])
   if(!name) errors.name = 'Song name is required';
   if(!genre) errors.genre = 'Genre is required';
   if(!artist) errors.artist = "artist is required"
@@ -67,6 +67,7 @@ const CreateSong = () => {
 
 
   const formData = new FormData();
+  console.log(formData, 'this is formData')
   formData.append("name", name);
   formData.append("genre", genre);
   formData.append("cover_photo", cover_photo[0]);
@@ -75,11 +76,11 @@ const CreateSong = () => {
 
 
   console.log(formData.cover_photo, 'this is new')
-  setImageLoading(true);
-  setSongLoading(true);
-
+  console.log(formData.file_path, 'this is new')
+  // setImageLoading(true);
+  // setSongLoading(true);
   try {
-      dispatch(createSong(formData));
+      await dispatch(createSong(formData));
       history.push("/");
   } catch (err){
       setErrors({});
@@ -164,7 +165,7 @@ const CreateSong = () => {
                 </label>
                 </div>
                 <div>
-                <div className="error-message">{error.song_url && <p className="">{error.song_url}</p>}</div>
+                <div className="error-message">{error.file_path && <p className="">{error.file_path}</p>}</div>
                 {(songLoading) && <p>...Song upload in progress</p>}
                 <label className="label-create">
                     Select Song
