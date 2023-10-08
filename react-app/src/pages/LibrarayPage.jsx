@@ -8,7 +8,7 @@ import { deleteSong } from "../store/userSong";
 import { playAudio, playSong, currentPlayListSongs } from "../store/slices/playlistSlice";
 import EditSong from "../components/EditSong";
 import Divider from '../components/Divider';
-
+import { fetchAllSongs } from "../store/song";
 const LibrarayPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showDeleteModal, setDeleteModal] = useState(false);
@@ -19,10 +19,15 @@ const LibrarayPage = () => {
 
   const dispatch = useDispatch();
 
-  const deleteSongHandler = (song) => {
-    dispatch(deleteSong({ songId: song?.id }));
-    setShowModal(false);
-    setEditModal(false);
+  const deleteSongHandler = async (song) => {
+    const response = await dispatch(deleteSong({ songId: song?.id }));
+    if (response){
+      const allSongs = fetchAllSongs();
+      dispatch(allSongs)
+      setShowModal(false);
+      setEditModal(false);
+    }
+
   };
 
 

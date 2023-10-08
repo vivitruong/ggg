@@ -76,6 +76,7 @@ export const createSong = (song) => async dispatch => {
     if (response.ok) {
         const resPost = await response.json();
         dispatch(addSong(resPost));
+        return 'Song created'
     } else {
         console.log("There was an error making your post!");
     }
@@ -94,12 +95,11 @@ const userSongReducer = (state = initialState, action) => {
             return action.songs || []; // Replace the existing state with the new songs array.
 
         case ADD_SONG:
-            // console.log(action.song);
-            // newState.push(action.payload);
-            // return newState
-            if (action.song && action.song.id) {
-                return [...state, action.song];
-                }
+            console.log(action.payload);
+            if(action.payload) {
+                newState.push(action.payload)
+            }
+
             return newState
 
         case UPDATE_SONG:

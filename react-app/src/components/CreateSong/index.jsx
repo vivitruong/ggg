@@ -4,7 +4,7 @@ import InputField from "../InputField";
 import Button from "../Button";
 // import { useCreateSongMutation } from "../../slices/songsApiSlice";
 import { useDispatch } from "react-redux";
-
+import { fetchAllSongs } from "../../store/song";
 import { useHistory } from "react-router-dom";
 import './style.css';
 import { createSong } from "../../store/userSong";
@@ -79,8 +79,14 @@ const CreateSong = () => {
   setSongLoading(true);
 
   try {
-      dispatch(createSong(formData));
+    const res = await dispatch(createSong(formData));
+    if (res){
+      const allSongs = fetchAllSongs();
+      dispatch(allSongs);
+      console.log(res)
       history.push("/");
+    }
+
   } catch (err){
       setErrors({});
       console.error("Error creating song:", err);
@@ -94,9 +100,9 @@ const CreateSong = () => {
 
   return (
     <>
-    <div class="title-bar">
-  <div class="title-bar-text">Songs/Tracks</div>
-  <div class="title-bar-controls">
+    <div className="title-bar">
+  <div className="title-bar-text">Songs/Tracks</div>
+  <div className="title-bar-controls">
 
   </div>
 </div>

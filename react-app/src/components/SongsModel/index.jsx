@@ -48,9 +48,9 @@ const SongsModal = ({ songs, playlistId, songsInPlayList }) => {
   });
   return (
 <>
-    <div class="title-bar inactive">
-  <div class="title-bar-text">Add any song into your playlist</div>
-  <div class="title-bar-controls">
+    <div className="title-bar inactive">
+  <div className="title-bar-text">Add any song into your playlist</div>
+  <div className="title-bar-controls">
 
   </div>
 </div>

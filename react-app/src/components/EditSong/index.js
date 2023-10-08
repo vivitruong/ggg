@@ -42,10 +42,14 @@ const EditSong = ({song_id, setEditModal }) => {
       user_id: user.id
     };
   try {
-
-      dispatch(updateASong(formData, songId));
-      // history.push("/library");
+    const res = await dispatch(updateASong(formData, songId));
+    if (res){
+      const allSongs = songActions.fetchAllSongs();
+      dispatch(allSongs)
       setEditModal(false)
+    }
+
+
   } catch (err){
       setErrors({});
       console.error("Error editing song:", err);
@@ -82,6 +86,7 @@ const EditSong = ({song_id, setEditModal }) => {
                         onChange={(e) => setName(e.target.value)}
                     />
                 </label>
+                <div className="error-message">{error.artist && <p className="">{error.artist}</p>}</div>
                 <label>Artist <span style={{color:"red", fontSize:"1rem"}}>*</span>
 
                     <input
