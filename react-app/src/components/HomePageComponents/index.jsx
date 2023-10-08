@@ -93,7 +93,7 @@ const HomePageComponents = ({ allPlaylists }) => {
           <span className="song-column id-column">#</span>
           <span className="song-column title-column">Title</span>
           <span className="song-column album-column">Album</span>
-          <span style={{ marginRight: '100px', textAlign: 'center' }} className="song-column date-added-column">Date Added</span>
+          <span style={{ marginRight: '100px', textAlign: 'center', fontWeight:'100' }} className="song-column date-added-column">Date Added</span>
           <span style={{ marginLeft: '0px', textAlign: 'center' }} className="song-column duration-column">Duration</span>
         </div>
         <div className="allsongs">{renderAllSong}</div>
