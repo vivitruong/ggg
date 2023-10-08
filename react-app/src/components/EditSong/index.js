@@ -40,7 +40,7 @@ const EditSong = ({song_id, setEditModal }) => {
       genre,
       artist,
       user_id: user.id
-    }
+    };
 
 
   try {

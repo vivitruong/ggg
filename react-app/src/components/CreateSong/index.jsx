@@ -81,7 +81,6 @@ const CreateSong = () => {
   try {
 
       await dispatch(createSong(formData));
-
       history.push("/");
   } catch (err){
       setErrors({});
@@ -167,7 +166,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.song_url && <p className="">{error.song_url}</p>}</div>
-                {(songLoading)&& <p>...Song upload in progress</p>}
+                {(songLoading) && <p>...Song upload in progress</p>}
                 <label className="label-create">
                     Select Song
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>
