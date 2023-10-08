@@ -125,6 +125,7 @@ const CreateSong = () => {
                         onChange={(e) => setName(e.target.value)}
                     />
                 </label>
+                 <div className="error-message">{error.artist && <p className="">{error.artist}</p>}</div>
                 <label>Artist <span style={{color:"red", fontSize:"1rem"}}>*</span>
 
                     <input
@@ -154,7 +155,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.cover_photo && <p className="">{error.cover_photo}</p>}</div>
-                {(imageLoading)&&  <p>...Image upload in progress</p>}
+                {(imageLoading)&& <Loader />}
                 <label className="label-create">
 
                     Select Cover Photo
@@ -170,8 +171,8 @@ const CreateSong = () => {
                 </label>
                 </div>
                 <div>
-                <div className="error-message">{error.song_url && <p className="">{error.song_url}</p>}</div>
-                {(songLoading) && <p>...Song upload in progress</p>}
+                <div className="error-message">{error.file_path && <p className="">{error.file_path}</p>}</div>
+                {(songLoading) && <Loader />}
                 <label className="label-create">
                     Select Song
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>

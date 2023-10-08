@@ -4,8 +4,8 @@ const Loader = () => {
     return (
       <div className="loader">
         <div className="loader-inner">
-          <div className="loader-text">DVD</div>
-          <div className="loader-subtext">geg</div>
+          <div className="loader-text"></div>
+          <div className="loader-subtext">vivi</div>
         </div>
       </div>
     );
