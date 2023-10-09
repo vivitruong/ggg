@@ -86,7 +86,7 @@ const SearchPage = () => {
           return (
             <div className="album-card" key={i}>
 
-              <p>{album?.name}</p>
+              <p style={{padding: '5px', fontSize:'15px', fontWeight:'bold'}}>{album?.name}</p>
 
             </div>
 
@@ -95,7 +95,7 @@ const SearchPage = () => {
       ) :
        (
 
-        <p>No albums found.</p>
+        <p style={{padding: '5px'}}>No albums found.</p>
       )}
     </div>
   </div>

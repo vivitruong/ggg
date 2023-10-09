@@ -67,8 +67,8 @@ const PlayListHeader = ({ songsInPlayList }) => {
           </div>
           <div>
           <h2 style={{padding: '5px'}}>{currentPlayList?.name}</h2>
-            <p>{currentPlayList?.description}</p>
-            <p>{`${currentPlayList?.playlist_songs?.length} songs`}</p>
+            <p style={{fontWeight:'600'}}>{currentPlayList?.description}</p>
+            <p >{`${currentPlayList?.playlist_songs?.length} songs`}</p>
           </div>
         </div>
         <div className="btns">

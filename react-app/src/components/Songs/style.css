@@ -37,21 +37,26 @@
 .id-column {
 }
 
+
 .title-column {
   flex: 3;
   font-weight: bold;
+  font-size: 14px;
 }
 
 .album-column {
   flex: 4;
+  font-weight: bold;
 }
 
 .date-added-column {
   flex: 2;
+  font-weight: bold;
 }
 
 .duration-column {
   flex: 2;
+
 }
 
 .title {

@@ -35,11 +35,11 @@ const PlayLists = () => {
   });
   return (
 <div className="playList">
-  <span style={{ fontSize: '20px', paddingTop: '10px', fontWeight: '600' }}>
+  <span style={{ fontSize: '20px', paddingBottom:'10px', fontWeight: '600' }}>
     My Playlists <img src='https://win98icons.alexmeub.com/icons/png/cd_audio_cd-1.png' alt="CD Icon" />
   </span>
   {renderList.map((item, index) => (
-    <div key={index} style={{ padding: '5px 0' }}>
+    <div key={index} style={{ padding: '6px 0', fontWeight:'500', fontSize:'13px' }}>
 
       {item}
     </div>

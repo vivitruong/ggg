@@ -37,7 +37,7 @@ const Navbar = () => {
             <Link to="/library">
               <Button onClick={onClickHandler}>
                 <img src={iconComputer} alt="" />
-                Your Library
+               Your Songs
               </Button>
             </Link>
           </li>

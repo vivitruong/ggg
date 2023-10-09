@@ -3,19 +3,19 @@ from app.models import db, Song, environment, SCHEMA
 def seed_songs():
     demo_song1 = Song(
         user_id = 1,
-        name='Super Shy',
+        name='Dilemma',
         genre='Pop',
         artist='New Jeans',
         cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar1.png',
-        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/zamona-net-newjeans-super-shy.mp3'
+        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/dilema.mp3'
     )
     demo_song2 = Song(
         user_id = 1,
-        name='Cupid',
+        name='Take A Bow',
         genre='Pop',
-        artist='Fifty Fifty',
+        artist='Rihanna',
         cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar2.png',
-        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/zamona-net-fifty-fifty-cupid.mp3'
+        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/takeabow.mp3'
 
     )
     demo_song3 = Song(
@@ -82,11 +82,11 @@ def seed_songs():
     )
     demo_song10 = Song(
         user_id = 3,
-        name='Love Me Piano Cover by Vivi',
+        name='Eenie Meenine',
         genre='Hip Hop',
-        artist='Yiruma',
+        artist='Sean Kington ft Justin Bieber',
         cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar10.png',
-        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/Loveme.mp3'
+        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/EenieMeenie.mp3'
     )
     demo_song11 = Song(
         user_id = 1,
@@ -124,7 +124,7 @@ def seed_songs():
         user_id = 3,
         name='Just A Dream',
         genre='Pop',
-        artist='T.R.I x Ca',
+        artist='Nelly',
         cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar4.png',
         file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/justadream.mp3'
     )
@@ -146,11 +146,46 @@ def seed_songs():
     )
     demo_song18 = Song(
         user_id = 1,
-        name='greedy',
+        name='I wanted You',
         genre='Hip Hop',
-        artist='Tate McRae',
+        artist='Inna',
         cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar7.png',
-        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/greedy.mp3'
+        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/Iwantedyou.mp3'
+    )
+    demo_song19 = Song(
+        user_id = 1,
+        name='Super Shy',
+        genre='Pop',
+        artist='New Jeans',
+        cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar1.png',
+        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/zamona-net-newjeans-super-shy.mp3'
+    )
+    demo_song20 = Song(
+        user_id = 2,
+        name='Cupid',
+        genre='Pop',
+        artist='Fifty Fifty',
+        cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar2.png',
+        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/zamona-net-fifty-fifty-cupid.mp3'
+
+    )
+    demo_song21 = Song(
+        user_id = 2,
+        name='Girlfriend',
+        genre='Pop',
+        artist='Avril Lavigne',
+        cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar8.png',
+        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/girlfriend.mp3'
+
+    )
+    demo_song22 = Song(
+        user_id = 3,
+        name='Mirros',
+        genre='Pop',
+        artist='Justin Timberlake',
+        cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar10.png',
+        file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/MirrorsJustinTImberlake.mp3'
+
     )
 
 
@@ -172,6 +207,9 @@ def seed_songs():
     db.session.add(demo_song16)
     db.session.add(demo_song17)
     db.session.add(demo_song18)
+    db.session.add(demo_song19)
+    db.session.add(demo_song20)
+    db.session.add(demo_song21)
 
 
     db.session.commit()
