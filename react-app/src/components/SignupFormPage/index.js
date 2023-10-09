@@ -61,7 +61,7 @@ function SignupFormPage() {
 console.log(username , 'this is username')
 const handleSubmit = async (e) => {
   e.preventDefault();
-  toggleSound()
+
   if (password === confirmPassword) {
     const info = {
       username,
@@ -74,6 +74,7 @@ const handleSubmit = async (e) => {
     if (data) {
       setErrors(data);
     } else {
+      toggleSound()
       closeModal();
     }
   } else {
