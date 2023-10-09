@@ -35,7 +35,7 @@ const PlayLists = () => {
   });
   return (
 <div className="playList">
-  <span style={{ fontSize: '20px', paddingBottom:'10px', fontWeight: '600' }}>
+  <span style={{ fontSize: '17px', paddingBottom:'10px', fontWeight: '600', color:'blue' }}>
     My Playlists <img src='https://win98icons.alexmeub.com/icons/png/cd_audio_cd-1.png' alt="CD Icon" />
   </span>
 
