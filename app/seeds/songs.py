@@ -5,7 +5,7 @@ def seed_songs():
         user_id = 1,
         name='Dilemma',
         genre='Pop',
-        artist='New Jeans',
+        artist='Nelly ft. Kelly Rowland',
         cover_photo='https://goldeneragrooves.s3.us-east-2.amazonaws.com/avatar1.png',
         file_path='https://goldeneragrooves.s3.us-east-2.amazonaws.com/dilema.mp3'
     )
