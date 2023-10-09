@@ -19,11 +19,21 @@ function SignupFormPage() {
 	const { closeModal } = useModal();
   const user = useSelector(state => state.session.user);
   const [redirectToLogin, setRedirectToLogin] = useState(false);
+  const[sound, setSound] = useState(false);
   const regex = RegExp(
     /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
   );
   if (user) {
     return <Redirect to='/' />;
+  }
+  const toggleSound = () => {
+    const click = new Audio('https://goldeneragrooves.s3.us-east-2.amazonaws.com/windowsound.mp3');
+    if (sound) {
+      click.pause();
+    } else {
+      click.play()
+    }
+    setSound(!sound)
   }
 
 // 	const handleSubmit = async (e) => {
@@ -51,6 +61,7 @@ function SignupFormPage() {
 console.log(username , 'this is username')
 const handleSubmit = async (e) => {
   e.preventDefault();
+  toggleSound()
   if (password === confirmPassword) {
     const info = {
       username,
@@ -71,6 +82,7 @@ const handleSubmit = async (e) => {
     ]);
   }
 };
+
 
 
 

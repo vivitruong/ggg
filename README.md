@@ -1,8 +1,9 @@
-# Flask React Project
+# Welcome to Golden Era Grooves
 
-This is the starter for the Flask React project.
+Golden Era Grooves is the website that got inspired by Spotify and SoundCloud but with a theme of Window95/98 UI. This is the final project for my time at App Academy.
 
-## Getting started
+## Technologies
+
 1. Clone this repository (only this branch)
 
 2. Install dependencies

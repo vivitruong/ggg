@@ -10,6 +10,7 @@ import { Link } from "react-router-dom/cjs/react-router-dom.min";
 export const LoginFormPage = () => {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
+  const[sound, setSound] = useState(false);
 
   const [email, setEmail] = useState("");
   const [password, setpassword] = useState("");
@@ -24,9 +25,19 @@ export const LoginFormPage = () => {
   const toggleMaximize = () => {
     setIsMaximized(!isMaximized);
   };
+  const toggleSound = () => {
+    const click = new Audio('https://goldeneragrooves.s3.us-east-2.amazonaws.com/windowsound.mp3');
+    if (sound) {
+      click.pause();
+    } else {
+      click.play()
+    }
+    setSound(!sound)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    toggleSound()
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
@@ -39,6 +50,7 @@ export const LoginFormPage = () => {
     const email = "demo@aa.io";
     const password = "password";
     e.preventDefault();
+    toggleSound()
     const data = await dispatch(login(email, password));
     if (data === null) {
       closeModal();

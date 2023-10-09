@@ -1,55 +1,58 @@
 .splash-screen-image {
-    display: block;
-    /* margin: 0 auto; */
-    margin-top: -280px;
-    margin-right: -35px;
-    width: 350.394px;
-    height: 400.651px;
-    animation: jumpShake 3s ease-in-out infinite;
+  display: block;
+  /* margin: 0 auto; */
+  margin-top: -280px;
+  margin-right: -35px;
+  width: 350.394px;
+  height: 400.651px;
+  animation: jumpShake 3s ease-in-out infinite;
 }
 @keyframes jumpShake {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  20%, 40%, 60%, 80% {
-    transform: translateY(-5px) rotate(-5deg);
-  }
-  30%, 50%, 70% {
-    transform: translateY(-5px) rotate(5deg);
-  }
+0%, 100% {
+  transform: translateY(0) rotate(0deg);
+}
+20%, 40%, 60%, 80% {
+  transform: translateY(-5px) rotate(-5deg);
+}
+30%, 50%, 70% {
+  transform: translateY(-5px) rotate(5deg);
+}
 }
 
 .splash-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
 
+  opacity: 1;
+  animation: fadeIn 5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
     opacity: 1;
-    animation: fadeIn 5s;
   }
+}
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-
+.fadeOut {
+  opacity: 0;
+  animation: fadeOut 6s;
+}
 span {
-    font-family: 'Ms-Sans-Serif', sans-serif !important;
-    font-size: 13.076px;
-    font-style: normal;
-    line-height: 17.412px;
+  font-family: 'Ms-Sans-Serif', sans-serif !important;
+  font-size: 13.076px;
+  font-style: normal;
+  line-height: 17.412px;
 }
 .clickenter:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 .clickenter {
-    width: 111px;
+  width: 111px;
 }

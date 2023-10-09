@@ -10,6 +10,17 @@ function SplashScreen() {
     const history = useHistory();
     const sessionUser = useSelector((state) => state.session.user)
     const [isLoading, setIsLoading] = useState(true);
+    const[sound, setSound] = useState(false);
+
+    const toggleSound = () => {
+      const click = new Audio('https://goldeneragrooves.s3.us-east-2.amazonaws.com/clicksouind.wav');
+      if (sound) {
+        click.pause();
+      } else {
+        click.play()
+      }
+      setSound(!sound)
+    }
 
     useEffect(() => {
         // Simulate a delay (e.g., 3 seconds) for the splash screen
@@ -40,13 +51,17 @@ function SplashScreen() {
           }}
         >
           {/* <h3 style={{color:'Navy'}}>Welcome to</h3> */}
+
           <img
             className="splash-screen-image"
             src="https://goldeneragrooves.s3.us-east-2.amazonaws.com/splash_logo-removebg.png"
             alt="splashscreen"
           />
           <img
-            onClick={redirectToLoginPage}
+             onClick={() => {
+              toggleSound();
+              redirectToLoginPage();
+            }}
             className="clickenter"
             src="https://goldeneragrooves.s3.us-east-2.amazonaws.com/Click+here+to+enter.png"
             alt="Click to enter"
