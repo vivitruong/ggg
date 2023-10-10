@@ -46,7 +46,7 @@ const CreateSong = () => {
     } else {
       errors.cover_photo = 'Cover photo is required';
     }
-    console.log(file_path)
+
     if (file_path  && file_path.name) {
       const allowedExtensions = ['mp3'];
       let fileExtension = file_path.name.split('.')
@@ -73,8 +73,6 @@ const CreateSong = () => {
   formData.append("file_path", file_path)
   formData.append('artist', artist)
 
-
-  console.log(formData.cover_photo, 'this is new')
   setImageLoading(true);
   setSongLoading(true);
 

@@ -113,7 +113,6 @@ def upload_song():
     if form.validate_on_submit():
 
         cover_photo = form.data['cover_photo']
-        print(cover_photo)
 
         cover_photo.filename = get_unique_filename(cover_photo.filename)
 

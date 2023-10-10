@@ -65,8 +65,6 @@ export const deleteSong = ({ songId }) => async dispatch => {
     }
 };
 export const createSong = (song) => async dispatch => {
-    console.log(song,'this is song')
-    console.log(song.coverPhoto, '--coverphoto here')
     const response = await fetch(`/api/songs/`, {
         method: 'POST',
         body: song
@@ -118,35 +116,6 @@ const userSongReducer = (state = initialState, action) => {
 
 
 
-// const userSongReducer = (state = {}, action) => {
-//     let newState;
-//     switch (action.type) {
-//         case LOAD_USERSONGS:
-//             const userSong = {};
-//             console.log(action);
-//             action.songs?.forEach((song) => {
-//                 userSong[ song.id ] = song;
-//             });
-//             return userSong;
-
-//         case ADD_SONG:
-//             newState = deepCopy(state);
-//             newState.songs[ action.song.id ] = action.song;
-//             return newState;
-//         case UPDATE_SONG:
-//             newState = { ...state };
-//             newState[ action.song.id ] = action.song;
-//             return newState;
-
-//         case REMOVE_SONG:
-//             console.log(action);
-//             newState = { ...state };
-//             delete newState[ action?.songId ];
-//             return newState;
-//         default:
-//             return state;
-//     }
-// };
 
 function deepCopy (value) {
     if (typeof value === 'object') {

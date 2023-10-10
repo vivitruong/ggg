@@ -9,7 +9,7 @@ import "./style.css";
 
 const ActionBar = () => {
   // const dispatch = useDispatch();
-  // const { playSong } = useSelector((state) => state.playSong);
+
   return (
     <div className="actionBar">
       <div className="btns">
@@ -18,7 +18,7 @@ const ActionBar = () => {
         </Button>
         <Button
           iconOnly
-          // onClick={() => dispatch(likeSong({ ...playSong, isLiked: true }))}
+
         >
           <img src={iconHeart} alt="" />
         </Button>

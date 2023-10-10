@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-// import InputField from "../InputField";
-// import Button from "../Button";
-// import { useCreateSongMutation } from "../../slices/songsApiSlice";
+
 import { useDispatch, useSelector } from "react-redux";
 import * as songActions from '../../store/song';
 import {updateASong} from '../../store/userSong';
@@ -18,10 +16,10 @@ const EditSong = ({song_id, setEditModal }) => {
   const [error, setErrors] = useState({});
   const history = useHistory()
   const songId = song_id
-  // console.log(songId)
+
   const userSongs = useSelector((state) => state.userSongs);
   const {user } = useSelector((state) => state.session)
-  // console.log('this is song id Obj', userSongs)
+
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
