@@ -37,13 +37,14 @@ export const LoginFormPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    toggleSound()
+
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
     } else {
       // closeModal();
       console.log("login sucess");
+      toggleSound()
     }
   };
   const demoLogin = async (e) => {

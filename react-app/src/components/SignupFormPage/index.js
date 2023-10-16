@@ -58,7 +58,7 @@ function SignupFormPage() {
 //     }
 //   }
 // }
-console.log(username , 'this is username')
+// console.log(username , 'this is username')
 const handleSubmit = async (e) => {
   e.preventDefault();
 
