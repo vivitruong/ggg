@@ -100,15 +100,18 @@ const handleSubmit = async (e) => {
       <form onSubmit={handleSubmit} className="input-login">
       {errors.length > 0 && (
           <div className="validation-errors">
-            <ul>
+            {errors}
+            {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         )}
 
+
         <img className="logo-login" src='https://goldeneragrooves.s3.us-east-2.amazonaws.com/windowPG.png' alt='login'/>
+
         <span style={{
             color: '#222222',
             textAlign: 'center',
@@ -119,7 +122,12 @@ const handleSubmit = async (e) => {
             lineHeight: '12px',
 
           }}>Golden Era Grooves</span>
+
         <div class="login-content">
+        {/* {errors &&
+              <div style={{color:'#d60017'}}>
+                {errors}
+                </div> */}
         <div className='login-username login-info'>
           <input
             type="text"
@@ -139,6 +147,12 @@ const handleSubmit = async (e) => {
           />
 
         </div>
+        {signUpErr && (
+          <div>
+            {signUpErr.email}
+          </div>
+        )}
+
 
 		  <div className='login-username login-info'>
           <input
@@ -149,6 +163,11 @@ const handleSubmit = async (e) => {
             required
           />
           </div>
+          {signUpErr && (
+          <div>
+            {signUpErr.first_name}
+          </div>
+        )}
 		  <div className='login-username login-info'>
           <input
             type="text"
@@ -158,6 +177,11 @@ const handleSubmit = async (e) => {
             required
           />
           </div>
+          {signUpErr && (
+          <div>
+            {signUpErr.last_name}
+          </div>
+        )}
 		  <div className='login-password login-info'>
           <input
             type="password"
