@@ -19,6 +19,7 @@ function SignupFormPage() {
 	const { closeModal } = useModal();
   const user = useSelector(state => state.session.user);
   const [redirectToLogin, setRedirectToLogin] = useState(false);
+  const [signUpErr, setSignUpErr] = useState({});
   const[sound, setSound] = useState(false);
   const regex = RegExp(
     /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g
@@ -36,31 +37,11 @@ function SignupFormPage() {
     setSound(!sound)
   }
 
-// 	const handleSubmit = async (e) => {
-//     e.preventDefault();
-// 		if (password === confirmPassword) {
-//       console.log('Password:', password);
-// console.log('Confirm Password:', confirmPassword);
-//       const formData = new FormData();
-//       formData.append('username', username);
-//       formData.append('email', email);
-//       formData.append('password', password);
-//       formData.append('first_name', first_name);
-//       formData.append('last_name', last_name);
-
-//     try {
-//       await dispatch(signUp(formData));
-//     }
-//     catch(err) {
-//       console.error('Error:', err); // Log the error for debugging
-//       setErrors(["An error occurred. Please try again."]);
-
-//     }
-//   }
-// }
-console.log(username , 'this is username')
 const handleSubmit = async (e) => {
   e.preventDefault();
+  setSignUpErr({})
+  const err = {};
+
 
   if (password === confirmPassword) {
     const info = {
@@ -70,6 +51,22 @@ const handleSubmit = async (e) => {
       first_name,
       last_name,
     };
+  if(first_name.trim() === "") {
+      err.first_name = "First name cannot be blank"
+    }
+    if(last_name.trim() === "")  {
+      err.last_name = "Last name cannot be blank"
+    }
+    if(!email.trim().match(regex)) {
+      err.email = "Please provide a valid email"
+    }
+    if(password.length < 6 || password.length > 156) {
+      err.password = "Password must be greater than 6 characters and less than 156 characters"
+    }
+    if(Object.keys(err).length > 0) {
+      setSignUpErr(err);
+      return
+    }
     const data = await dispatch(signUp(info));
     if (data) {
       setErrors(data);
@@ -103,15 +100,18 @@ const handleSubmit = async (e) => {
       <form onSubmit={handleSubmit} className="input-login">
       {errors.length > 0 && (
           <div className="validation-errors">
-            <ul>
+            {errors}
+            {/* <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         )}
 
+
         <img className="logo-login" src='https://goldeneragrooves.s3.us-east-2.amazonaws.com/windowPG.png' alt='login'/>
+
         <span style={{
             color: '#222222',
             textAlign: 'center',
@@ -122,7 +122,12 @@ const handleSubmit = async (e) => {
             lineHeight: '12px',
 
           }}>Golden Era Grooves</span>
+
         <div class="login-content">
+        {/* {errors &&
+              <div style={{color:'#d60017'}}>
+                {errors}
+                </div> */}
         <div className='login-username login-info'>
           <input
             type="text"
@@ -142,6 +147,12 @@ const handleSubmit = async (e) => {
           />
 
         </div>
+        {signUpErr && (
+          <div>
+            {signUpErr.email}
+          </div>
+        )}
+
 
 		  <div className='login-username login-info'>
           <input
@@ -152,6 +163,11 @@ const handleSubmit = async (e) => {
             required
           />
           </div>
+          {signUpErr && (
+          <div>
+            {signUpErr.first_name}
+          </div>
+        )}
 		  <div className='login-username login-info'>
           <input
             type="text"
@@ -161,6 +177,11 @@ const handleSubmit = async (e) => {
             required
           />
           </div>
+          {signUpErr && (
+          <div>
+            {signUpErr.last_name}
+          </div>
+        )}
 		  <div className='login-password login-info'>
           <input
             type="password"
