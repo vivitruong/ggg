@@ -40,10 +40,10 @@ function SignupFormPage() {
 const handleSubmit = async (e) => {
   e.preventDefault();
   setSignUpErr({})
-  const err = {};
+  const errors = {};
 
 
-  if (password === confirmPassword) {
+  // if (password === confirmPassword) {
     const info = {
       username,
       email,
@@ -51,21 +51,30 @@ const handleSubmit = async (e) => {
       first_name,
       last_name,
     };
-  if(first_name.trim() === "") {
-      err.first_name = "First name cannot be blank"
+    if(username.length === "") {
+      errors.username = "Please provide an username"
     }
-    if(last_name.trim() === "")  {
-      err.last_name = "Last name cannot be blank"
+  if(first_name.length === "") {
+      errors.first_name = "First name cannot be blank"
+    }
+    if(last_name.length === "")  {
+      errors.last_name = "Last name cannot be blank"
     }
     if(!email.trim().match(regex)) {
-      err.email = "Please provide a valid email"
+      errors.email = "Please provide a valid email"
     }
     if(password.length < 6 || password.length > 156) {
-      err.password = "Password must be greater than 6 characters and less than 156 characters"
+      errors.password = "Password must be greater than 6 characters and less than 156 characters"
     }
-    if(Object.keys(err).length > 0) {
-      setSignUpErr(err);
-      return
+    if(password !== confirmPassword) {
+      errors.confirmPassword = "Password and Confirmed password must match"
+    }
+    if(password.length < 6) {
+      errors.password = "Password must be greater than 6 characters"
+    }
+    if(Object.keys(errors).length > 0) {
+      setSignUpErr(errors);
+      return;
     }
     const data = await dispatch(signUp(info));
     if (data) {
@@ -74,11 +83,11 @@ const handleSubmit = async (e) => {
       toggleSound()
       closeModal();
     }
-  } else {
-    setErrors([
-      "Confirm Password field must be the same as the Password field",
-    ]);
-  }
+  // } else {
+  //   setErrors([
+  //     "Confirm Password field must be the same as the Password field",
+  //   ]);
+  // }
 };
 
 
@@ -136,6 +145,11 @@ const handleSubmit = async (e) => {
             required
           />
           </div>
+          {signUpErr && (
+          <div>
+            {signUpErr.username}
+          </div>
+        )}
         <div className='login-email login-info'>
           <input
             placeholder="Email"
@@ -190,6 +204,12 @@ const handleSubmit = async (e) => {
             required
           />
           </div>
+          {signUpErr && (
+          <div>
+            {signUpErr.password}
+          </div>
+        )}
+
 		  <div className='login-passwordconfirm login-info'>
           <input
             type="password"
@@ -200,6 +220,12 @@ const handleSubmit = async (e) => {
 
           />
           </div>
+          {signUpErr && (
+          <div>
+            {signUpErr.confirmPassword}
+          </div>
+        )}
+
         </div>
         <div className="down-login">
         <button type="submit">Sign Up</button>
