@@ -113,18 +113,18 @@ const CreateSong = () => {
             >
                 <div>
                 <div className="error-message">{error.name && <p className="">{error.name}</p>}</div>
-                <label> Title <span style={{color:"red", fontSize:"1rem"}}>*</span>
+                <label className="songcreate-title"> Title :  <span style={{color:"red", fontSize:"1rem"}}>*</span>
 
                     <input
                         className="input-create"
                         type='text'
-                        placeholder="Song Name"
+                        placeholder="Title of your song"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                 </label>
                  <div className="error-message">{error.artist && <p className="">{error.artist}</p>}</div>
-                <label>Artist <span style={{color:"red", fontSize:"1rem"}}>*</span>
+                <label className="songcreate-title">Artist : <span style={{color:"red", fontSize:"1rem"}}>*</span>
 
                     <input
                         className="input-create"
@@ -137,7 +137,7 @@ const CreateSong = () => {
                 </div>
                 <div>
 
-                 <label style={{padding: '20px 10px 10px 12px'}} className="input-create">Genre <span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
+                 <label className="songcreate-title">Genre : <span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
                         <select className="" style={{ margin: 'auto'}} value={genre} onChange={e => setGenre(e.target.value)} >
                             <option value="Pop">Pop</option>
                             <option value="rnb">R&B</option>
@@ -153,10 +153,10 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.cover_photo && <p className="">{error.cover_photo}</p>}</div>
-                {(imageLoading)&& <Loader />}
-                <label className="label-create">
+                {(imageLoading)}
+                <label className="songcreate-title">
 
-                    Select Cover Photo
+                    Select Cover Photo:
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>
                     <input
                         className="input-create"
@@ -165,27 +165,31 @@ const CreateSong = () => {
                         onChange={(e) => {setCoverPhoto(e.target.files)
 
                         }}
+                        style={{cursor:'pointer'}}
                     />
                 </label>
                 </div>
                 <div>
                 <div className="error-message">{error.file_path && <p className="">{error.file_path}</p>}</div>
                 {(songLoading) && <Loader />}
-                <label className="label-create">
-                    Select Song
+                <label className="songcreate-title">
+                    Select Song :
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>
                     <input
                         className="input-create"
                         type="file"
                         accept="song/*"
                         onChange={(e) => setFilePath(e.target.files[0])}
+                        style={{cursor:'pointer'}}
                     />
                 </label>
                 </div>
-                <div style={{padding:'10px'}} className="align-create-button">
+                <div style={{padding:'10px 0'}} className="align-create-button">
                 <button style={{cursor:'pointer'}} className='create-button test' type="submit">UPLOAD</button>
                 </div>
-                <p>By uploading, you confirm that your file comply with our Terms of Use.</p>
+
+                <p style={{paddingBottom:'5px'}}>By uploading, you confirm that your file comply with our Terms of Use*.</p>
+                <img src="https://goldeneragrooves.s3.us-east-2.amazonaws.com/giphy.gif" width="200" height="140" frameBorder="0" class="giphy-embed"></img>
             </form>
         </div>
         </div>

@@ -51,13 +51,13 @@ const handleSubmit = async (e) => {
       first_name,
       last_name,
     };
-    if(username.length === "") {
+    if(username.length === 0) {
       errors.username = "Please provide an username"
     }
-  if(first_name.length === "") {
+  if(first_name.length === 0) {
       errors.first_name = "First name cannot be blank"
     }
-    if(last_name.length === "")  {
+    if(last_name.length === 0)  {
       errors.last_name = "Last name cannot be blank"
     }
     if(!email.trim().match(regex)) {
@@ -150,6 +150,7 @@ const handleSubmit = async (e) => {
             {signUpErr.username}
           </div>
         )}
+
         <div className='login-email login-info'>
           <input
             placeholder="Email"

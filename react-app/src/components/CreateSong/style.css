@@ -26,7 +26,10 @@
    padding: 5px;
 
 }
-
+.songcreate-title {
+   padding: 10px;
+   font-size: 1.8vh;
+}
 .organize-create {
    display: grid;
    grid-template-areas:

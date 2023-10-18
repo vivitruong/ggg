@@ -74,18 +74,18 @@ const EditSong = ({song_id, setEditModal }) => {
             >
                 <div>
                 <div className="error-message">{error.name && <p className="">{error.name}</p>}</div>
-                <label> Title <span style={{color:"red", fontSize:"1rem"}}>*</span>
+                <label className="songcreate-title" > Title :<span style={{color:"red", fontSize:"1rem"}}>*</span>
 
                     <input
                         className="input-create"
                         type='text'
-                        placeholder="Song Name"
+                        placeholder="Title of your song"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                 </label>
                 <div className="error-message">{error.artist && <p className="">{error.artist}</p>}</div>
-                <label>Artist <span style={{color:"red", fontSize:"1rem"}}>*</span>
+                <label className="songcreate-title" >Artist :<span style={{color:"red", fontSize:"1rem"}}>*</span>
 
                     <input
                         className="input-create"
@@ -96,9 +96,9 @@ const EditSong = ({song_id, setEditModal }) => {
                     />
                 </label>
                 </div>
-                <div style={{marginLeft:'70px', padding:'10px'}}>
+                <div>
 
-                 <label >Genre <span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
+                 <label className="songcreate-title" >Genre :<span style={{color:"red", fontSize:"1rem"}}>*</span> </label>
                         <select style={{ margin: 'auto' }} value={genre} onChange={e => setGenre(e.target.value)} >
                             <option value="Pop">Pop</option>
                             <option value="rnb">R&B</option>
@@ -120,6 +120,7 @@ const EditSong = ({song_id, setEditModal }) => {
                   <span style={{marginRight:'10px', fontSize:'11px'}}>If you wish to change the whole track, just delete and re-upload your songs of choice !
 
                   </span>
+                  <img src="https://goldeneragrooves.s3.us-east-2.amazonaws.com/giphy+(1).gif" width="200" height="140" frameBorder="0" class="giphy-embed"></img>
                 </div>
             </form>
         </div>
