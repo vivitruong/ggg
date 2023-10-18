@@ -100,12 +100,11 @@ const handleSubmit = async (e) => {
       <form onSubmit={handleSubmit} className="input-login">
       {errors.length > 0 && (
           <div className="validation-errors">
-            {errors}
-            {/* <ul>
+            <ul>
               {errors.map((error, idx) => (
                 <li key={idx}>{error}</li>
               ))}
-            </ul> */}
+            </ul>
           </div>
         )}
 
