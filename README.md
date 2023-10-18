@@ -10,16 +10,17 @@ Golden Era Grooves is the website that got inspired by Spotify and SoundCloud bu
 
 ## Features:
 1. Welcome Splash Page
- [!spash](/react-app/src/assets/splashscreengeg.PNG)
+ ![spash](/react-app/src/assets/splashscreengeg.PNG)
 
 2. Signup/Login Modal
- [!signuplogin](/react-app/src/assets/signupgeg.PNG)
+ ![signuplogin](/react-app/src/assets/signupgeg.PNG)
 
 3. Main Page of a logged in user
- [!maingeg](/react-app/src/assets/maingeg.PNG)
+ ![maingeg](/react-app/src/assets/maingeg.PNG)
 
 4. Create a playlist for a logged in user
- [!createplaylist](/react-app/src/assets/createplaylistgeg.PNG)
+
+ ![createplaylist](/react-app/src/assets/createplaylistgeg.PNG)
 
 ## Upcoming features:
 1. Player: Repeated && shuffle playlist
