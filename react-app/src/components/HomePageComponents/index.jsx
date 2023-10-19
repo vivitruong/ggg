@@ -89,7 +89,7 @@ const HomePageComponents = ({ allPlaylists }) => {
             </Button> */}
             <Button className="github">
               <img src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
-              <a href="https://github.com/vivitruong">github.com/vivitruong</a>
+              <a href="https://github.com/vivitruong" target="_blank">github.com/vivitruong</a>
             </Button>
         </div>
         <Divider />

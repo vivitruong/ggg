@@ -112,7 +112,7 @@ const LibrarayPage = () => {
   </div>
 </div>
             <h4>
-              Are You Sure you want to delete "{songToEditOrDelete?.name}" song? <img src='https://win98icons.alexmeub.com/icons/png/msg_error-2.png'></img>
+              Are you sure you want to delete "{songToEditOrDelete?.name}"?<img src='https://win98icons.alexmeub.com/icons/png/msg_error-2.png'></img>
             </h4>
             <div className="btns">
               <Button

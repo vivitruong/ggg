@@ -31,7 +31,7 @@ const CreatePlayList = () => {
       <ActionBar />
       <Divider />
 
-       <h4 style={{padding:'10px'}}>"Hooray! 🎉 Time to create your new playlist! 🎶 Let's rock 'n' roll! 🕺💃</h4>
+       <h4 style={{padding:'10px'}}>Time to create your new playlist! 🎶 Let's rock 'n' roll! 🕺💃</h4>
        <Divider />
       <PlayListForm
         submitHandler={submitHandler}
