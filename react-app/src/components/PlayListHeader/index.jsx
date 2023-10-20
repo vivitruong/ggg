@@ -126,7 +126,7 @@ const PlayListHeader = ({ songsInPlayList }) => {
               description={description}
               setName={setName}
               setDescription={setDescription}
-              btnText={"Edit PlayList"}
+              btnText={"Edit Playlist"}
 
             />
 
