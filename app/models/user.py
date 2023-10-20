@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
-# from .like import likes
+from .like import likes
 
 
 class User(db.Model, UserMixin):
@@ -24,6 +24,11 @@ class User(db.Model, UserMixin):
 
     playlists = db.relationship('Playlist', back_populates='user', cascade='all, delete-orphan')
     songs = db.relationship('Song', back_populates='user', cascade='all, delete-orphan')
+    user_likes = db.relationship(
+        'Song',
+        secondary=likes,
+        back_populates='liked_songs'
+    )
 
 
     @property

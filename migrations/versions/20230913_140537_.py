@@ -51,6 +51,13 @@ def upgrade():
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('likes',
+    sa.Column('users', sa.Integer(), nullable=False),
+    sa.Column('songs', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['songs'], ['songs.id'], ),
+    sa.ForeignKeyConstraint(['users'], ['users.id'], ),
+    sa.PrimaryKeyConstraint('users', 'songs')
+    )
 
 
 def downgrade():
@@ -66,5 +73,6 @@ def downgrade():
     op.drop_table('songs')
     op.drop_table('playlists')
     op.drop_table('playlist_songs')
+    op.drop_table('likes')
 
     # ### end Alembic commands ###

@@ -4,3 +4,4 @@ from .addsong_form import AddSongForm
 from .playlist_form import PlaylistForm
 from .uploadsong_form import UploadSongForm
 from .song_form import SongForm
+from .like_form import LikeForm
