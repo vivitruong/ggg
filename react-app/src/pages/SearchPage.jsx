@@ -39,7 +39,7 @@ const SearchPage = () => {
     let artistId = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', searchParameters)
       .then(res => res.json())
       .then(data => {
-        return data.artists.items[0].id
+        return data.artists?.items[0].id
       })
       console.log('Artist Id ' + artistId)
 
