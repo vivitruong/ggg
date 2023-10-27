@@ -5,7 +5,7 @@ const Loader = () => {
       <div className="loader">
         <div className="loader-inner">
           <div className="loader-text"></div>
-          <div className="loader-subtext">vivi</div>
+          <div className="loader-subtext">geg</div>
         </div>
       </div>
     );
