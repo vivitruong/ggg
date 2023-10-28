@@ -1,6 +1,6 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 from datetime import datetime
-from .like import likes
+# from .like import likes
 class Song(db.Model):
     __tablename__ = 'songs'
 
@@ -19,11 +19,7 @@ class Song(db.Model):
 
     user = db.relationship('User', back_populates='songs')
     playlist_songs = db.relationship('Playlist_Song', back_populates='song', cascade='all, delete-orphan')
-    liked_songs= db.relationship(
-        'User',
-        secondary=likes,
-        back_populates='user_likes'
-    )
+    likes = db.relationship('Like', back_populates='song', cascade='all, delete-orphan')
     def to_dict(self):
         return {
             'id': self.id,

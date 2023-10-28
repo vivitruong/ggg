@@ -52,11 +52,12 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('likes',
-    sa.Column('users', sa.Integer(), nullable=False),
-    sa.Column('songs', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['songs'], ['songs.id'], ),
-    sa.ForeignKeyConstraint(['users'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('users', 'songs')
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('song_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
+    sa.PrimaryKeyConstraint('id')
     )
 
 

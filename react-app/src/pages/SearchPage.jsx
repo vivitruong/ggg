@@ -3,7 +3,6 @@ import InputField from "../components/InputField";
 import {useState, useEffect} from 'react'
 import Divider from '../components/Divider'
 import ActionBar from '../components/ActionBar'
-
 const CLIENT_ID='8fdd8f8ad1134098af96799b51f862ad'
 const CLIENT_SECRET='41ed17b571b842418ac8b69891d414ed'
 const SearchPage = () => {
