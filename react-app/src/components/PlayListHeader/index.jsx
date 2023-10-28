@@ -23,9 +23,13 @@ const PlayListHeader = ({ songsInPlayList }) => {
   const [currentPlayList, setCurrentPlaylist] = useState({});
   const dispatch = useDispatch();
   const playlists = useSelector((state) => state.userPlaylists);
+  console.log(playlists, '-----')
   const songs = useSelector((state) => state.songs);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState(playlists[0].name);
+  const [description, setDescription] = useState(playlists[0].description);
+  console.log(name)
+  console.log(description)
+
 
   const { id } = useParams();
   const history = useHistory();
@@ -48,6 +52,12 @@ const PlayListHeader = ({ songsInPlayList }) => {
       description,
       playlistId: id,
     };
+    if(name) {
+      playListToBeEdited.name = name;
+    }
+    if(description){
+      playListToBeEdited.description = description
+    }
 
     dispatch(updatePlaylist(playListToBeEdited));
     // dispatch(createNewPLaylist(playListToBeEdited));
