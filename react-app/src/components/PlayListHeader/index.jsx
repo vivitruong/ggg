@@ -23,15 +23,24 @@ const PlayListHeader = ({ songsInPlayList }) => {
   const [currentPlayList, setCurrentPlaylist] = useState({});
   const dispatch = useDispatch();
   const playlists = useSelector((state) => state.userPlaylists);
-  console.log(playlists, '-----')
+  console.log(playlists, '-------')
   const songs = useSelector((state) => state.songs);
-  const [name, setName] = useState(playlists[0].name);
-  const [description, setDescription] = useState(playlists[0].description);
-  console.log(name)
-  console.log(description)
+
+  const playlistName = [];
+  playlists.forEach(playlist => {
+    playlistName.push(playlist.name)
+  })
+  console.log(playlistName, '-----playlistname');
+  const [name, setName] = useState(playlistName.name)
+  console.log(name, '---tghis is name should be lofi')
+  //dolnt know why playlist name and description is wroking
+
+  const [description, setDescription] = useState('');
 
 
   const { id } = useParams();
+  // const id = playlists[0].id
+  // console.log(id, '----this is id')
   const history = useHistory();
 
   const deleteHandler = () => {
@@ -52,20 +61,15 @@ const PlayListHeader = ({ songsInPlayList }) => {
       description,
       playlistId: id,
     };
-    if(name) {
-      playListToBeEdited.name = name;
-    }
-    if(description){
-      playListToBeEdited.description = description
-    }
+
 
     dispatch(updatePlaylist(playListToBeEdited));
     // dispatch(createNewPLaylist(playListToBeEdited));
 
-    setDescription("");
+    setDescription('');
     setShowEditModal(false);
     setDeleteModal(false);
-    setName("");
+    setName('');
   };
 
   return (

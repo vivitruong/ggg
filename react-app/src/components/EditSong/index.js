@@ -7,18 +7,22 @@ import { useHistory } from "react-router-dom";
 import './style.css'
 
 const EditSong = ({song_id, setEditModal }) => {
+  const userSongs = useSelector((state) => state.userSongs);
 
-  const [artist, setArtist] = useState("");
-  const [genre, setGenre] = useState("Pop");
-  const [name, setName] = useState("");
+  const {user } = useSelector((state) => state.session)
+  const [artist, setArtist] = useState(userSongs.artist);
+
+  const [genre, setGenre] = useState(userSongs.genre);
+
+  const [name, setName] = useState(userSongs.name);
   const [songLoading, setSongLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setErrors] = useState({});
   const history = useHistory()
   const songId = song_id
 
-  const userSongs = useSelector((state) => state.userSongs);
-  const {user } = useSelector((state) => state.session)
+
+
 
   const dispatch = useDispatch();
 
