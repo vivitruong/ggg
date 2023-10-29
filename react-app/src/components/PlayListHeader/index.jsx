@@ -17,6 +17,8 @@ import Modal from "../Modal";
 import SongsModal from "../SongsModel";
 
 const PlayListHeader = ({ songsInPlayList }) => {
+  const { id } = useParams();
+  const history = useHistory();
   const [showDeleteModal, setDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [addSongModal, setAddSongModal] = useState(false);
@@ -38,10 +40,10 @@ const PlayListHeader = ({ songsInPlayList }) => {
   const [description, setDescription] = useState('');
 
 
-  const { id } = useParams();
+
   // const id = playlists[0].id
   // console.log(id, '----this is id')
-  const history = useHistory();
+
 
   const deleteHandler = () => {
     dispatch(deletePlaylist(id));

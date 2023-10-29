@@ -157,7 +157,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.cover_photo && <p className="">{error.cover_photo}</p>}</div>
-                {(imageLoading)}
+                {(imageLoading) && <p>...image is uploading</p>}
                 <label className="songcreate-title">
 
                     Select Cover Photo:
@@ -175,7 +175,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.file_path && <p className="">{error.file_path}</p>}</div>
-                {songLoading && <Loader />}
+                {(songLoading) && <p>...song is uploading</p>}
                 <label className="songcreate-title">
                     Select Song :
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>
