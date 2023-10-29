@@ -82,6 +82,8 @@ const CreateSong = () => {
       const allSongs = fetchAllSongs();
       dispatch(allSongs);
       console.log(res)
+      // setSongLoading(true)
+      // setImageLoading(true);
       history.push("/");
     }
 
@@ -106,6 +108,8 @@ const CreateSong = () => {
 </div>
     <div className="page-container">
         <div className="form-create">
+
+
 
             <form
                 onSubmit={handleSubmit}
@@ -171,7 +175,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.file_path && <p className="">{error.file_path}</p>}</div>
-                {(songLoading) && <Loader />}
+                {songLoading && <Loader />}
                 <label className="songcreate-title">
                     Select Song :
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>
