@@ -7,14 +7,15 @@ import { useHistory } from "react-router-dom";
 import './style.css'
 
 const EditSong = ({song_id, setEditModal }) => {
-  const userSongs = useSelector((state) => state.userSongs);
+  const userSongs = useSelector((state) => state.userSongs[song_id]);
+  console.log(userSongs)
 
   const {user } = useSelector((state) => state.session)
-  const [artist, setArtist] = useState(userSongs.artist);
+  const [artist, setArtist] = useState(userSongs?.artist);
 
-  const [genre, setGenre] = useState(userSongs.genre);
+  const [genre, setGenre] = useState(userSongs?.genre);
 
-  const [name, setName] = useState(userSongs.name);
+  const [name, setName] = useState(userSongs?.name);
   const [songLoading, setSongLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setErrors] = useState({});
@@ -32,7 +33,7 @@ const EditSong = ({song_id, setEditModal }) => {
 
   if(!name) errors.name = 'Song name is required';
   if(!genre) errors.genre = 'Genre is required';
-  if(!artist) errors.artist = "artist is required"
+  if(!artist) errors.artist = "Artist is required"
 
   setErrors(errors);
 

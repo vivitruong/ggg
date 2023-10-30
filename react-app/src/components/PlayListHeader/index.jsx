@@ -12,7 +12,7 @@ import { deletePlaylist } from "../../store/playlist";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import PlayListForm from "../PlayListForm";
-import { updatePlaylist } from "../../store/playlist";
+import { updatePlaylist, fetchUserList } from "../../store/playlist";
 import Modal from "../Modal";
 import SongsModal from "../SongsModel";
 
@@ -28,22 +28,10 @@ const PlayListHeader = ({ songsInPlayList }) => {
   console.log(playlists, '-------')
   const songs = useSelector((state) => state.songs);
 
-  const playlistName = [];
-  playlists.forEach(playlist => {
-    playlistName.push(playlist.name)
-  })
-  console.log(playlistName, '-----playlistname');
-  const [name, setName] = useState(playlistName.name)
-  console.log(name, '---tghis is name should be lofi')
-  //dolnt know why playlist name and description is wroking
-
-  const [description, setDescription] = useState('');
-
-
-
-  // const id = playlists[0].id
-  // console.log(id, '----this is id')
-
+  const [name, setName] = useState(playlists?.name || "" )
+  console.log(name , '---- here name')
+  const [description, setDescription] = useState(playlists?.description || "");
+  console.log(description)
 
   const deleteHandler = () => {
     dispatch(deletePlaylist(id));
@@ -53,8 +41,25 @@ const PlayListHeader = ({ songsInPlayList }) => {
 
   useEffect(() => {
     const list = playlists.filter((pl) => parseInt(pl?.id) === parseInt(id));
+    console.log(list)
     setCurrentPlaylist(...list);
+
   }, [playlists, id]);
+
+  // useEffect(() => {
+  //   if(!playlists) {
+  //     dispatch(fetchUserList(id))
+  //     .then((pl) => {
+  //       if (pl) {
+  //         setName(pl.name)
+  //         setDescription(pl.description)
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.error('Error fetching playlist', err)
+  //     })
+  //   }
+  // }, [dispatch, playlists, id])
 
   const submitHandler = (e) => {
     e.preventDefault();
