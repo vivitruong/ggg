@@ -27,7 +27,7 @@ const LikeButton = ({songId}) => {
     }
 
     return (
-        <Button iconOnly onClick={() => {}}>
+        <Button iconOnly onClick={likefunction}  className={`${isLike ? "btnActive" : ""}`}>
         <img src={iconHeart} alt="" />
         <span> </span>
 
