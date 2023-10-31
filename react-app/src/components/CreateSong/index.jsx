@@ -31,7 +31,7 @@ const CreateSong = () => {
 
   if(!name) errors.name = 'Song name is required';
   if(!genre) errors.genre = 'Genre is required';
-  if(!artist) errors.artist = "artist is required"
+  if(!artist) errors.artist = "Artist is required"
 
   if (cover_photo[0]  && cover_photo[0].name) {
       const allowedExtensions = ['png', 'jpg', 'jpeg'];
@@ -64,8 +64,6 @@ const CreateSong = () => {
   setErrors(errors);
 
   if (Object.keys(error).length === 0) {
-
-
   const formData = new FormData();
   formData.append("name", name);
   formData.append("genre", genre);
@@ -73,8 +71,8 @@ const CreateSong = () => {
   formData.append("file_path", file_path)
   formData.append('artist', artist)
 
-  setImageLoading(true);
-  setSongLoading(true);
+  // setImageLoading(true);
+  // setSongLoading(true);
 
   try {
     const res = await dispatch(createSong(formData));
@@ -82,8 +80,8 @@ const CreateSong = () => {
       const allSongs = fetchAllSongs();
       dispatch(allSongs);
       console.log(res)
-      // setSongLoading(true)
-      // setImageLoading(true);
+      setSongLoading(true)
+      setImageLoading(true);
       history.push("/");
     }
 

@@ -19,6 +19,8 @@ const Controls = ({
   playSong,
   isPlaying,
   volume,
+
+
 }) => {
   const dispatch = useDispatch();
   const { currentPlayListSongs: songs } = useSelector(
@@ -26,6 +28,10 @@ const Controls = ({
   );
   // const { selectedPlayListSongs } = useSelector((state) => state.playlists);
   // const audioRef = useRef(null);
+
+  // const getIsLike = () => likes && likes.includes(id)
+
+  // const [isLike, setIsLike ] = useState(getIsLike())
   const [progressPercent, setProgressPercent] = useState(0);
   const [remainingDuration, setRemainingDuration] = useState(null);
   const [duration, setDuration] = useState(null);

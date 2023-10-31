@@ -7,7 +7,7 @@ import Overlay from "../Overlay";
 import {
   useParams,
   useHistory,
-} from "react-router-dom/cjs/react-router-dom.min";
+} from "react-router-dom";
 import { deletePlaylist } from "../../store/playlist";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
@@ -25,13 +25,12 @@ const PlayListHeader = ({ songsInPlayList }) => {
   const [currentPlayList, setCurrentPlaylist] = useState({});
   const dispatch = useDispatch();
   const playlists = useSelector((state) => state.userPlaylists);
-  console.log(playlists, '-------')
+
   const songs = useSelector((state) => state.songs);
 
-  const [name, setName] = useState(playlists?.name || "" )
-  console.log(name , '---- here name')
-  const [description, setDescription] = useState(playlists?.description || "");
-  console.log(description)
+  const [name, setName] = useState(playlists?.name)
+
+  const [description, setDescription] = useState(playlists?.description);
 
   const deleteHandler = () => {
     dispatch(deletePlaylist(id));
@@ -40,26 +39,12 @@ const PlayListHeader = ({ songsInPlayList }) => {
   };
 
   useEffect(() => {
+
     const list = playlists.filter((pl) => parseInt(pl?.id) === parseInt(id));
-    console.log(list)
     setCurrentPlaylist(...list);
 
   }, [playlists, id]);
 
-  // useEffect(() => {
-  //   if(!playlists) {
-  //     dispatch(fetchUserList(id))
-  //     .then((pl) => {
-  //       if (pl) {
-  //         setName(pl.name)
-  //         setDescription(pl.description)
-  //       }
-  //     })
-  //     .catch((err) => {
-  //       console.error('Error fetching playlist', err)
-  //     })
-  //   }
-  // }, [dispatch, playlists, id])
 
   const submitHandler = (e) => {
     e.preventDefault();

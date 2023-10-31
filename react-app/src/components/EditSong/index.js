@@ -3,13 +3,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as songActions from '../../store/song';
 import {updateASong} from '../../store/userSong';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import './style.css'
 
 const EditSong = ({song_id, setEditModal }) => {
-  const userSongs = useSelector((state) => state.userSongs[song_id]);
-  console.log(userSongs)
-
+  const songId = song_id
+  const userSongs = useSelector((state) => state.userSongs);
   const {user } = useSelector((state) => state.session)
   const [artist, setArtist] = useState(userSongs?.artist);
 
@@ -20,9 +19,6 @@ const EditSong = ({song_id, setEditModal }) => {
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setErrors] = useState({});
   const history = useHistory()
-  const songId = song_id
-
-
 
 
   const dispatch = useDispatch();
