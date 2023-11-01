@@ -10,6 +10,7 @@ import iconPrev from "../../assets/next.svg";
 import iconRepeat from "../../assets/repeat.svg";
 import iconShufflee from '../../assets/shufflee.svg';
 import iconHeart from '../../assets/heart.svg'
+import LikeButton from "../LikeSongButton";
 import "./styles.css";
 import { nextSong, pervSong } from "../../store/slices/playlistSlice";
 
@@ -30,6 +31,7 @@ const Controls = ({
   // const audioRef = useRef(null);
 
   // const getIsLike = () => likes && likes.includes(id)
+
 
   // const [isLike, setIsLike ] = useState(getIsLike())
   const [progressPercent, setProgressPercent] = useState(0);
@@ -110,12 +112,13 @@ const Controls = ({
         >
           <img src={iconRepeat} alt="" />
         </Button>
-        <Button iconOnly onClick={() => {}}>
+        <LikeButton iconOnly onClick={() => {}}>
           <img src={iconHeart} alt="" />
           <span> </span>
 
 
-        </Button>
+        </LikeButton>
+
       </div>
       <div className="ctrl">
         {/* {playSong?.duration} */}

@@ -3,15 +3,18 @@ import { fetchLikes, likeSelector, addLike, deleteLike } from "../../store/like"
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
-
-const LikeButton = ({songId}) => {
+import Button from '../Button';
+const LikeButton = ({songs}) => {
     const {id } = useParams()
-    console.log(id)
-    const dispatch = useDispatch();
-    const user = useSelector(state.session.user)
+    const songId = songs?.id
     console.log(songId)
+
+
+    const dispatch = useDispatch();
+
+
     const likes = useSelector(likeSelector)
-    const getIsLike = () => likes && likes.includes(songId)
+    const getIsLike = () => likes && likes.includes(id)
     const [isLike, setIsLike] = useState(getIsLike())
 
     useEffect(() => {
@@ -20,8 +23,8 @@ const LikeButton = ({songId}) => {
 
     const likefunction = (e) => {
         e.stopPropagation();
-        if( isLike) dispatch(deleteLike(songId))
-        else dispatch(addLike(songId))
+        if( isLike) dispatch(deleteLike(id))
+        else dispatch(addLike(id))
 
         setIsLike(!isLike)
     }

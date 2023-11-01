@@ -10,16 +10,13 @@ import Button from "../Button";
 //   playSong,
 // } from "../../slices/songsSlice";
 import { useEffect, useState } from "react";
-// import Modal from "../Modal";
-// import Overlay from "../Overlay";
-// import CreateSong from "../CreateSong";
+
 import {
   currentPlayListSongs,
   playAudio,
   playSong,
 } from "../../store/slices/playlistSlice";
-// import { useDeleteSongMutation } from "../../slices/songsApiSlice";
-// import { useCreateSongMutation } from "../../slices/songsApiSlice";
+
 import Divider from '../../components/Divider'
 const HomePageComponents = ({ allPlaylists }) => {
 

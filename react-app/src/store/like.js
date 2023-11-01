@@ -45,10 +45,11 @@ export const fetchLikes = () => async (dispatch, getState) => {
 }
 export const addLike = (songId) => async(dispatch, getState) => {
     const state = getState();
+    console.log(songId, '----songId')
 
     if (!state.session.user) return;
     //already like it
-    if (state.likes[state.session.user.id]?.includes(songId)) return
+    if (state.likes[state.session.user.id]?.includes(songId)) return;
     const res = await fetch('/api/likes', {
         method: 'POST',
         headers: {
@@ -58,6 +59,7 @@ export const addLike = (songId) => async(dispatch, getState) => {
             song_id: songId
         })
     })
+    console.log(songId, '---here song id backend')
     if (res.ok) {
         dispatch(addLikeAction(getState().session.user.id, songId))
     }
@@ -89,7 +91,7 @@ export default function likeReducer(state = {}, action) {
             break;
         case ADD_LIKE:
             if(newState[userId] && !newState[userId].includes(songId))
-            newState[userId] = [ ...newState[userId]. songId];
+            newState[userId] = [ ...newState[userId], songId];
             break;
 
         case DELETE_LIKE:
