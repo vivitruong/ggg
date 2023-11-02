@@ -9,11 +9,13 @@ import { useState } from "react";
 const PlaylistsPage = () => {
   const currentPlayLists = useSelector((state) => state.userPlaylists);
   const [playlist, setCurrentPlaylist] = useState([]);
+  console.log(playlist, '---playlist')
   const { id } = useParams();
   useEffect(() => {
     const list = currentPlayLists?.filter(
       (pl) => parseInt(pl?.id) === parseInt(id)
-    );
+    )
+
     setCurrentPlaylist(...list);
   }, [playlist, id, currentPlayLists]);
 
@@ -27,7 +29,7 @@ const PlaylistsPage = () => {
       {playlist?.playlist_songs?.length === 0 ? (
         <h4>Uh-oh! 🙉 Looks like this playlist is feeling a bit lonely. Time to add some songs and bring the party to life! 🎉💃</h4>
       ) : (
-        <Songs songs={playlist?.playlist_songs} />
+        <Songs songs={playlist?.playlist_songs?.map((el) => el.song)} />
       )}
     </div>
   );

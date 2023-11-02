@@ -84,7 +84,7 @@ export const deleteLike = (songId) => async(dispatch, getState) => {
 export default function likeReducer(state = {}, action) {
     const newState = {...state};
     const {songId, songIds, userId} = action;
-
+    newState[userId] = newState[userId] || []
     switch(action.type) {
         case SET_LIKES:
             newState[userId] = songIds;
