@@ -31,14 +31,14 @@ const CreateSong = () => {
 
   if(!name) errors.name = 'Song name is required';
   if(!genre) errors.genre = 'Genre is required';
-  if(!artist) errors.artist = "artist is required"
+  if(!artist) errors.artist = "Artist is required"
 
   if (cover_photo[0]  && cover_photo[0].name) {
       const allowedExtensions = ['png', 'jpg', 'jpeg'];
 
       let fileExtension = cover_photo[0].name.split('.')
       fileExtension = fileExtension[fileExtension.length-1]
-      console.log(fileExtension)
+      // console.log(fileExtension)
 
       if (!allowedExtensions.includes(fileExtension)) {
         errors.cover_photo = 'Image file must have a valid extension: .png, .jpg, .jpeg';
@@ -64,8 +64,6 @@ const CreateSong = () => {
   setErrors(errors);
 
   if (Object.keys(error).length === 0) {
-
-
   const formData = new FormData();
   formData.append("name", name);
   formData.append("genre", genre);
@@ -73,8 +71,8 @@ const CreateSong = () => {
   formData.append("file_path", file_path)
   formData.append('artist', artist)
 
-  setImageLoading(true);
-  setSongLoading(true);
+  // setImageLoading(true);
+  // setSongLoading(true);
 
   try {
     const res = await dispatch(createSong(formData));
@@ -82,6 +80,8 @@ const CreateSong = () => {
       const allSongs = fetchAllSongs();
       dispatch(allSongs);
       console.log(res)
+      setSongLoading(true)
+      setImageLoading(true);
       history.push("/");
     }
 
@@ -106,6 +106,8 @@ const CreateSong = () => {
 </div>
     <div className="page-container">
         <div className="form-create">
+
+
 
             <form
                 onSubmit={handleSubmit}
@@ -153,7 +155,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.cover_photo && <p className="">{error.cover_photo}</p>}</div>
-                {(imageLoading)}
+                {(imageLoading) && <p>...image is uploading</p>}
                 <label className="songcreate-title">
 
                     Select Cover Photo:
@@ -171,7 +173,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.file_path && <p className="">{error.file_path}</p>}</div>
-                {(songLoading) && <Loader />}
+                {(songLoading) && <p>...song is uploading</p>}
                 <label className="songcreate-title">
                     Select Song :
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>

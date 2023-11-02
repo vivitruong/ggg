@@ -17,57 +17,6 @@ client_id = os.environ.get('CLIENT_ID')
 client_secret = os.environ.get('CLIENT_SECRET')
 
 
-# def get_token():
-#     auth_string = client_id + ":" + client_secret
-#     auth_bytes = auth_string.encode("utf-8")
-#     auth_base64 = str(base64.b64encode(auth_bytes), 'utf-8')
-
-#     url = 'https://accounts.spotify.com/api/token'
-#     headers = {
-#         'Authorization': 'Basic ' + auth_base64,
-#         'Content-Type': 'application/x-www-form-urlencoded'
-#     }
-#     data = {'grant_type': 'client_credentials'}
-#     result = post(url, headers=headers, data=data)
-#     json_result = json.loads(result.content)
-#     token = json_result['access_token']
-#     return token
-
-# def get_auth_header(token):
-#     return {'Authorization': 'Bearer ' + token}
-
-# def search_for_artist(token, artist_name):
-#     url = 'http://api.spotify.com/v1/search'
-#     headers = get_auth_header(token)
-#     query = f'?q={artist_name}&type=artist&limit=1'
-
-#     query_url = url + query
-#     result = get(query_url, headers=headers)
-#     json_result = json.loads(result.content)['artists']['items']
-#     if len(json_result) == 0:
-#         print('No artist with this name exists...')
-#         return None
-#     return json_result[0]
-
-# def get_songs_by_artist(token, artist_id):
-#     url = f'http://api.spotify.com/v1/artists/{artist_id}/top-tracks?country=US'
-#     headers = get_auth_header(token)
-
-#     result = get(url, headers=headers)
-#     json_result = json.loads(result.content)['tracks']
-
-#     return json_result
-
-
-
-
-# token = get_token()
-# result1 = search_for_artist(token, 'ACDC')
-# artist_id = result1['id']
-# songs = get_songs_by_artist(token, artist_id)
-# for idx, song in enumerate(songs):
-#     print(f"{idx+1}. {song['name']}")
-
 
 song_routes = Blueprint('songs', __name__)
 #get all song(done)
@@ -211,87 +160,89 @@ def search_music(keyword):
 
 
 
+
+
 #get all comments base on a song(done)
-@song_routes.route('/<int:song_id>/comments')
-def all_comments(song_id):
-    comments = Comment.query.filter(Comment.song_id == song_id)
-    return {'comments': [comment.to_dict() for comment in comments]}, 200
+# @song_routes.route('/<int:song_id>/comments')
+# def all_comments(song_id):
+#     comments = Comment.query.filter(Comment.song_id == song_id)
+#     return {'comments': [comment.to_dict() for comment in comments]}, 200
 
 #create a comment for song(done)
-@song_routes.route('/<int:song_id>/comments', methods=['POST'])
-@login_required
-def post_comment(song_id):
-    form = CommentForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
+# @song_routes.route('/<int:song_id>/comments', methods=['POST'])
+# @login_required
+# def post_comment(song_id):
+#     form = CommentForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
-        new_comment = Comment()
-        form.populate_obj(new_comment)
-        new_comment.song_id = song_id
-        db.session.add(new_comment)
-        db.session.commit()
-        return new_comment.to_dict(), 201
-    if form.errors:
-        return {
-            'errors': form.errors
-        }, 400
+#     if form.validate_on_submit():
+#         new_comment = Comment()
+#         form.populate_obj(new_comment)
+#         new_comment.song_id = song_id
+#         db.session.add(new_comment)
+#         db.session.commit()
+#         return new_comment.to_dict(), 201
+#     if form.errors:
+#         return {
+#             'errors': form.errors
+#         }, 400
 
 #update a comment for a song(done)
-@song_routes.route('/comments/<int:comment_id>', methods=['PUT'])
-@login_required
-def update_comment(comment_id):
-    current_user_info = current_user.to_dict()
-    current_user_id = current_user_info['id']
-    comment = Comment.query.get(comment_id)
-    form = CommentForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
+# @song_routes.route('/comments/<int:comment_id>', methods=['PUT'])
+# @login_required
+# def update_comment(comment_id):
+#     current_user_info = current_user.to_dict()
+#     current_user_id = current_user_info['id']
+#     comment = Comment.query.get(comment_id)
+#     form = CommentForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if not comment:
-        return jsonify({"error": "Comment not found"}), 404
-    if comment.user_id != current_user_id:
-        return jsonify({'errors': 'Unauthorized'}), 403
+#     if not comment:
+#         return jsonify({"error": "Comment not found"}), 404
+#     if comment.user_id != current_user_id:
+#         return jsonify({'errors': 'Unauthorized'}), 403
 
-    if form.validate_on_submit():
-        form.populate_obj(comment)
-        db.session.add(comment)
-        db.session.commit()
-        return comment.to_dict(),200
-    else:
-        return jsonify({"errors": form.errors}), 400
+#     if form.validate_on_submit():
+#         form.populate_obj(comment)
+#         db.session.add(comment)
+#         db.session.commit()
+#         return comment.to_dict(),200
+#     else:
+#         return jsonify({"errors": form.errors}), 400
 
 #delete a comment(done)
-@song_routes.route('/comments/<int:comment_id>', methods=['DELETE'])
-@login_required
-def delete_comment(comment_id):
-    current_user_info = current_user.to_dict()
-    current_user_id = current_user_info['id']
-    comment = Comment.query.get(comment_id)
+# @song_routes.route('/comments/<int:comment_id>', methods=['DELETE'])
+# @login_required
+# def delete_comment(comment_id):
+#     current_user_info = current_user.to_dict()
+#     current_user_id = current_user_info['id']
+#     comment = Comment.query.get(comment_id)
 
-    if not comment:
-        return jsonify({'error': 'Comment not found'}), 404
-    if comment.user_id != current_user_id:
-        return jsonify({'error': 'Unauthorized'}), 403
+#     if not comment:
+#         return jsonify({'error': 'Comment not found'}), 404
+#     if comment.user_id != current_user_id:
+#         return jsonify({'error': 'Unauthorized'}), 403
 
-    try:
-        db.session.delete(comment)
-        db.session.commit()
-        return jsonify({'message': 'Comment deleted successfully'}), 200
-    except Exception:
-        return {'error': 'There is an error'}, 500
+#     try:
+#         db.session.delete(comment)
+#         db.session.commit()
+#         return jsonify({'message': 'Comment deleted successfully'}), 200
+#     except Exception:
+#         return {'error': 'There is an error'}, 500
 
 #get all likes for a song by song id(done)
-@song_routes.route('<int:song_id>/likes')
-def all_like(song_id):
-    stmt = select(likes)
-    result = db.session.execute(stmt)
+# @song_routes.route('<int:song_id>/likes')
+# def all_like(song_id):
+#     stmt = select(likes)
+#     result = db.session.execute(stmt)
 
-    all_like = result.fetchall()
-    filtered = filter(lambda like: like[1] == song_id, all_like)
-    dict_version = dict(filtered)
+#     all_like = result.fetchall()
+#     filtered = filter(lambda like: like[1] == song_id, all_like)
+#     dict_version = dict(filtered)
 
-    valuesI = dict_version.values()
-    total_likes = len(list(valuesI))
-    return {'likes': total_likes}, 200
+#     valuesI = dict_version.values()
+#     total_likes = len(list(valuesI))
+#     return {'likes': total_likes}, 200
     # all_like = db.session.execute(db.select(likes).fetchall())
     # filtered = filter(lambda like: like[1] == song_id, all_like)
     # dict_version = dict(filtered)
@@ -301,29 +252,29 @@ def all_like(song_id):
     # return {'likes': total_likes}, 200
 
 #create like for a song by song-id(maybe) will check back when test with react.
-@song_routes.route('<int:song_id>/likes', methods=['POST'])
-def post_like(song_id):
-    form = LikeForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
+# @song_routes.route('<int:song_id>/likes', methods=['POST'])
+# def post_like(song_id):
+#     form = LikeForm()
+#     form['csrf_token'].data = request.cookies['csrf_token']
 
-    if form.validate_on_submit():
-        user_id = form.users.data
-        selected_songs = Song.query.get(song_id)
-        selected_users = User.query.get(user_id)
+#     if form.validate_on_submit():
+#         user_id = form.users.data
+#         selected_songs = Song.query.get(song_id)
+#         selected_users = User.query.get(user_id)
 
-        if selected_songs is None:
-            return jsonify({'error': 'Song not found'}), 404
+#         if selected_songs is None:
+#             return jsonify({'error': 'Song not found'}), 404
 
-        if selected_users is None:
-            return jsonify({'error': 'User not found'}), 404
+#         if selected_users is None:
+#             return jsonify({'error': 'User not found'}), 404
 
-        if selected_users in selected_songs.liked_songs:
-            selected_songs.liked_songs.remove(selected_users)
-            db.session.commit()
-            return all_like(song_id)
-        else:
-            selected_songs.liked_songs.append(selected_users)
-            db.session.commit()
-            return all_like(song_id)
+#         if selected_users in selected_songs.liked_songs:
+#             selected_songs.liked_songs.remove(selected_users)
+#             db.session.commit()
+#             return all_like(song_id)
+#         else:
+#             selected_songs.liked_songs.append(selected_users)
+#             db.session.commit()
+#             return all_like(song_id)
 
-    return jsonify({'error': 'Invalid form data'}), 400
+#     return jsonify({'error': 'Invalid form data'}), 400

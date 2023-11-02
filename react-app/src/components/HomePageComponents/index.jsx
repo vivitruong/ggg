@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import Button from "../Button";
+import iconHeart from '../../assets/heart.svg'
 // import {
 //   getAllSongs,
 //   getSongs,
@@ -10,17 +11,15 @@ import Button from "../Button";
 //   playSong,
 // } from "../../slices/songsSlice";
 import { useEffect, useState } from "react";
-// import Modal from "../Modal";
-// import Overlay from "../Overlay";
-// import CreateSong from "../CreateSong";
+
 import {
   currentPlayListSongs,
   playAudio,
   playSong,
 } from "../../store/slices/playlistSlice";
-// import { useDeleteSongMutation } from "../../slices/songsApiSlice";
-// import { useCreateSongMutation } from "../../slices/songsApiSlice";
+
 import Divider from '../../components/Divider'
+import LikeButton from "../LikeSongButton";
 const HomePageComponents = ({ allPlaylists }) => {
 
   const allSongs = useSelector((state) => state.songs);
@@ -50,6 +49,7 @@ const HomePageComponents = ({ allPlaylists }) => {
 
   const renderAllSong = allSongs?.map((song, index) => {
     return (
+      <>
       <div
         className={`song-row songs`}
         key={song?.id}
@@ -65,11 +65,13 @@ const HomePageComponents = ({ allPlaylists }) => {
           <span className=" artist-column">{song?.artist}</span>
 
         </div>
-        <span style={{marginLeft: '200px'}} className=" duration-column">Gegrooves</span>
-        <span style={{marginLeft: '500px'}} className=" duration-column">{formattedDate}</span>
-        <span style={{marginLeft: '250px'}} className=" duration-column">3.30</span>
-
+        <span style={{marginLeft: '200px'}} className=" artist-column">Gegrooves</span>
+        <span style={{marginLeft: '570px'}} className=" artist-column">{formattedDate}</span>
+        <span style={{marginLeft: '280px'}} className="">3.30</span>
+        <LikeButton songId={song?.id}></LikeButton>
       </div>
+
+      </>
     );
   });
 

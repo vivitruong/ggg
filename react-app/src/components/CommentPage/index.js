@@ -8,15 +8,13 @@ const CommentPage = () => {
 
   return (
     <div style={{ width: "100%" }}>
-      {/* <PlayListHeader /> */}
+
       <Divider />
       <ActionBar />
       <Divider />
-      {/* {likedSong.length === 0 ? ( */}
+
       <h4>Comment Feature Coming Soon! Please stay tune with us 🤗</h4>
-      {/* ) : ( */}
-      {/* <Songs songs={likedSong} /> */}
-      {/* )} */}
+
     </div>
   );
 };

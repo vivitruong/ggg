@@ -3,7 +3,6 @@ import InputField from "../components/InputField";
 import {useState, useEffect} from 'react'
 import Divider from '../components/Divider'
 import ActionBar from '../components/ActionBar'
-
 const CLIENT_ID='8fdd8f8ad1134098af96799b51f862ad'
 const CLIENT_SECRET='41ed17b571b842418ac8b69891d414ed'
 const SearchPage = () => {
@@ -39,7 +38,7 @@ const SearchPage = () => {
     let artistId = await fetch('https://api.spotify.com/v1/search?q=' + searchInput + '&type=artist', searchParameters)
       .then(res => res.json())
       .then(data => {
-        return data.artists.items[0].id
+        return data.artists?.items[0].id
       })
       console.log('Artist Id ' + artistId)
 

@@ -17,6 +17,7 @@ const SelectedPlaylistPage = () => {
     (state) => state.playlists
   );
   const [name, setName] = useState(playlist?.name);
+  console.log(name, 'this is name')
   const [description, setDescription] = useState(playlist?.description);
   const submitHandler = (e) => {
     e.preventDefault();

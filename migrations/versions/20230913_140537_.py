@@ -33,7 +33,7 @@ def upgrade():
     )
     op.create_table('playlists',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=100), nullable=False),
+    sa.Column('name', sa.String(length=225), nullable=False),
     sa.Column('description', sa.String(length=500), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
@@ -48,6 +48,14 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['playlist_id'], ['playlists.id'], ),
+    sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
+    sa.PrimaryKeyConstraint('id')
+    )
+    op.create_table('likes',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('user_id', sa.Integer(), nullable=False),
+    sa.Column('song_id', sa.Integer(), nullable=False),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.ForeignKeyConstraint(['song_id'], ['songs.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -66,5 +74,6 @@ def downgrade():
     op.drop_table('songs')
     op.drop_table('playlists')
     op.drop_table('playlist_songs')
+    op.drop_table('likes')
 
     # ### end Alembic commands ###

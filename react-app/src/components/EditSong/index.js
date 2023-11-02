@@ -3,22 +3,23 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as songActions from '../../store/song';
 import {updateASong} from '../../store/userSong';
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import './style.css'
 
 const EditSong = ({song_id, setEditModal }) => {
-  console.log(song_id)
-  const [artist, setArtist] = useState("");
-  const [genre, setGenre] = useState("Pop");
-  const [name, setName] = useState("");
+  const songId = song_id
+  const userSongs = useSelector((state) => state.userSongs);
+  const {user } = useSelector((state) => state.session)
+  const [artist, setArtist] = useState(userSongs?.artist);
+
+  const [genre, setGenre] = useState(userSongs?.genre);
+
+  const [name, setName] = useState(userSongs?.name);
   const [songLoading, setSongLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setErrors] = useState({});
   const history = useHistory()
-  const songId = song_id
 
-  const userSongs = useSelector((state) => state.userSongs);
-  const {user } = useSelector((state) => state.session)
 
   const dispatch = useDispatch();
 
@@ -28,7 +29,7 @@ const EditSong = ({song_id, setEditModal }) => {
 
   if(!name) errors.name = 'Song name is required';
   if(!genre) errors.genre = 'Genre is required';
-  if(!artist) errors.artist = "artist is required"
+  if(!artist) errors.artist = "Artist is required"
 
   setErrors(errors);
 

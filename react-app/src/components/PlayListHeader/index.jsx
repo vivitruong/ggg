@@ -7,28 +7,30 @@ import Overlay from "../Overlay";
 import {
   useParams,
   useHistory,
-} from "react-router-dom/cjs/react-router-dom.min";
+} from "react-router-dom";
 import { deletePlaylist } from "../../store/playlist";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import PlayListForm from "../PlayListForm";
-import { updatePlaylist } from "../../store/playlist";
+import { updatePlaylist, fetchUserList } from "../../store/playlist";
 import Modal from "../Modal";
 import SongsModal from "../SongsModel";
 
 const PlayListHeader = ({ songsInPlayList }) => {
+  const { id } = useParams();
+  const history = useHistory();
   const [showDeleteModal, setDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [addSongModal, setAddSongModal] = useState(false);
   const [currentPlayList, setCurrentPlaylist] = useState({});
   const dispatch = useDispatch();
   const playlists = useSelector((state) => state.userPlaylists);
-  const songs = useSelector((state) => state.songs);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
 
-  const { id } = useParams();
-  const history = useHistory();
+  const songs = useSelector((state) => state.songs);
+
+  const [name, setName] = useState(playlists?.name)
+
+  const [description, setDescription] = useState(playlists?.description);
 
   const deleteHandler = () => {
     dispatch(deletePlaylist(id));
@@ -37,9 +39,12 @@ const PlayListHeader = ({ songsInPlayList }) => {
   };
 
   useEffect(() => {
+
     const list = playlists.filter((pl) => parseInt(pl?.id) === parseInt(id));
     setCurrentPlaylist(...list);
+
   }, [playlists, id]);
+
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -49,13 +54,14 @@ const PlayListHeader = ({ songsInPlayList }) => {
       playlistId: id,
     };
 
+
     dispatch(updatePlaylist(playListToBeEdited));
     // dispatch(createNewPLaylist(playListToBeEdited));
 
-    setDescription("");
+    setDescription('');
     setShowEditModal(false);
     setDeleteModal(false);
-    setName("");
+    setName('');
   };
 
   return (
@@ -126,7 +132,7 @@ const PlayListHeader = ({ songsInPlayList }) => {
               description={description}
               setName={setName}
               setDescription={setDescription}
-              btnText={"Edit PlayList"}
+              btnText={"Edit Playlist"}
 
             />
 

@@ -13,6 +13,7 @@ const UserPage = () => {
     }, [dispatch])
 
     return (
+        <>
         <div className="userprofile-container">
 
             <div className="userprofile-info">
@@ -33,12 +34,15 @@ const UserPage = () => {
                                 <span style={{fontWeight:'600'}}>Thank you for being a part of Golden Era Grooves's family! We're only cool people in here 😉 </span>
                             </div>
 
+
                         </div>
                     </div>
                 }
             </div>
 
         </div>
+
+        </>
     )
 }
 
