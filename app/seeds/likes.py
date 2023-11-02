@@ -21,7 +21,12 @@ def seed_likes():
         user_id=1, song_id=4
     )
 
-    db.session.add_all([like1, like2, like3, like4, like5, like6])
+    db.session.add(like1)
+    db.session.add(like2)
+    db.session.add(like3)
+    db.session.add(like4)
+    db.session.add(like5)
+    db.session.add(like6)
     db.session.commit()
 
 def undo_likes():
