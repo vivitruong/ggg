@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from 'react-router-dom';
 import Button from '../Button';
 const LikeButton = ({songId}) => {
-    const {id } = useParams()
 
     const dispatch = useDispatch();
 
@@ -21,7 +20,7 @@ const LikeButton = ({songId}) => {
     const likefunction = (e) => {
         e.stopPropagation();
         if( isLike) dispatch(deleteLike(songId))
-        else dispatch(addLike(id))
+        else dispatch(addLike(songId))
 
         setIsLike(!isLike)
     }
