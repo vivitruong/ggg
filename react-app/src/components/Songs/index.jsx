@@ -71,7 +71,7 @@ const Songs = ({ songs }) => {
           <span className="song-column id-column">#</span>
           <span className="song-column title-column">Title</span>
           <span className="song-column album-column">Album</span>
-          <span className="song-column date-added-column">Date Added</span>
+          <span className="song-column date-added-column" >Date Added</span>
           <span className="song-column duration-column">Duration</span>
         </div>
         <div className="table">{renderList}</div>

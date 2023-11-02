@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import Button from "../Button";
+import iconHeart from '../../assets/heart.svg'
 // import {
 //   getAllSongs,
 //   getSongs,
@@ -48,6 +49,7 @@ const HomePageComponents = ({ allPlaylists }) => {
 
   const renderAllSong = allSongs?.map((song, index) => {
     return (
+      <>
       <div
         className={`song-row songs`}
         key={song?.id}
@@ -63,11 +65,13 @@ const HomePageComponents = ({ allPlaylists }) => {
           <span className=" artist-column">{song?.artist}</span>
 
         </div>
-        <span style={{marginLeft: '200px'}} className=" duration-column">Gegrooves</span>
-        <span style={{marginLeft: '500px'}} className=" duration-column">{formattedDate}</span>
-        <span style={{marginLeft: '250px'}} className=" duration-column">3.30</span>
+        <span style={{marginLeft: '200px'}} className=" artist-column">Gegrooves</span>
+        <span style={{marginLeft: '570px'}} className=" artist-column">{formattedDate}</span>
+        <span style={{marginLeft: '280px'}} className=" artist-column">3.30</span>
         <LikeButton></LikeButton>
       </div>
+
+      </>
     );
   });
 
