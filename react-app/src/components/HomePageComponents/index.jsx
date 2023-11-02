@@ -68,7 +68,7 @@ const HomePageComponents = ({ allPlaylists }) => {
         <span style={{marginLeft: '200px'}} className=" artist-column">Gegrooves</span>
         <span style={{marginLeft: '570px'}} className=" artist-column">{formattedDate}</span>
         <span style={{marginLeft: '280px'}} className=" artist-column">3.30</span>
-        <LikeButton></LikeButton>
+        <LikeButton songId={allSongs.id}></LikeButton>
       </div>
 
       </>
