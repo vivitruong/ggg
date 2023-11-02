@@ -18,6 +18,7 @@ import {
 } from "../../store/slices/playlistSlice";
 
 import Divider from '../../components/Divider'
+import LikeButton from "../LikeSongButton";
 const HomePageComponents = ({ allPlaylists }) => {
 
   const allSongs = useSelector((state) => state.songs);
@@ -65,7 +66,7 @@ const HomePageComponents = ({ allPlaylists }) => {
         <span style={{marginLeft: '200px'}} className=" duration-column">Gegrooves</span>
         <span style={{marginLeft: '500px'}} className=" duration-column">{formattedDate}</span>
         <span style={{marginLeft: '250px'}} className=" duration-column">3.30</span>
-
+        <LikeButton></LikeButton>
       </div>
     );
   });

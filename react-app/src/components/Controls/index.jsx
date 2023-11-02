@@ -2,7 +2,7 @@ import { useState } from "react";
 // import { nextSong, pervSong } from "../../slices/songsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../Button";
-import iconShuffle from "../../assets/shuffle.svg";
+
 import iconPlay from "../../assets/play.svg";
 import iconPause from "../../assets/playIcon.svg";
 import iconNext from "../../assets/next.svg";
@@ -85,7 +85,9 @@ const Controls = ({
     <>
       <div className="controls">
 
-        <Button iconOnly onClick={() => {}}>
+        <Button iconOnly onClick={() => setShuffle(!shuffle)}
+        className={`${shuffle ? 'btnActive' : ''}`}
+        >
           <img src={iconShufflee} alt="" />
         </Button>
         <Button iconOnly onClick={() => dispatch(pervSong({ songs }))}>
@@ -112,12 +114,12 @@ const Controls = ({
         >
           <img src={iconRepeat} alt="" />
         </Button>
-        <LikeButton iconOnly onClick={() => {}}>
+        {/* <LikeButton iconOnly onClick={() => {}}>
           <img src={iconHeart} alt="" />
           <span> </span>
 
 
-        </LikeButton>
+        </LikeButton> */}
 
       </div>
       <div className="ctrl">
