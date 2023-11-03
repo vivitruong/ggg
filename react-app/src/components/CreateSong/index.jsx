@@ -71,8 +71,8 @@ const CreateSong = () => {
   formData.append("file_path", file_path)
   formData.append('artist', artist)
 
-  // setImageLoading(true);
-  // setSongLoading(true);
+  setImageLoading(true);
+  setSongLoading(true);
 
   try {
     const res = await dispatch(createSong(formData));
@@ -80,8 +80,8 @@ const CreateSong = () => {
       const allSongs = fetchAllSongs();
       dispatch(allSongs);
       console.log(res)
-      setSongLoading(true)
-      setImageLoading(true);
+      // setSongLoading(true)
+      // setImageLoading(true);
       history.push("/");
     }
 
@@ -155,7 +155,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.cover_photo && <p className="">{error.cover_photo}</p>}</div>
-                {(imageLoading) && <p>...image is uploading</p>}
+                {(imageLoading) && <Loader />}
                 <label className="songcreate-title">
 
                     Select Cover Photo:
@@ -173,7 +173,7 @@ const CreateSong = () => {
                 </div>
                 <div>
                 <div className="error-message">{error.file_path && <p className="">{error.file_path}</p>}</div>
-                {(songLoading) && <p>...song is uploading</p>}
+                {(songLoading)}
                 <label className="songcreate-title">
                     Select Song :
                     <span style={{color:"red", fontSize:"1rem"}}>*</span>
