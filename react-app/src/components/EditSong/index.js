@@ -12,7 +12,7 @@ const EditSong = ({song_id, setEditModal }) => {
   const {user } = useSelector((state) => state.session)
   const [artist, setArtist] = useState(userSongs?.artist);
 
-  const [genre, setGenre] = useState(userSongs?.genre);
+  const [genre, setGenre] = useState('Pop');
 
   const [name, setName] = useState(userSongs?.name);
   const [songLoading, setSongLoading] = useState(false)
