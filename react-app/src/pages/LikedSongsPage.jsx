@@ -1,6 +1,7 @@
 import ActionBar from "../components/ActionBar";
 import PlayListHeader from "../components/PlayListHeader";
-import Songs from "../components/Songs";
+// import Songs from "../components/Songs";
+import SongsLike from "../components/SongsLike";
 import Divider from "../components/Divider";
 import { likeSelector } from "../store/like";
 
@@ -31,7 +32,7 @@ const LikedSongsPage = () => {
       {likedSongs.length === 0 ? (
         <h4>You don't have any liked songs yet 😁</h4>
       ) : (
-        <Songs songs={likedSongs} />
+        <SongsLike songs={likedSongs} />
       )}
       {/* {likedSong.length === 0 ? ( */}
       {/* <h4>You don't have any liked songs yet 😁</h4> */}
