@@ -42,22 +42,7 @@ const SongsLike = ({ songs }) => {
         <span className="song-column duration-column">
           {song?.duration}
         </span>
-        {/* <Button
-          iconOnly
-          onClick={(e) => {
-            e.stopPropagation();
-            dispatch(
-              removeSongFromPlaylist({
-                songId: song?.id,
-                playlist_id: id,
-              })
-            );
-            // dispatch();
-            // removeSongToSelectedPlayList({ playlist, removeSong: song })
-          }}
-        >
-          Remove
-        </Button> */}
+
       </div>
 
     );
