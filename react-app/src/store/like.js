@@ -45,7 +45,7 @@ export const fetchLikes = () => async (dispatch, getState) => {
 }
 export const addLike = (songId) => async(dispatch, getState) => {
     const state = getState();
-    console.log(songId, '----songId')
+
 
     if (!state.session.user) return;
     //already like it
@@ -59,7 +59,7 @@ export const addLike = (songId) => async(dispatch, getState) => {
             song_id: songId
         })
     })
-    console.log(songId, '---here song id backend')
+
     if (res.ok) {
         dispatch(addLikeAction(getState().session.user.id, songId))
     }

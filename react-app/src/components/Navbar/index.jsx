@@ -36,7 +36,7 @@ const Navbar = () => {
           <li>
             <Link to="/library">
               <Button onClick={onClickHandler}>
-                <img src={iconComputer} alt="" />
+                <img src='https://win98icons.alexmeub.com/icons/png/multimedia-1.png' alt="" />
                Your Songs
               </Button>
             </Link>
@@ -55,7 +55,7 @@ const Navbar = () => {
           <li>
             <Link to="/liked-songs">
               <Button onClick={onClickHandler}>
-                <img src={iconLiked} alt="" />
+                <img src={iconComputer} alt="" />
                 Liked Songs
               </Button>
             </Link>

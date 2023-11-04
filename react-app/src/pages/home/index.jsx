@@ -158,7 +158,7 @@ export const Home = () => {
         </div>
         <div className="volumn">
           <Button iconOnly>
-            <img src={volumnIcon} alt="" />
+            <img src='https://win98icons.alexmeub.com/icons/png/loudspeaker_rays-1.png' alt="" />
           </Button>
           <input
             type="range"

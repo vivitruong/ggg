@@ -13,10 +13,7 @@ const LikedSongsPage = () => {
   const likedSongIds  = useSelector((state) => state?.likes[userId]) || [];
 
   const likedSongs = songs.filter(song=>likedSongIds.includes(song.id))
-  console.log(likedSongs)
-  // const getLikesBySongId = (state) => songId ? songId.map((id) => state.songs?.songs[id]): [];
-  // const likes = useSelector(likeSelector)
-  // const likedSongs = useSelector(getLikesBySongId(likes))
+
 
 
 

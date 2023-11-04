@@ -9,7 +9,7 @@ import { useState } from "react";
 const PlaylistsPage = () => {
   const currentPlayLists = useSelector((state) => state.userPlaylists);
   const [playlist, setCurrentPlaylist] = useState([]);
-  console.log(playlist, '---playlist')
+
   const { id } = useParams();
   useEffect(() => {
     const list = currentPlayLists?.filter(
