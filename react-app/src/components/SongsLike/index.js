@@ -1,10 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 // import { playSong, playAudio } from "../../slices/songsSlice";
 import { useParams } from "react-router-dom";
-
+import LikeButton from "../LikeSongButton";
 // import "./style.css";
-import Button from "../Button";
-import { removeSongFromPlaylist } from "../../store/playlist";
+
 import {
   currentPlayListSongs,
   playAudio,
@@ -42,6 +41,9 @@ const SongsLike = ({ songs }) => {
         <span className="song-column duration-column">
           {song?.duration}
         </span>
+
+
+
 
       </div>
 

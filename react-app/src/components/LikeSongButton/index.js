@@ -28,14 +28,11 @@ const LikeButton = ({songId}) => {
     const buttonStyle = {
         width: '25px',
         height: '10px',
-
+        cursor: 'pointer'
       };
 
     return (
-    //     <button style={{cursor:'pointer'}} iconOnly onClick={likefunction}  className={`${isLike ? "btnActive" : ""}`}>
-    //     <img src={iconHeart} alt="" />
 
-    //   </button>
     <button style={buttonStyle} onClick={likefunction}>
     <img src={isLike ? heartfavred : heartfavblack} alt="Like Icon"  style={{ width: '13px', height: '13px' }} />
   </button>

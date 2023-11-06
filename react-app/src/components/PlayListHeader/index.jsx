@@ -25,10 +25,14 @@ const PlayListHeader = ({ songsInPlayList }) => {
   const [currentPlayList, setCurrentPlaylist] = useState({});
   const dispatch = useDispatch();
   const playlists = useSelector((state) => state.userPlaylists);
+  console.log(playlists, ';;;; this is playlists not name')
+  const [selectedPlaylistIndex, setSelectedPlaylistIndex] = useState(null);
+
 
   const songs = useSelector((state) => state.songs);
 
   const [name, setName] = useState(playlists?.name)
+  console.log(name, '---this is pl name')
 
   const [description, setDescription] = useState(playlists?.description);
 
@@ -37,6 +41,11 @@ const PlayListHeader = ({ songsInPlayList }) => {
     setDeleteModal(false);
     history.push("/");
   };
+  useEffect(() => {
+    const names = playlists.map((pl) =>  pl.name);
+    setName(names)
+  },[playlists])
+
 
   useEffect(() => {
 
