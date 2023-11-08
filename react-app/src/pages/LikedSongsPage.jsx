@@ -19,7 +19,7 @@ const LikedSongsPage = () => {
 
   return (
     <div style={{ width: "100%" }}>
-      {/* <PlayListHeader /> */}
+
 
       <Divider />
       <ActionBar />
@@ -31,11 +31,7 @@ const LikedSongsPage = () => {
       ) : (
         <SongsLike songs={likedSongs} />
       )}
-      {/* {likedSong.length === 0 ? ( */}
-      {/* <h4>You don't have any liked songs yet 😁</h4> */}
-      {/* ) : ( */}
-      {/* <Songs songs={likedSong} /> */}
-      {/* )} */}
+
     </div>
   );
 };
