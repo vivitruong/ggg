@@ -40,7 +40,7 @@ export const fetchLikes = () => async (dispatch, getState) => {
 
     if (res.ok) {
         const data = await res.json();
-        dispatch(setLikeAction(data.user_id, data.song_ids))
+        dispatch(setLikeAction(data.user_id, data.song_id))
     }
 }
 export const addLike = (songId) => async(dispatch, getState) => {

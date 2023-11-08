@@ -11,7 +11,8 @@ import "./Navigation.css";
 import { fetchAllSongs } from "../../store/song";
 import {  fetchUserSongs} from "../../store/userSong";
 import { Home } from "../../pages/home";
-import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import { fetchLikes } from "../../store/like";
+import { Redirect } from "react-router-dom";
 import React from "react";
 
 function Navigation ({ isLoaded }) {
@@ -27,6 +28,7 @@ function Navigation ({ isLoaded }) {
       dispatch(userPlaylists);
       dispatch(userSongs);
       dispatch(allSongs);
+      dispatch(fetchLikes());
     }
 
   }, [ dispatch, sessionUser ]);
