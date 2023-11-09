@@ -1,8 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-// import { playSong, playAudio } from "../../slices/songsSlice";
 import { useParams } from "react-router-dom";
-import LikeButton from "../LikeSongButton";
-// import "./style.css";
+
+
 
 import {
   currentPlayListSongs,
@@ -11,11 +10,11 @@ import {
 } from "../../store/slices/playlistSlice";
 
 const SongsLike = ({ songs }) => {
-  // const { currentSongIndex } = useSelector((state) => state.playSong);
+
   const dispatch = useDispatch();
   const { id } = useParams();
   const renderList = songs?.map((song, index) => {
-    // const active = currentSongIndex === index;
+
     return (
 
       <div
