@@ -9,10 +9,16 @@ import './style.css'
 const EditSong = ({song_id, setEditModal }) => {
   const songId = song_id
   const userSongs = useSelector((state) => state.userSongs);
+  console.log(userSongs, '===this is userSongs')
+
   const {user } = useSelector((state) => state.session)
-  const [artist, setArtist] = useState(userSongs?.artist);
+  const [selectedSong, setSelectedSong] = useState(null)
+  // const [artist, setArtist] = useState(userSongs?.artist);
+  const [artist, setArtist] = useState(selectedSong?.artist);
+  console.log(artist, '==thisis arties name')
 
   const [genre, setGenre] = useState('Pop');
+
 
   const [name, setName] = useState(userSongs?.name);
   const [songLoading, setSongLoading] = useState(false)
