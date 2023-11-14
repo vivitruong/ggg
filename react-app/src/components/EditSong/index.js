@@ -137,3 +137,4 @@ const EditSong = ({song_id, setEditModal }) => {
 };
 
 export default EditSong;
+// ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=vivitruong&layout=compact&theme=gotham)
