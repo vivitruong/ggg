@@ -32,7 +32,6 @@ const PlayListHeader = ({ songsInPlayList }) => {
   const songs = useSelector((state) => state.songs);
 
   const [name, setName] = useState(playlists?.name)
-  console.log(name, '---this is pl name')
 
   const [description, setDescription] = useState(playlists?.description);
 

@@ -9,11 +9,11 @@ import './style.css'
 const EditSong = ({song_id, setEditModal }) => {
   const songId = song_id
   const userSongs = useSelector((state) => state.userSongs);
-  console.log(userSongs, '===this is userSongs')
+
 
   const {user } = useSelector((state) => state.session)
   const [selectedSong, setSelectedSong] = useState(null)
-  // const [artist, setArtist] = useState(userSongs?.artist);
+
   const [artist, setArtist] = useState(selectedSong?.artist);
   console.log(artist, '==thisis arties name')
 
@@ -137,4 +137,3 @@ const EditSong = ({song_id, setEditModal }) => {
 };
 
 export default EditSong;
-// ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=vivitruong&layout=compact&theme=gotham)
