@@ -19,7 +19,11 @@ nav {
   height: 2px;
   background-color: #ffffff;
 }
-
+.github {
+text-decoration: none;
+text-align: center;
+gap: 5px
+}
 .divider_2 {
   width: 100%;
   height: 5px;

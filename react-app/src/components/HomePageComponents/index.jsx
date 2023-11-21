@@ -98,7 +98,7 @@ const HomePageComponents = ({ allPlaylists }) => {
             </Button>
             <Button className="github">
               <img src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
-              <a href="https://vivi-portfolio.vercel.app/" target="_blank">Portfolio </a>
+              <a href="https://vivi-portfolio.vercel.app/" target="_blank">Portfolio Website</a>
             </Button>
         </div>
         <Divider />
