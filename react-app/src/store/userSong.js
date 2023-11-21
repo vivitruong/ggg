@@ -70,7 +70,6 @@ export const createSong = (song) => async dispatch => {
         body: song
     });
 
-    // console.log('!!!CREATE', response);
     if (response.ok) {
         const resPost = await response.json();
         dispatch(addSong(resPost));

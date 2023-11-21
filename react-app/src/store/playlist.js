@@ -69,7 +69,7 @@ export function editPlaylist (playlist) {
 export const fetchUserList = () => async dispatch => {
     const response = await fetch(`/api/playlists/current`);
     if (response.ok) {
-        console.log(response);
+        // console.log(response);
 
         const playlists = await response.json();
         dispatch(getUserPlaylists(playlists));
@@ -135,55 +135,11 @@ export const removeSongFromPlaylist = (song) => async dispatch => {
     } else {
         console.log("Failed to delete song from playlist");
     }
-    // const { id, playlist_id } = song;
-    // try {
-    //     const response = await fetch(`/api/playlists/songs/${ playlist_id }/${ id }`, {
-    //         method: 'DELETE',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify({ song_id: id })
-    //     });
-    //     if (response.ok) {
-    //         const data = await response.json();
-    //         dispatch(removeSong(song));
-    //         return data;
-    //     } else {
-    //         const data = await response.json();
-    //         if (data) {
-    //             throw data.error.message;
-    //         }
-    //     }
 
-    // } catch (err) {
-    //     throw (err);
-    // }
 };
 
 export const addSongsToPlaylist = (song) => async dispatch => {
-    // const { playlistId, song_Id } = song;
 
-    // const bodyData = {
-    //     song_Id: parseInt(song_Id),
-    // };
-
-    // console.log(bodyData);
-
-    // const response = await fetch(`/api/playlists/${ playlistId }/songs`, {
-    //     method: "POST",
-    //     headers: {
-    //         "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(bodyData), // Convert the object to a JSON string
-    // });
-
-    // console.log(response);
-
-    // if (response.ok) {
-    //     const addSongsToPlaylist = await response.json();
-    //     dispatch(addSongToPlaylist(playlistId, song_Id));
-    //     return addSongsToPlaylist;
-    // }
     const { playlistId, song_Id } = song;
 
     const formData = new FormData();

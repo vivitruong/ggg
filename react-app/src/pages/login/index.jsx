@@ -42,7 +42,7 @@ export const LoginFormPage = () => {
     if (data) {
       setErrors(data);
     } else {
-      // closeModal();
+
       console.log("login sucess");
       toggleSound()
     }

@@ -40,7 +40,7 @@ const SearchPage = () => {
       .then(data => {
         return data.artists?.items[0].id
       })
-      console.log('Artist Id ' + artistId)
+      // console.log('Artist Id ' + artistId)
 
 
 
@@ -51,7 +51,7 @@ const SearchPage = () => {
     )
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         setAlbums(data.tracks)
       })
     //display to user

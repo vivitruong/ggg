@@ -16,7 +16,7 @@ const CreatePlayList = () => {
       description,
     };
 
-    console.log(playListToBeCreated);
+    // console.log(playListToBeCreated);
     dispatch(createNewPLaylist(playListToBeCreated));
 
     setDescription("");

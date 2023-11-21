@@ -5,13 +5,12 @@ import iconHome from "../../assets/homepage-1.svg";
 import iconSearch from "../../assets/search_web-1.svg";
 import iconComputer from "../../assets/computer_sound-1.svg";
 import iconCreatePlaylist from "../../assets/cd_drive-1.svg";
-import iconLiked from "../../assets/loudspeaker_green.svg";
 import iconEpisode from "../../assets/channels-1.svg";
 import "./style.css";
 
 const Navbar = () => {
   const onClickHandler = () => {
-    console.log("hi");
+
   };
   return (
     <header>
