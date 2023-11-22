@@ -2,7 +2,7 @@ import { useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as userSongsAction from '../../store/userSong'
 import './style.css'
-import Divider from '../Divider'
+
 const UserPage = () => {
     const songs = useSelector(state => state.userSongs.songs);
     const dispatch = useDispatch();
