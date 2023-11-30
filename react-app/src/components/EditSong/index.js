@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as songActions from '../../store/song';
 import {updateASong} from '../../store/userSong';
-import { useHistory, useParams } from "react-router-dom";
 import './style.css'
 
 const EditSong = ({song, setEditModal }) => {
@@ -16,8 +14,6 @@ const EditSong = ({song, setEditModal }) => {
   const [songLoading, setSongLoading] = useState(false)
   const [imageLoading, setImageLoading] = useState(false);
   const [error, setErrors] = useState({});
-  const history = useHistory()
-
 
   const dispatch = useDispatch();
 

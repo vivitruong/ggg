@@ -2,15 +2,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import Button from "../Button";
-// import iconHeart from '../../assets/heart.svg'
-// import {
-//   getAllSongs,
-//   getSongs,
-//   playAudio,
-//   playSong,
-// } from "../../slices/songsSlice";
-import { useEffect, useState } from "react";
-
+import { useEffect } from "react";
 import {
   currentPlayListSongs,
   playAudio,
@@ -89,16 +81,16 @@ const HomePageComponents = ({ allPlaylists }) => {
               Create Song
             </Button> */}
             <Button className="github">
-              <img src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
-              <a href="https://github.com/vivitruong" target="_blank">github.com/vivitruong</a>
+              <img alt="" src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
+              <a href="https://github.com/vivitruong" target="_blank" rel="noreferrer">github.com/vivitruong</a>
             </Button>
             <Button className="github">
-              <img src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
-              <a href="https://www.linkedin.com/in/vi-truong-421698253/" target="_blank">Vi Truong | LinkedIn</a>
+              <img alt="" src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
+              <a href="https://www.linkedin.com/in/vi-truong-421698253/" target="_blank" rel="noreferrer">Vi Truong | LinkedIn</a>
             </Button>
             <Button className="github">
-              <img src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
-              <a href="https://vivi-portfolio.vercel.app/" target="_blank">Portfolio Website</a>
+              <img alt="" src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
+              <a href="https://vivi-portfolio.vercel.app/" target="_blank" rel="noreferrer">Portfolio Website</a>
             </Button>
         </div>
         <Divider />

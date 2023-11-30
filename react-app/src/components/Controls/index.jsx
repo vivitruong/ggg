@@ -9,8 +9,6 @@ import iconNext from "../../assets/next.svg";
 import iconPrev from "../../assets/next.svg";
 import iconRepeat from "../../assets/repeat.svg";
 import iconShufflee from '../../assets/shufflee.svg';
-import iconHeart from '../../assets/heart.svg'
-import LikeButton from "../LikeSongButton";
 import "./styles.css";
 import { nextSong, pervSong } from "../../store/slices/playlistSlice";
 

@@ -191,7 +191,7 @@ const CreateSong = () => {
                 </div>
 
                 <p style={{paddingBottom:'5px'}}>By uploading, you confirm that your file comply with our Terms of Use*.</p>
-                <img src="https://goldeneragrooves.s3.us-east-2.amazonaws.com/giphy.gif" width="200" height="140" frameBorder="0" class="giphy-embed"></img>
+                <img alt="" src="https://goldeneragrooves.s3.us-east-2.amazonaws.com/giphy.gif" width="200" height="140" frameBorder="0" class="giphy-embed"></img>
             </form>
         </div>
         </div>

@@ -5,14 +5,12 @@ import iconPlay from "../../assets/play.svg";
 import iconHeart from "../../assets/heart.svg";
 import iconSearch from "../../assets/search_file.svg";
 import iconDate from "../../assets/time_and_date.svg";
-import * as playlistAction from '../../store/playlist';
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import "./style.css";
 
 const ActionBar = () => {
-  const dispatch = useDispatch();
+
   const { playSong} = useSelector((state) => state.playSong)
 
 
