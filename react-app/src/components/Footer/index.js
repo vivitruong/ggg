@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import Button from "../Button";
 
 import './style.css'
 import { useSelector } from 'react-redux';
@@ -60,6 +61,19 @@ return(
                 </div>
             }
           <button  disabled className='bar-button active' id='about-btn'>About</button>
+          <Button className="github">
+              <img src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
+              <a href="https://github.com/vivitruong" target="_blank">github.com/vivitruong</a>
+            </Button>
+            <Button className="github">
+              <img src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
+              <a href="https://www.linkedin.com/in/vi-truong-421698253/" target="_blank">Vi Truong | LinkedIn</a>
+            </Button>
+            <Button className="github">
+              <img src="https://win98icons.alexmeub.com/icons/png/msagent-1.png"></img>
+              <a href="https://vivi-portfolio.vercel.app/" target="_blank">Portfolio Website</a>
+            </Button>
+
     <div style={{padding: '5px'}} className="footer__time">
         <span  style={{padding: '5px', fontSize:'20px'}}>{time}</span></div>
     </div>

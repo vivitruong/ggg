@@ -1,6 +1,5 @@
 import React from 'react';
 import Divider from '../Divider'
-// add child div to capture mouse event when not focused
 
 function Paint() {
 

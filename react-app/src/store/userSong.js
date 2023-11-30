@@ -47,7 +47,7 @@ export const updateASong = (payload, songId) => async dispatch => {
     });
     if (response.ok) {
         const editedSong = await response.json();
-        console.log(editedSong);
+        // console.log(editedSong);
         dispatch(updateSong(editedSong));
         return editedSong;
     }
